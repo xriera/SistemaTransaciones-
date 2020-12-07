@@ -14,5 +14,6 @@ public class prueba {
         System.out.println("ec.edu.ups.sistematransaciones.prueba.main()");
         //CALLA CAMAS !!!!!!!!!!!!!!
         System.out.println("Yo le puteo by Wilmer Camas");
+        System.out.println("Ese camas si esta aprendiendo ingles");
     }
 }

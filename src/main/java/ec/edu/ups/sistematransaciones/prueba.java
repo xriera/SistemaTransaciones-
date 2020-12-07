@@ -12,5 +12,6 @@ package ec.edu.ups.sistematransaciones;
 public class prueba {
     public static void main(String[] args) {
         System.out.println("ec.edu.ups.sistematransaciones.prueba.main()");
+        System.out.println("Yo le puteo by Wilmer Camas");
     }
 }

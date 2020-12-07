@@ -7,7 +7,8 @@ package ec.edu.ups.sistematransaciones;
 
 /**
  *
- * @author xavier
+ * @author xavier riera
+ * callla camassss
  */
 public class prueba {
     public static void main(String[] args) {

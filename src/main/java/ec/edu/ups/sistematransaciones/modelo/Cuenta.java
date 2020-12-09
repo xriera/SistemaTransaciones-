@@ -5,44 +5,32 @@
  */
 package ec.edu.ups.sistematransaciones.modelo;
 
-import javax.persistence.Column;
+import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author xavier
  */
 @Entity
-public class Rol {
+public class Cuenta implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_rol")
     private int id;
-    private int rol;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getRol() {
-        return rol;
-    }
-
-    public void setRol(int rol) {
-        this.rol = rol;
-    }
-
-    @Override
-    public String toString() {
-        return "Rol{" + "id=" + id + ", rol=" + rol + '}';
-    }
-      
+    private Date fechaRegistroCuenta;
+    private double saldo;
+    private String tipoCuenta;
+    
+    @ManyToOne
+    @JoinColumn(name="cedula_usuario")
+    private Usuario usuario;
 }

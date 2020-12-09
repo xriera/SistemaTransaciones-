@@ -5,8 +5,12 @@
  */
 package ec.edu.ups.sistematransaciones.modelo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 /**
@@ -17,6 +21,7 @@ import javax.persistence.ManyToOne;
 public class Usuario {  
     
     @Id
+    @Column(name="cedula_usuario")
     private String cedula;
     
     private String nombre;
@@ -24,6 +29,7 @@ public class Usuario {
     private String usuario;
     private String contrasena;
     @ManyToOne
+    @JoinColumn(name="id_rol")
     private Rol rol;
 
     public String getCedula() {

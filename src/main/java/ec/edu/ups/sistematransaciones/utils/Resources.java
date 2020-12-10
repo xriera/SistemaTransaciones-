@@ -20,7 +20,7 @@ import javax.sql.DataSource;
  * @author xavier & vinicio
  */
 public class Resources {
-    String dsName = "java:jboss/datasources/parqueaderoDS";
+    String dsName = "java:jboss/datasources/MysqlDS";
 
     @Produces
     private Connection createConnection() throws SQLException, NamingException {

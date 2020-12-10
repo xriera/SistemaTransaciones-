@@ -5,39 +5,41 @@
  */
 package ec.edu.ups.sistematransaciones.dao;
 
-import ec.edu.ups.sistematransaciones.modelo.Usuario;
+import ec.edu.ups.sistematransaciones.modelo.Cuenta;
 import java.sql.Connection;
+import java.sql.SQLException;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+
 
 /**
  *
  * @author xavier
  */
-
 @Stateless
-public class UsuarioDAO {
+public class CuentaDAO {
     @Inject
     private EntityManager em;
     @Inject
     private Connection con;
     
-    public boolean insert(Usuario entity){
-        em.persist(entity);
+    public boolean insert(Cuenta cuenta) throws SQLException {
+        em.persist(cuenta);
+        return true;
+    }
+    public  boolean update (Cuenta cuenta){
+        em.merge(cuenta);
         return true;       
     }
-    public boolean update(Usuario entity){
-        em.merge(entity);
+    public Cuenta read (int id){
+        em.find(Cuenta.class, id);
+        return null;
+    }
+    public boolean delete (Cuenta cuenta){
+       Cuenta c = em.find(Cuenta.class, cuenta);
+        em.remove(c);
         return true;
     }
-    public boolean read(String id ){
-        em.find(Usuario.class, id);
-        return true;
-    }
-    public boolean delete(Usuario entity){
-        Usuario u = em.find(Usuario.class, entity);
-        em.remove(u);
-        return true;
-    }
+    
 }

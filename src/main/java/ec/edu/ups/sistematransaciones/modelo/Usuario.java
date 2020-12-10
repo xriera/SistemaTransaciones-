@@ -5,13 +5,17 @@
  */
 package ec.edu.ups.sistematransaciones.modelo;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -20,69 +24,150 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Usuario {  
     
+    private static final long serialVersionUID = 1L;
+    
     @Id
-    @Column(name="cedula_usuario")
-    private String cedula;
+    @Column(name = "cedulaSocio")
+    private String cedulaSocio;
+
+    @Column(name = "nombreSocio")
+    private String nombresSocio;
+
+    @Column(name = "apellidoSocio")
+    private String apelidosSocio;
+
+    @Column(name = "edadSocio")
+    private int edadSocio;
+
+    @Column(name = "provinciaSocio")
+    private String provinciaSocio;
+
+    @Column(name = "ciudadSocio")
+    private String ciudadSocio;
+
+    @Column(name = "direccionSocio")
+    private String direccionSocio;
+
+    @Column(name = "telefonoSocio")
+    private String telefonoFijoSocio;
+
+    @Column(name = "celularSocio")
+    private String cedularSocio;
     
-    private String nombre;
-    private String apellido;
-    private String usuario;
-    private String contrasena;
-    @ManyToOne
-    @JoinColumn(name="id_rol")
-    private Rol rol;
+    @Column(name = "correoSocio")
+	private String correo;
+	
+    @Column(name = "claveSocio")
+    private String clave;
 
-    public String getCedula() {
-        return cedula;
+    @Column(name = "estadoCivilSocio")
+    private String estadoCiviilSocio;
+
+    @OneToOne(mappedBy = "socioen")
+    private Cuenta cuenta;
+
+    public String getCedulaSocio() {
+        return cedulaSocio;
     }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public void setCedulaSocio(String cedulaSocio) {
+        this.cedulaSocio = cedulaSocio;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombresSocio() {
+        return nombresSocio;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombresSocio(String nombresSocio) {
+        this.nombresSocio = nombresSocio;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getApelidosSocio() {
+        return apelidosSocio;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setApelidosSocio(String apelidosSocio) {
+        this.apelidosSocio = apelidosSocio;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public int getEdadSocio() {
+        return edadSocio;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setEdadSocio(int edadSocio) {
+        this.edadSocio = edadSocio;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String getProvinciaSocio() {
+        return provinciaSocio;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public void setProvinciaSocio(String provinciaSocio) {
+        this.provinciaSocio = provinciaSocio;
     }
 
-    public Rol getRol() {
-        return rol;
+    public String getCiudadSocio() {
+        return ciudadSocio;
     }
 
-    public void setRol(Rol rol) {
-        this.rol = rol;
+    public void setCiudadSocio(String ciudadSocio) {
+        this.ciudadSocio = ciudadSocio;
     }
 
-    @Override
-    public String toString() {
-        return "Usuario{" + "cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", usuario=" + usuario + ", contrasena=" + contrasena + ", rol=" + rol + '}';
+    public String getDireccionSocio() {
+        return direccionSocio;
     }
-    
+
+    public void setDireccionSocio(String direccionSocio) {
+        this.direccionSocio = direccionSocio;
+    }
+
+    public String getTelefonoFijoSocio() {
+        return telefonoFijoSocio;
+    }
+
+    public void setTelefonoFijoSocio(String telefonoFijoSocio) {
+        this.telefonoFijoSocio = telefonoFijoSocio;
+    }
+
+    public String getCedularSocio() {
+        return cedularSocio;
+    }
+
+    public void setCedularSocio(String cedularSocio) {
+        this.cedularSocio = cedularSocio;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
+    public String getEstadoCiviilSocio() {
+        return estadoCiviilSocio;
+    }
+
+    public void setEstadoCiviilSocio(String estadoCiviilSocio) {
+        this.estadoCiviilSocio = estadoCiviilSocio;
+    }
+
+    public Cuenta getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
+    }
+
 }

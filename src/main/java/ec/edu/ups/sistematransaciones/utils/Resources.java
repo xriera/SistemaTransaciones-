@@ -17,7 +17,7 @@ import javax.sql.DataSource;
 
 /**
  *
- * @author xavier
+ * @author xavier & vinicio
  */
 public class Resources {
     String dsName = "java:jboss/datasources/parqueaderoDS";

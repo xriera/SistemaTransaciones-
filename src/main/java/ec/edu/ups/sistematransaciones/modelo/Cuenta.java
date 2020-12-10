@@ -26,11 +26,54 @@ public class Cuenta implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    
     private Date fechaRegistroCuenta;
     private double saldo;
     private String tipoCuenta;
     
     @ManyToOne
-    @JoinColumn(name="cedula_usuario")
-    private Usuario usuario;
+    @JoinColumn(name="cedula")
+    private Cliente cliente;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Date getFechaRegistroCuenta() {
+        return fechaRegistroCuenta;
+    }
+
+    public void setFechaRegistroCuenta(Date fechaRegistroCuenta) {
+        this.fechaRegistroCuenta = fechaRegistroCuenta;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public String getTipoCuenta() {
+        return tipoCuenta;
+    }
+
+    public void setTipoCuenta(String tipoCuenta) {
+        this.tipoCuenta = tipoCuenta;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    
 }

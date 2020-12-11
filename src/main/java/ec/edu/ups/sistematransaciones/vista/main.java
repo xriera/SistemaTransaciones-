@@ -40,7 +40,7 @@ public class main extends HttpServlet{
                 
                                
             Cliente c = new Cliente();
-            c.setCedula("0106805591");
+            c.setCedula("0108905591");
             c.setNombres("xavier riera");
             c.setApelidos("taza");
             c.setEdad(20);
@@ -49,7 +49,9 @@ public class main extends HttpServlet{
             c.setDireccion("Paute");
             c.setEstadoCiviil("casado");
             c.setProvincia("azuay");
+            c.setCiudad("Cuenca");
             c.setTelefonoFijo("0284949");
+            c.setClave("patito.123");
             
             Cuenta cu = new Cuenta();
             //cu.setId(1);

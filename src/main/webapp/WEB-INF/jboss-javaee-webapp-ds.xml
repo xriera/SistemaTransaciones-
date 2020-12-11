@@ -19,23 +19,22 @@
 or testing only. It uses H2, an in memory database that ships with JBoss 
 AS. -->
 <datasources xmlns="http://www.jboss.org/ironjacamar/schema"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://www.jboss.org/ironjacamar/schema http://docs.jboss.org/ironjacamar/schema/datasources_1_0.xsd">
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://www.jboss.org/ironjacamar/schema http://docs.jboss.org/ironjacamar/schema/datasources_1_0.xsd">
     <!-- The datasource is bound into JNDI at this location. We reference 
     this in META-INF/persistence.xml -->
-    <datasource jta="true" jndi-name="java:jboss/datasources/transaccionesDS" pool-name="ejMysqlDS" enabled="true" use-java-context="true" use-ccm="true">
+    <datasource  jndi-name="java:jboss/datasources/transaccionesDS" pool-name="MysqlDS" enabled="true" use-java-context="true" >
         <connection-url>jdbc:mysql://localhost:3306/sistemabanco</connection-url>
         <driver>mysql-driver</driver>
         <security>
-            <user-name>root</user-name>
-            <password>cuenca</password>
+            <user-name>bancario</user-name>
+            <password>Cuenca.123</password>
         </security>
-    </datasource>
-    
-    <drivers>        
+    </datasource> 
+    <drivers>
         <driver name="mysql-driver" module="com.mysql">
             <driver-class>com.mysql.cj.jdbc.Driver</driver-class>
         </driver>
     </drivers>
-</datasources>
- 
+</datasources> 
+

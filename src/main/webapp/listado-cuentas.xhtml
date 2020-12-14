@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+
+<ui:composition
+	template="/html/template.xhtml">
+	<ui:define name="title">
+		<h:outputText value="#{msg.tituloPagina}" />
+	</ui:define>
+	<ui:define name="contenido">
+		<h:dataTable value="#{facturaBean.facturas}" var="lista" class="table">
+		 <h:column>
+		 <f:facet name="header">id</f:facet>
+		 	#{lista.factura.idfactura}
+		 </h:column>
+		 <h:column>
+		 	<f:facet name="header">Nombre</f:facet>
+		 	#{lista.factura.nombre}
+		</h:column>
+		<h:column>
+		   <f:facet name="header">Email</f:facet>
+			#{lista.factura.total}
+		</h:column>
+		<h:column>
+			  <f:facet name="header">id producto</f:facet>
+			#{lista.producto.idproducto}
+		</h:column>
+		<h:column>
+			  <f:facet name="header">Descripcion</f:facet>
+			#{lista.producto.descripcion}
+		</h:column>
+		<h:column>
+			  <f:facet name="header">Descripcion</f:facet>
+			#{lista.producto.precio}
+		</h:column>
+		</h:dataTable>
+			
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

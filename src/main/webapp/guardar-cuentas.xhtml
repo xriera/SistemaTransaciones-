@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+
+<ui:composition
+	template="/html/template.xhtml">
+	<ui:define name="title">
+		<h:outputText value="#{msg.tituloPagina}" />
+	</ui:define>
+	<ui:define name="contenido">
+		
+			<h:form class="form-horizontal form-material">
+
+				<div class="form-group">
+					<label for="txtDNI" class="col-md-12">DNI</label>
+					<div class="col-md-12">
+						<h:inputText id="txtDNI" value="#{facturaBean.factura.cedula}"
+							class="form-control form-control-line" />
+							<h:message for="txtDNI" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="txtNombre" class="col-md-12">Nombre:</label>
+					<div class="col-md-12">
+						<h:inputText id="txtNombre" value="#{facturaBean.factura.nombre}"
+						class="form-control form-control-line"/>
+						<h:message for="txtNombre" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="txtEmail" class="col-md-12">Fecha</label>
+					<div class="col-md-12">
+						<h:inputText id="txtEmail" value="#{facturaBean.factura.fecha}"
+						class="form-control form-control-line"/>
+						<h:message for="txtEmail" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="txtCodigoPorducto" class="col-md-12">Codigo producto</label>
+					<div class="col-md-2">
+						<h:inputText id="txtCodigoPorducto" value="#{facturaBean.codigo}"
+						class="form-control form-control-line"/>
+						<h:message for="txtCodigoPorducto" />
+					</div>
+					<div class="col-md-2">
+					<h:commandButton action="#{facturaBean.agregarProducto()}"
+						value="+" class="btn btn-success">
+						<f:ajax render="@form" execute="@form" />
+					</h:commandButton>
+				</div>
+				</div>
+				
+				
+
+			<h:dataTable id="tabla" value="#{facturaBean.factura.detallesFactura}" var="pro" class="table">
+				<h:column>
+					<f:facet name="header">Producto</f:facet>
+              	    #{pro.producto.descripcion}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Precio</f:facet>
+					
+               		 #{pro.producto.precio}
+				</h:column>
+
+			</h:dataTable>
+
+			<div class="form-group">
+				<label for="txtEmail" class="col-md-12"><h1>Total</h1></label>
+				<div class="col-md-12">
+					<h:inputText id="txtTotal" value="#{facturaBean.factura.total}"
+						class="form-control form-control-line" />
+					<h:message for="txtTotal" />
+				</div>
+			</div>
+
+			<div class="form-group">
+					<div class="col-sm-12">
+					    <h:commandButton action="#{facturaBean.guardarFactura()}" class="btn btn-success"
+					       value="Guardar" />
+					</div>
+				</div>
+			</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

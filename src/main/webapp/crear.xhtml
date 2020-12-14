@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+
+<ui:composition template="html/template.xhtml">
+
+	<ui:define name="title">
+            Crear Factura
+     </ui:define>
+	
+	<ui:define name="contenido">
+	<h:form>
+		<h:panelGrid >
+			<div class="form-group">
+				<label class="col-md-12">Cedula</label>
+				<div class="col-md-12">
+					<h:inputText value="#{facturaBean.factura.cedula}" />
+					<!-- 	value="#{personaBean.p.cedula}" -->
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-12">Nombre</label>
+				<div class="col-md-12">
+					<h:inputText value="#{facturaBean.factura.nombre}" />
+				</div>
+			</div>
+
+			<div>
+				<label class="col-md-12">Fecha</label>
+				<div class="col-md-12">
+					<h:inputText value="#{facturaBean.factura.fecha}" />
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<label class="col-md-12">Valor</label>
+				<div class="col-md-12">
+					<h:outputText value="#{facturaBean.factura.total}" />
+				</div>
+			</div>
+		</h:panelGrid>
+		
+
+
+		<h:outputLabel value="Codigo:" />
+		<h:inputText value="#{facturaBean.codigo}" id="txtCodigo">
+		</h:inputText>		
+
+
+		<h:commandButton action="#{facturaBean.agregarProducto()}" value="+">
+			<f:ajax render="@form" execute="@form" />
+		</h:commandButton>
+
+
+		<h:dataTable id="tabla" value="#{facturaBean.factura.detallesFactura}" var="pro">
+			<h:column>
+
+				<f:facet name="header">Producto</f:facet>
+                #{pro.producto.descripcion}
+				</h:column>
+			<h:column>
+				<f:facet name="header">Precio</f:facet>
+					
+                #{pro.producto.precio}
+				</h:column>
+		</h:dataTable>
+
+
+		<div class="form-group">
+			<div class="col-sm-12">
+
+				<h:commandButton action="#{facturaBean.guardarFactura()}"
+					value="Guardar" class="btn btn-success" />
+
+			</div>
+		</div>
+
+	</h:form>
+
+
+	</ui:define>
+</ui:composition>
+</html>

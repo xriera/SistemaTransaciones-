@@ -7,6 +7,9 @@ package ec.edu.ups.sistematransaciones.negocio;
 
 import ec.edu.ups.sistematransaciones.dao.ClienteDAO;
 import ec.edu.ups.sistematransaciones.modelo.Cliente;
+
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -33,8 +36,12 @@ public class GestionUsuariosON {
         return true;
         }catch(Exception e){
             throw new Exception("Erroro al registar"+e.getMessage());
-        }
-         
-      
+        }          
     }
+    
+	public List<Cliente> getClientes(){
+		
+		return daoCliente.getClientes();
+	}
+	
 }

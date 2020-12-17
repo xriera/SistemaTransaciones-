@@ -40,7 +40,7 @@ public class main extends HttpServlet{
                 
                                
             Cliente c = new Cliente();
-            c.setCedula("03082905591");
+            c.setCedula("04085905591");
             c.setNombres("xavier riera");
             c.setApelidos("taza");
             c.setEdad(20);

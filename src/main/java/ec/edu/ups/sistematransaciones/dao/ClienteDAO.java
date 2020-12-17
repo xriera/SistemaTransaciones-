@@ -8,9 +8,12 @@ package ec.edu.ups.sistematransaciones.dao;
 import ec.edu.ups.sistematransaciones.modelo.Cliente;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 /**
  *
@@ -42,4 +45,10 @@ public class ClienteDAO {
         em.remove(u);
         return true;
     }
+	public List<Cliente> getClientes(){
+		String jpql ="SELECT c FROM Cliente c ";
+		Query q = em.createQuery(jpql, Cliente.class);
+		List<Cliente> listado = q.getResultList();		
+		return listado;
+	}
 }

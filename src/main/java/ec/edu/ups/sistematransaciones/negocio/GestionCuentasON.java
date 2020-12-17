@@ -11,6 +11,7 @@ import ec.edu.ups.sistematransaciones.modelo.Cliente;
 import ec.edu.ups.sistematransaciones.modelo.Cuenta;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -43,5 +44,10 @@ public class GestionCuentasON {
             throw new Exception("Error al registar cuenta !!! " +e.getMessage());
         }       
     }
+    
+	public List<Cuenta> getCuentas(){
+		return daoCuenta.getCuentas();
+	}
+	
 
 }

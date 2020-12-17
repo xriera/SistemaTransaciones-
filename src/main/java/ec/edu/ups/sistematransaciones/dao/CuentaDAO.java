@@ -5,12 +5,16 @@
  */
 package ec.edu.ups.sistematransaciones.dao;
 
+import ec.edu.ups.sistematransaciones.modelo.Cliente;
 import ec.edu.ups.sistematransaciones.modelo.Cuenta;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 
 /**
@@ -41,5 +45,10 @@ public class CuentaDAO {
         em.remove(c);
         return true;
     }
-    
+	public List<Cuenta> getCuentas(){
+		String jpql ="SELECT c FROM Cuenta c ";
+		Query q = em.createQuery(jpql, Cuenta.class);
+		List<Cuenta> listado = q.getResultList();		
+		return listado;
+	}
 }

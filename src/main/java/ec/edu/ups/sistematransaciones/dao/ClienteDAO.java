@@ -5,7 +5,7 @@
  */
 package ec.edu.ups.sistematransaciones.dao;
 
-import ec.edu.ups.sistematransaciones.modelo.Cliente;
+import ec.edu.ups.sistematransaciones.modelo.SocioEN;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -28,27 +28,27 @@ public class ClienteDAO {
     @Inject
     private Connection con;
     
-    public boolean insert(Cliente entity){
+    public boolean insert(SocioEN entity){
         em.persist(entity);
         return true;       
     }
-    public boolean update(Cliente entity){
+    public boolean update(SocioEN entity){
         em.merge(entity);
         return true;
     }
-    public Cliente read(String cedula ) throws SQLException {
-        em.find(Cliente.class, cedula);
+    public SocioEN read(String cedula ) throws SQLException {
+        em.find(SocioEN.class, cedula);
         return null;
     }
-    public boolean delete(Cliente entity){
-        Cliente u = em.find(Cliente.class, entity);
+    public boolean delete(SocioEN entity){
+        SocioEN u = em.find(SocioEN.class, entity);
         em.remove(u);
         return true;
     }
-	public List<Cliente> getClientes(){
-		String jpql ="SELECT c FROM Cliente c ";
-		Query q = em.createQuery(jpql, Cliente.class);
-		List<Cliente> listado = q.getResultList();		
+	public List<SocioEN> getClientes(){
+		String jpql ="SELECT c FROM SocioEN c ";
+		Query q = em.createQuery(jpql, SocioEN.class);
+		List<SocioEN> listado = q.getResultList();		
 		return listado;
 	}
 }

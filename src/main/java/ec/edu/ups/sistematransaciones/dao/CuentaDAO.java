@@ -5,8 +5,8 @@
  */
 package ec.edu.ups.sistematransaciones.dao;
 
-import ec.edu.ups.sistematransaciones.modelo.Cliente;
-import ec.edu.ups.sistematransaciones.modelo.Cuenta;
+import ec.edu.ups.sistematransaciones.modelo.SocioEN;
+import ec.edu.ups.sistematransaciones.modelo.CuentaEN;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -28,27 +28,27 @@ public class CuentaDAO {
     @Inject
     private Connection con;
     
-    public boolean insert(Cuenta cuenta) throws SQLException {
-        em.persist(cuenta);
+    public boolean insert(CuentaEN cuentaEN) throws SQLException {
+        em.persist(cuentaEN);
         return true;
     }
-    public  boolean update (Cuenta cuenta){
-        em.merge(cuenta);
+    public  boolean update (CuentaEN cuentaEN){
+        em.merge(cuentaEN);
         return true;       
     }
-    public Cuenta read (int id){
-        em.find(Cuenta.class, id);
+    public CuentaEN read (int id){
+        em.find(CuentaEN.class, id);
         return null;
     }
-    public boolean delete (Cuenta cuenta){
-       Cuenta c = em.find(Cuenta.class, cuenta);
+    public boolean delete (CuentaEN cuentaEN){
+       CuentaEN c = em.find(CuentaEN.class, cuentaEN);
         em.remove(c);
         return true;
     }
-	public List<Cuenta> getCuentas(){
-		String jpql ="SELECT c FROM Cuenta c ";
-		Query q = em.createQuery(jpql, Cuenta.class);
-		List<Cuenta> listado = q.getResultList();		
+	public List<CuentaEN> getCuentas(){
+		String jpql ="SELECT c FROM CuentaEN c ";
+		Query q = em.createQuery(jpql, CuentaEN.class);
+		List<CuentaEN> listado = q.getResultList();		
 		return listado;
 	}
 }

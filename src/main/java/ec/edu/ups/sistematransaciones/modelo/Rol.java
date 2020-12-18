@@ -5,44 +5,62 @@
  */
 package ec.edu.ups.sistematransaciones.modelo;
 
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+
 
 /**
  *
  * @author xavier
  */
 @Entity
-public class Rol {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_rol")
-    private int id;
-    private int rol;
+public class Rol implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_rol")
+	private int idrol;
+	
+	@Column(name = "nombre_rol")
+	private String nombre;
+	
+	@OneToMany(mappedBy = "rol",fetch = FetchType.EAGER,cascade = {CascadeType.ALL})
+	private List<UsuarioAdministrativo> usuario;
 
-    public int getId() {
-        return id;
-    }
+	public int getIdrol() {
+		return idrol;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setIdrol(int idrol) {
+		this.idrol = idrol;
+	}
 
-    public int getRol() {
-        return rol;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public void setRol(int rol) {
-        this.rol = rol;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    @Override
-    public String toString() {
-        return "Rol{" + "id=" + id + ", rol=" + rol + '}';
-    }
-      
+	public List<UsuarioAdministrativo> getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(List<UsuarioAdministrativo> usuario) {
+		this.usuario = usuario;
+	}
+	
+
 }

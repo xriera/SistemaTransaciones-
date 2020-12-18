@@ -21,8 +21,9 @@ import javax.persistence.ManyToOne;
  * @author xavier & vinicio
  */
 @Entity
-public class Personal implements Serializable {
-
+public class UsuarioAdministrativo implements Serializable {
+	
+	 private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
@@ -85,8 +86,6 @@ public class Personal implements Serializable {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
-    
-    
-    
+
 
 }

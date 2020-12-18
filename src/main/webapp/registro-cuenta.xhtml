@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="Template/production/template.xhtml">
+	<ui:define name="titulo">
+		<h:outputText value="#{msg.tituloPagina}" />
+	</ui:define>
+	<ui:define name="contenido">
+
+		<h:form class="form-horizontal form-material">
+			<div class="form-group">
+				<label for="txtTipoCuenta" class="col-md-12">Tipo cuenta: </label>
+				<div class="col-md-12">
+					<h:inputText id="txtTipoCuenta" value="#{cuentasBean.newCuenta.tipoCuenta}"
+						class="form-control form-control-line" />
+					<h:message for="txtTipoCuenta" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="txtCedula" class="col-md-12">Cedula</label>
+				<div class="col-md-12">
+					<h:inputText id="txtCedula" value="#{cuentasBean.cliente.cedula}"
+						class="form-control form-control-line" />
+					<h:message for="txtCedula" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="txtNombre" class="col-md-12">Nombres:</label>
+				<div class="col-md-12">
+					<h:inputText id="txtNombre" value="#{cuentasBean.cliente.nombres}" 
+					     class="form-control form-control-line" />
+					<h:message for="txtNombre" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="txtApellido" class="col-md-12">Apellidos</label>
+				<div class="col-md-12">
+					<h:inputText id="txtApellido"
+						value="#{cuentasBean.cliente.apelidos}"
+						class="form-control form-control-line" />
+					<h:message for="txtApellido" />
+				</div>
+			</div>
+            <div class="form-group">
+				<label for="txtEmail" class="col-md-12">Email</label>
+				<div class="col-md-12">
+					<h:inputText id="txtEmail" value="#{cuentasBean.cliente.correo}"
+						class="form-control form-control-line" />
+					<h:message for="txtEmail" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="txtEdad" class="col-md-12">Edad</label>
+				<div class="col-md-12">
+					<h:inputText id="txtEdad" value="#{cuentasBean.cliente.edad}"
+						class="form-control form-control-line" />
+					<h:message for="txtEdad" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="txtEstadoCivil" class="col-md-12">Estado civil:</label>
+				<div class="col-md-12">
+					<h:inputText id="txtEstadoCivil" value="#{cuentasBean.cliente.estadoCiviil}"
+						class="form-control form-control-line" />
+					<h:message for="txtEstadoCivil" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="txtCelular" class="col-md-12">Celular:</label>
+				<div class="col-md-12">
+					<h:inputText id="txtCelular" value="#{cuentasBean.cliente.celular}"
+						class="form-control form-control-line" />
+					<h:message for="txtCelular" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="txtTelefono" class="col-md-12">Telefono fijo:</label>
+				<div class="col-md-12">
+					<h:inputText id="txtTelefono" value="#{cuentasBean.cliente.telefonoFijo}"
+						class="form-control form-control-line" />
+					<h:message for="txtTelefono" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="txtProvincia" class="col-md-12">Provincia:</label>
+				<div class="col-md-12">
+					<h:inputText id="txtProvincia" value="#{cuentasBean.cliente.provincia}"
+						class="form-control form-control-line" />
+					<h:message for="txtProvincias" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="txtCiudad" class="col-md-12">Ciudad:</label>
+				<div class="col-md-12">
+					<h:inputText id="txtCiudad" value="#{cuentasBean.cliente.ciudad}"
+						class="form-control form-control-line" />
+					<h:message for="txtCiudad" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="txtDireccion" class="col-md-12">Direccion(Calles):</label>
+				<div class="col-md-12">
+					<h:inputText id="txtDireccion"
+						value="#{cuentasBean.cliente.direccion}" class="form-control form-control-line" />
+					<h:message for="txtDireccion" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="txtSaldo" class="col-md-12">Saldo inicial:</label>
+				<div class="col-md-12">
+					<h:inputText id="txtSaldo"
+						value="#{cuentasBean.newCuenta.saldo}" class="form-control form-control-line" />
+					<h:message for="txtSaldo" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="txtClave" class="col-md-12">Clave:</label>
+				<div class="col-md-12">
+					<h:inputText id="txtClave"
+						value="#{cuentasBean.cliente.clave}" class="form-control form-control-line" />
+					<h:message for="txtClave" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-12">
+					<h:commandButton action="#{cuentasBean.guardarCuenta()}"
+						class="btn btn-success" value="Guardar" />
+				</div>
+			</div>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

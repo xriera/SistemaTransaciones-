@@ -7,8 +7,8 @@ package ec.edu.ups.sistematransaciones.negocio;
 
 import ec.edu.ups.sistematransaciones.dao.ClienteDAO;
 import ec.edu.ups.sistematransaciones.dao.CuentaDAO;
-import ec.edu.ups.sistematransaciones.modelo.Cliente;
-import ec.edu.ups.sistematransaciones.modelo.Cuenta;
+import ec.edu.ups.sistematransaciones.modelo.SocioEN;
+import ec.edu.ups.sistematransaciones.modelo.CuentaEN;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
@@ -29,23 +29,18 @@ public class GestionCuentasON {
     @Inject
     private ClienteDAO daoCliente;
     
-    public boolean registrarCuenta(Cuenta cuenta) throws Exception {
+    public boolean registrarCuenta(CuentaEN cuentaEN) throws Exception {
         try {
-            Cliente aux = daoCliente.read(cuenta.getCliente().getCedula());
-            if(aux!=null){
-                daoCliente.update(cuenta.getCliente());
-            }else{
-                daoCliente.insert(cuenta.getCliente());
-            }
-            cuenta.setFechaRegistroCuenta(new Date());
-            daoCuenta.insert(cuenta);
+           
+            cuentaEN.setFechaRegistroCuenta(new Date());
+            daoCuenta.insert(cuentaEN);
             return true;
         } catch (Exception e) {
             throw new Exception("Error al registar cuenta !!! " +e.getMessage());
         }       
     }
     
-	public List<Cuenta> getCuentas(){
+	public List<CuentaEN> getCuentas(){
 		return daoCuenta.getCuentas();
 	}
 	

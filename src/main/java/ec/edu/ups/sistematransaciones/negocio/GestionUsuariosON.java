@@ -6,7 +6,7 @@
 package ec.edu.ups.sistematransaciones.negocio;
 
 import ec.edu.ups.sistematransaciones.dao.ClienteDAO;
-import ec.edu.ups.sistematransaciones.modelo.Cliente;
+import ec.edu.ups.sistematransaciones.modelo.SocioEN;
 
 import java.util.List;
 
@@ -22,24 +22,24 @@ public class GestionUsuariosON {
     @Inject
     private ClienteDAO daoCliente;
     
-    public boolean registrarUsuario(Cliente cliente) throws Exception{
+    public boolean registrarUsuario(SocioEN socioEN) throws Exception{
     
         try {
-        Cliente aux = daoCliente.read(cliente.getCedula());
+        SocioEN aux = daoCliente.read(socioEN.getCedulaSocio());
        
         if(aux!=null){
-            daoCliente.update(cliente);
+            daoCliente.update(socioEN);
         }else{
-            daoCliente.insert(cliente);
+            daoCliente.insert(socioEN);
         }
         
         return true;
         }catch(Exception e){
-            throw new Exception("Erroro al registar"+e.getMessage());
+            throw new Exception("Error al registar"+e.getMessage());
         }          
     }
     
-	public List<Cliente> getClientes(){
+	public List<SocioEN> getClientes(){
 		
 		return daoCliente.getClientes();
 	}

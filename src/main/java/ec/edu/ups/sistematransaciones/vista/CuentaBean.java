@@ -106,7 +106,7 @@ public class CuentaBean {
   
     
    
-    
+    //metodo para guardar datos de la cuenta 
     public String guardarDatosCuenta(){
     
         try {

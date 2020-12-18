@@ -7,7 +7,7 @@ package ec.edu.ups.sistematransaciones.vista;
 
 import ec.edu.ups.sistematransaciones.modelo.SocioEN;
 import ec.edu.ups.sistematransaciones.modelo.CuentaEN;
-import ec.edu.ups.sistematransaciones.negocio.GestionCuentasON;
+import ec.edu.ups.sistematransaciones.negocio.GestionBancariaON;
 import ec.edu.ups.sistematransaciones.negocio.GestionLoginON;
 import ec.edu.ups.sistematransaciones.negocio.GestionUsuariosON;
 import java.io.IOException;
@@ -30,7 +30,7 @@ public class main extends HttpServlet{
     @Inject
     private GestionUsuariosON on;
     @Inject
-    private GestionCuentasON onCuentas;
+    private GestionBancariaON onCuentas;
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

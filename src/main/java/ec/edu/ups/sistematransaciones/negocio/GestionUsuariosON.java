@@ -5,7 +5,7 @@
  */
 package ec.edu.ups.sistematransaciones.negocio;
 
-import ec.edu.ups.sistematransaciones.dao.ClienteDAO;
+import ec.edu.ups.sistematransaciones.dao.SocioDao;
 import ec.edu.ups.sistematransaciones.modelo.SocioEN;
 
 import java.util.List;
@@ -20,7 +20,7 @@ import javax.inject.Inject;
 @Stateless
 public class GestionUsuariosON {
     @Inject
-    private ClienteDAO daoCliente;
+    private SocioDao daoCliente;
     
     public boolean registrarUsuario(SocioEN socioEN) throws Exception{
     

@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<ui:composition
+	template="Template/production/template.xhtml">
+	<ui:define name="contenido">
+		<h1>Ver Socios</h1>
+
+
+		<h:form>
+			<h:dataTable value="#{socioBean.listaSocio}" var="socio"
+				class="table">
+
+
+
+				<h:column>
+					<f:facet name="header">Cedula</f:facet>
+                        #{socio.cedulaSocio}
+                                 </h:column>
+
+				<br />
+				<br />
+
+				<h:column>
+					<f:facet name="header">Nombre</f:facet>
+                        #{socio.nombresSocio}
+                </h:column>
+
+				<br />
+				<br />
+
+				<h:column>
+					<f:facet name="header">Apellido</f:facet>
+                        #{socio.apelidosSocio}
+                </h:column>
+
+				<br />
+				<br />
+
+
+				<br />
+				<br />
+
+				<h:column>
+					<f:facet name="header">Edad</f:facet>
+                        #{socio.edadSocio}
+                </h:column>
+
+				<br />
+				<br />
+
+
+
+
+				<br />
+				<br />
+
+				<h:column>
+					<f:facet name="header">Provincia</f:facet>
+                        #{socio.provinciaSocio}
+                </h:column>
+
+				<br />
+				<br />
+
+
+				<br />
+				<br />
+
+				<h:column>
+					<f:facet name="header">Ciudad</f:facet>
+                        #{socio.ciudadSocio}
+                </h:column>
+
+				<br />
+				<br />
+
+
+				<br />
+				<br />
+
+				<h:column>
+					<f:facet name="header">Direccion</f:facet>
+                        #{socio.direccionSocio}
+                </h:column>
+
+				<br />
+				<br />
+
+
+				<br />
+				<br />
+
+				<h:column>
+					<f:facet name="header">Telefono FIjo</f:facet>
+                        #{socio.telefonoFijoSocio}
+                </h:column>
+
+				<br />
+				<br />
+
+
+
+				<br />
+				<br />
+
+				<h:column>
+					<f:facet name="header">Celular</f:facet>
+                        #{socio.cedularSocio}
+                </h:column>
+
+				<br />
+				<br />
+
+
+				<br />
+				<br />
+				<!-- modificacion XAvier -->
+				<h:column>
+					<f:facet name="header">Correo</f:facet>
+                        #{socio.correo}
+                </h:column>
+
+				<br />
+				<br />
+
+
+				<br />
+				<br />
+				<h:column>
+					<f:facet name="header">Clave</f:facet>
+                        #{socio.clave}
+                </h:column>
+
+				<br />
+				<br />
+
+
+				<br />
+				<br />
+				<h:column>
+					<f:facet name="header">Estado Civil</f:facet>
+                        #{socio.estadoCiviilSocio}
+                </h:column>
+
+				<br />
+				<br />
+
+				<h:column>
+					<f:facet name="header">Acciones</f:facet>
+					<h:commandButton
+						action="#{socioBean.editarSocio(socio.cedulaSocio)}"
+						value="Editar" class="btn btn-instagram" />
+					<h:commandButton
+						action="#{socioBean.eliminarScocio(socio.cedulaSocio)}"
+						value="Eliminar" onclick="alert('Socio Eliminado...');"
+						class="btn btn-youtube" />
+
+					<h:commandButton
+						action="#{socioBean.redirigeCrearCuenta(socio.cedulaSocio)}"
+						value="Crear Cuenta" class="btn btn-success" />
+
+				</h:column>
+
+
+
+			</h:dataTable>
+			<br />
+			<br />
+			<h:commandButton action="#{socioBean.redirigeCrearSocio()}"
+				value="Regresar Crear Socio" class="btn btn-github" />
+			<br />
+			<br />
+			<h:commandButton action="#{socioBean.verCuentas()}"
+				value="Ver Cuentas" class="btn btn-custom" />
+
+			<br />
+			<br />
+			<h:commandButton value="Cerrar Sesion" title="Cerrar Sesion"
+				icon="ui-icon-power"
+				actionListener="#{loginAdmiBean.cerrarSession()}"
+				action="principal.xhtml" class="btn btn-youtube">
+			</h:commandButton>
+		</h:form>
+	</ui:define>
+
+</ui:composition> 
+</html>

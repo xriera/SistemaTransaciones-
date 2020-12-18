@@ -176,7 +176,7 @@ public class SocioBean {
 	public String redirigeCrearCuenta(String cedula) {
 
 		System.out.println("Redirigir:" + cedula);
-		return "Cuenta?faces-redirect=true&cedulaSocio=" + cedula;
+		return "registro-cuenta?faces-redirect=true&cedulaSocio=" + cedula;
 	}
 
 	public String redirigeCrearSocio() {

@@ -70,7 +70,7 @@
 
 
 				<h:column>
-					<f:facet name="header"></f:facet>
+					<f:facet name="header">Acciones</f:facet>
 					<!-- <h:commandButton action="#{socioBean.editarSocio(socio.cedulaSocio)}"  value="Editar"/> -->
 
 					<h:commandButton
@@ -80,11 +80,9 @@
 					<h:commandButton
 						action="#{cuentaBean.redirigeCrearRetiro(cuenta.idCuenta)}"
 						value="Retirar" class="btn btn-googleplus" />
-
-                                       
-     
-                                        <h:commandButton action="#{cuentaBean.redirigeCrearCredito(cuenta.idCuenta)}"
-                                                         value="Gestionar Credito" class="btn btn-success" />
+                    
+                    <h:commandButton action="#{cuentaBean.redirigeCrearCredito(cuenta.idCuenta)}"
+                                     value="Gestionar Credito" class="btn btn-success" />
 
     
                         

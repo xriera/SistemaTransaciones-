@@ -162,13 +162,13 @@ public class CuentaBean {
         public String redirigeCrearMovimiento(String idCuenta){
          
          System.out.println("Redirigir:"+idCuenta);
-        return "Movimiento?faces-redirect=true&idCuenta="+idCuenta;
+        return "depositar?faces-redirect=true&idCuenta="+idCuenta;
     }
     
        public String redirigeCrearRetiro(String idCuenta){
          
          System.out.println("Redirigir:"+idCuenta);
-        return "Retiro?faces-redirect=true&idCuenta="+idCuenta;
+        return "retiros?faces-redirect=true&idCuenta="+idCuenta;
     }
     
        

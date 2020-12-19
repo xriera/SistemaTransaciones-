@@ -154,11 +154,7 @@ public class MovimientoBean {
 	public void setTipo_movi(String tipo_movi) {
 		this.tipo_movi = tipo_movi;
 	}
-     
-     
-	
-    
-	 
+ 
 	 public Date convertirFechas(String fecha2) {
 		 
 		 String dateStr = fecha2;
@@ -177,8 +173,7 @@ public class MovimientoBean {
 		 
 		 return date;
 	 }
-	
-   
+  
 	 /*
 	  * Movimiento fechas corregidos
 	  * 

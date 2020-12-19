@@ -98,26 +98,6 @@
 				</div>
 			</div>
 
-
-			<!-- Cedula del Socio :<h:inputText value="#{cuentaBean.newCuenta.socio.cedulaSocio}" readonly="true" /> <br/> -->
-			<!--Nombre  :<h:inputText value="#{cuentaBean.newCuenta.socio.nombresSocio}" readonly="true" /> <br/> -->
-			<!-- Apelldo  :<h:inputText value="#{cuentaBean.newCuenta.socio.apelidosSocio}" readonly="true" /> <br/> -->
-
-			<!-- ID Cuenta :<h:inputText  id="cuenta"  value="#{cuentaBean.newCuenta.idCuenta}" /> <br/> -->
-			<!-- #{movimientoBean.newMovimiento.setCuenta(cuentaBean.newCuenta)}-->
-
-
-			<!-- Fecha de Movimiento <input  value="#{movimientoBean.newMovimiento.setFechaMovimiento(movimientoBean.fecha)} #{movimientoBean.newMovimiento.fechaMovimiento}" readonly="true"  ></input> <br/>  -->
-
-
-			<!-- Tipo de Movimiento :<h:inputText   value="Retiro" /> <br/> -->
-			<!-- #{movimientoBean.newMovimiento.setTipoMovimiento("Retiro")}-->
-
-			<!--  Cantidad :<h:inputText  id="cantidad" value="#{movimientoBean.newMovimiento.cantidad}"/> <br/>-->
-
-
-
-
 			<br />
 			<br />
 
@@ -126,12 +106,12 @@
 
 			<h:commandButton action="#{movimientoBean.guardarMovimiento()}"
 				value="Retirar Dinero en Cuenta"
-				onclick="alert('Retiro Realizado');" class="btn btn-info" />
+				onclick="alert('Retiro Realizado');" class="btn btn-success" />
             #{movimientoBean.retiar(cuentaBean.newCuenta.idCuenta, movimientoBean.newMovimiento.cantidad)}
         
              <h:commandButton
 				action="#{movimientoBean.redirigeListarCuentas()}"
-				value="Regresar al menu Cuenta" class="btn btn-github" />
+				value="Regresar al menu Cuenta" class="btn btn-secondary" />
 
 		</h:form>
 

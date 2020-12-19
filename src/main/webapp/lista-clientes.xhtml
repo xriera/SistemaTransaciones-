@@ -7,7 +7,7 @@
 <ui:composition
 	template="Template/production/template.xhtml">
 	<ui:define name="contenido">
-		<h1>Ver Socios</h1>
+		<h1>Lista Socios</h1>
 		<h:form>
 			<h:dataTable value="#{socioBean.listaSocio}" var="socio"
 				class="table">
@@ -151,11 +151,11 @@
 					<f:facet name="header">Acciones</f:facet>
 					<h:commandButton
 						action="#{socioBean.editarSocio(socio.cedulaSocio)}"
-						value="Editar" class="btn btn-instagram" />
+						value="Editar" class="btn btn-info btn-xs" />
 					<h:commandButton
 						action="#{socioBean.eliminarScocio(socio.cedulaSocio)}"
 						value="Eliminar" onclick="alert('Socio Eliminado...');"
-						class="btn btn-youtube" />
+						class="btn btn-danger btn-xs"  />
 
 					<h:commandButton
 						action="#{socioBean.redirigeCrearCuenta(socio.cedulaSocio)}"
@@ -178,7 +178,7 @@
 			<br />
 			<br />
 			<h:commandButton value="Cerrar Sesion" title="Cerrar Sesion"
-				icon="ui-icon-power"
+				
 				actionListener="#{loginAdmiBean.cerrarSession()}"
 				action="principal.xhtml" class="btn btn-youtube">
 			</h:commandButton>

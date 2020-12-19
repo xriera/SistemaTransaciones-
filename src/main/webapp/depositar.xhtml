@@ -104,17 +104,18 @@
 
 
 
-
+			
 			<h:commandButton action="#{movimientoBean.guardarMovimiento()}"
 				value="Depositar en Cuenta" onclick="alert('Deposito Guardado');"
-				class="btn btn-info" />
+				class="btn btn-success" />
             
-            #{movimientoBean.depositar(cuentaBean.newCuenta.idCuenta, movimientoBean.newMovimiento.cantidad)}
+           		 #{movimientoBean.depositar(cuentaBean.newCuenta.idCuenta, movimientoBean.newMovimiento.cantidad)}
         
             
             <h:commandButton
 				action="#{movimientoBean.redirigeListarCuentas()}"
-				value="Regresar al menu Cuenta" class="btn btn-github" />
+				value="Regresar al menu Cuenta" class="btn btn-secondary" />
+				
 
 		</h:form>
 

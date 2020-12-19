@@ -11,6 +11,7 @@ import ec.edu.ups.sistematransaciones.dao.CuentaDAO;
 import ec.edu.ups.sistematransaciones.dao.MovimientoDAO;
 import ec.edu.ups.sistematransaciones.modelo.SocioEN;
 import ec.edu.ups.sistematransaciones.modelo.TransaccionEN;
+import ec.edu.ups.sistematransaciones.vista.EmailClient;
 import ec.edu.ups.sistematransaciones.modelo.CuentaEN;
 import ec.edu.ups.sistematransaciones.modelo.MovimientoEN;
 
@@ -400,9 +401,10 @@ public List<CuentaEN> listarCuentas() throws Exception {
      		return cuentaDAO.CuentaSocio(cedula);
      	}
          
+        
         public void enviarCorreo(String destino,String Asunto,String CuerpoMail) {
-    //		Thread hilo= new Thread(new EmailClient(destino, Asunto, CuerpoMail));
-    //		hilo.start();
+    		Thread hilo= new Thread(new EmailClient(destino, Asunto, CuerpoMail));
+    		hilo.start();
 	
     	}
         

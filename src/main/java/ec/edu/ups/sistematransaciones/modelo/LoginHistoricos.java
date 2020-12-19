@@ -44,13 +44,9 @@ public class LoginHistoricos implements Serializable {
 		this.socio = socio;
 	}
 
-
-
 	public int getId_login() {
 		return id_login;
 	}
-
-
 
 	public void setId_login(int id_login) {
 		this.id_login = id_login;
@@ -72,7 +68,4 @@ public class LoginHistoricos implements Serializable {
 		this.fecha = fecha;
 	}
 
-	
-
-	
 }

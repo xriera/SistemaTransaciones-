@@ -83,7 +83,7 @@ public class SocioBean {
 			on.guardarSocio(newSocio);
 			
 			String Asunto = " Cuenta de Usuario";
-			String CuerpoMail = "Banca en linea. Estimado Sr(a) " + newSocio.getNombresSocio() 
+			String CuerpoMail = "Banca en linea. Estimado Sr(a) " + newSocio.getNombresSocio() +" "+ newSocio.getApelidosSocio()
 			                        + " bienvenido ,su clave de inicio de sesion es: " +newSocio.getClave()
 			                        +" Gracias por su confianza";
 			
@@ -93,9 +93,9 @@ public class SocioBean {
 			System.out.println("Socio Guardado...");
 			
 		} catch (Exception ex) {
-			System.out.println("Error al ingresarSocio[SocioBean]" + ex);
+			System.out.println("Error al ingresar Cliente" + ex);
 		}
-		return "listaSocios";
+	return "lista-clientes";
 	}
 
 	public String BuscarDatosScocio(String cedula) {

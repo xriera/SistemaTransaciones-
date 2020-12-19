@@ -39,7 +39,7 @@ public class main extends HttpServlet{
             
                 
                                
-            SocioEN c = new SocioEN();
+          /**  SocioEN c = new SocioEN();
             c.setCedula("04085905591");
             c.setNombres("xavier riera");
             c.setApelidos("taza");
@@ -60,10 +60,10 @@ public class main extends HttpServlet{
             cu.setCliente(c);
             
            // c.setCuenta(cu);
-           
+           */
             
         try {
-            onCuentas.registrarCuenta(cu);
+          //  onCuentas.registrarCuenta(cu);
            
         } catch (Exception ex) {
             Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);

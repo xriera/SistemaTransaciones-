@@ -5,7 +5,7 @@
  */
 package ec.edu.ups.sistematransaciones.dao;
 
-import ec.edu.ups.sistematransaciones.modelo.Movimiento;
+import ec.edu.ups.sistematransaciones.modelo.MovimientoEN;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -26,37 +26,37 @@ public class MovimientoDAO {
     /*
 	 * metodo que permite crear un movimiento de la cuenta en la base de datos 
      */
-    public void insertMovimiento(Movimiento movimiento) throws Exception {
-        em.persist(movimiento);
+    public void insertMovimiento(MovimientoEN movimientoEN) throws Exception {
+        em.persist(movimientoEN);
     }
 
     /*
   	 * metodo que permite retornar un movimiento de la cuenta en la base de datos por medio de su id
      */
-    public Movimiento readMovimiento(int idMovimiento) throws Exception {
-        return em.find(Movimiento.class, idMovimiento);
+    public MovimientoEN readMovimiento(int idMovimiento) throws Exception {
+        return em.find(MovimientoEN.class, idMovimiento);
     }
 
     /*
   	 * metodo que permite actualizar un movimiento de la cuenta en la base de datos 
      */
-    public void updateMovimiento(Movimiento movimiento) throws Exception {
-        em.merge(movimiento);
+    public void updateMovimiento(MovimientoEN movimientoEN) throws Exception {
+        em.merge(movimientoEN);
     }
 
     /*
   	 * metodo que permite eliminar un movimiento de la cuenta en la base de datos 
      */
     public void deleteMovimiento(int idMovimiento) throws Exception {
-        Movimiento m = readMovimiento(idMovimiento);
+        MovimientoEN m = readMovimiento(idMovimiento);
         em.remove(m);
     }
 
-    public List<Movimiento> getMovimientos(String filtro) throws Exception {
+    public List<MovimientoEN> getMovimientos(String filtro) throws Exception {
         String jpql = "SELECT p FROM CuentaEN p WHERE fechaMovimiento LIKE :filtro"
                 + "ORDER BY p.idMovimiento DESC";
 
-        Query q = em.createQuery(jpql, Movimiento.class);
+        Query q = em.createQuery(jpql, MovimientoEN.class);
         q.setParameter("filtro", filtro + "%");
         return q.getResultList();
     }
@@ -64,9 +64,9 @@ public class MovimientoDAO {
     /*
  	 * metodo que permite listar los movimiento de la cuenta de la base de datos por medio de su id
      */
-    public List<Movimiento> listarMovimiento(String idCuenta) {
+    public List<MovimientoEN> listarMovimiento(String idCuenta) {
         String jpql = "Select p FROM MovimientoEN p WHERE p.cuenta like '" + idCuenta + "' ORDER BY p.fechaMovimiento DESC  ";
-        Query q = em.createQuery(jpql, Movimiento.class);
+        Query q = em.createQuery(jpql, MovimientoEN.class);
 
         return q.getResultList();
     }
@@ -74,14 +74,14 @@ public class MovimientoDAO {
     /*
   	 * metodo que permite listar los movimiento de la cuenta de la base de datos por medio de su id, fecha inicial hasta una fecha final y su tipo de cuenta
      */
-    public List<Movimiento> listarMovimientoFecha(String idCuenta, Date desde, Date hasta, String tipo) {
+    public List<MovimientoEN> listarMovimientoFecha(String idCuenta, Date desde, Date hasta, String tipo) {
         if (tipo.equals("Todos")) {
             return listarMovimiento(idCuenta);
         } else {
 
             String jpql = "Select p FROM MovimientoEN p WHERE p.cuenta like '" + idCuenta + "' AND p.fechaMovimiento BETWEEN '" + desde + "' AND '" + hasta + "'"
                     + "AND p.tipoMovimiento LIKE '" + tipo + "'";
-            Query q = em.createQuery(jpql, Movimiento.class);
+            Query q = em.createQuery(jpql, MovimientoEN.class);
 
             return q.getResultList();
         }
@@ -91,12 +91,12 @@ public class MovimientoDAO {
     /*
    	 * metodo que permite listar los movimiento de la cuenta de la base de datos por medio de su id, fecha inicial hasta una fecha final y su tipo de cuenta
      */
-    public List<Movimiento> movimientofechas(String idCuenta, Date fecha, Date fecha2, String tipoF) {
+    public List<MovimientoEN> movimientofechas(String idCuenta, Date fecha, Date fecha2, String tipoF) {
         System.out.println(idCuenta + fecha + fecha2 + tipoF);
         String jpql = "SELECT p FROM MovimientoEN p " + "WHERE 	p.cuenta like '" + idCuenta + "' "
                 + "and fechaMovimiento BETWEEN  :fecha  AND  :fecha2 and tipoMovimiento "
                 + "like :tipoF ";
-        Query q = em.createQuery(jpql, Movimiento.class);
+        Query q = em.createQuery(jpql, MovimientoEN.class);
         q.setParameter("fecha", fecha);
         q.setParameter("fecha2", fecha2);
         q.setParameter("tipoF", tipoF);

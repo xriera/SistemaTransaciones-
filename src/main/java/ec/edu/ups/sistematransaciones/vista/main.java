@@ -5,9 +5,9 @@
  */
 package ec.edu.ups.sistematransaciones.vista;
 
-import ec.edu.ups.sistematransaciones.modelo.Cliente;
-import ec.edu.ups.sistematransaciones.modelo.Cuenta;
-import ec.edu.ups.sistematransaciones.negocio.GestionCuentasON;
+import ec.edu.ups.sistematransaciones.modelo.SocioEN;
+import ec.edu.ups.sistematransaciones.modelo.CuentaEN;
+import ec.edu.ups.sistematransaciones.negocio.GestionBancariaON;
 import ec.edu.ups.sistematransaciones.negocio.GestionLoginON;
 import ec.edu.ups.sistematransaciones.negocio.GestionUsuariosON;
 import java.io.IOException;
@@ -30,7 +30,7 @@ public class main extends HttpServlet{
     @Inject
     private GestionUsuariosON on;
     @Inject
-    private GestionCuentasON onCuentas;
+    private GestionBancariaON onCuentas;
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -39,7 +39,7 @@ public class main extends HttpServlet{
             
                 
                                
-            Cliente c = new Cliente();
+            SocioEN c = new SocioEN();
             c.setCedula("04085905591");
             c.setNombres("xavier riera");
             c.setApelidos("taza");
@@ -53,7 +53,7 @@ public class main extends HttpServlet{
             c.setTelefonoFijo("0284949");
             c.setClave("patito.123");
             
-            Cuenta cu = new Cuenta();
+            CuentaEN cu = new CuentaEN();
             //cu.setId(1);
             cu.setSaldo(32);
             cu.setTipoCuenta("corriente");

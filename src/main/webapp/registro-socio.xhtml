@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="Template/production/template.xhtml">
+			<ui:define name="title" />
+	<h1>Socios</h1>
+
+
+
+	<ui:define name="contenido">
+
+
+		<h:form class="form-horizontal form-material">
+			<div class="form-group">
+				<label class="col-md-12">Cedula</label>
+				<div class="col-md-12">
+					<h:inputText class="form-control" value="#{socioBean.newSocio.cedulaSocio}"
+						maxlength="10"
+						onkeypress="if(event.which &lt; 48 || event.which &gt; 57 ) if(event.which != 8) return false;" />
+				</div>
+
+
+			</div>
+			<div class="form-group">
+				<label class="col-md-12">Nombres</label>
+				<div class="col-md-12">
+					<h:inputText class="form-control" value="#{socioBean.newSocio.nombresSocio}" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-12">Apellidos</label>
+				<div class="col-md-12">
+					<h:inputText class="form-control" value="#{socioBean.newSocio.apelidosSocio}" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-12">Edad</label>
+				<div class="col-md-12">
+					<h:inputText class="form-control" value="#{socioBean.newSocio.edadSocio}"
+						onkeypress="if(event.which &lt; 48 || event.which &gt; 57 ) if(event.which != 8) return false;" />
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<label class="col-md-12">Provincia</label>
+				<div class="col-md-12">
+					<h:inputText class="form-control" value="#{socioBean.newSocio.provinciaSocio}" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-12">Ciudad</label>
+				<div class="col-md-12">
+					<h:inputText  class="form-control" value="#{socioBean.newSocio.ciudadSocio}" />
+					<br />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-12">Direccion</label>
+				<div class="col-md-12">
+					<h:inputText class="form-control" value="#{socioBean.newSocio.direccionSocio}" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-12">Telefono</label>
+				<div class="col-md-12">
+					<h:inputText class="form-control" value="#{socioBean.newSocio.telefonoFijoSocio}"
+						maxlength="7"
+						onkeypress="if(event.which &lt; 48 || event.which &gt; 57 ) if(event.which != 8) return false;" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-12">Celular</label>
+				<div class="col-md-12">
+					<h:inputText class="form-control" value="#{socioBean.newSocio.cedularSocio}"
+						maxlength="10"
+						onkeypress="if(event.which &lt; 48 || event.which &gt; 57 ) if(event.which != 8) return false;" />
+				</div>
+			</div>
+			<!-- Modiciacion Xavier -->
+			<div class="form-group">
+				<label class="col-md-12">Correo</label>
+				<div class="col-md-12">
+					<h:inputText class="form-control" value="#{socioBean.newSocio.correo}" />
+				</div>
+			</div>
+			<!--  	
+			<div class="form-group">
+				<label class="col-md-12">Clave</label>
+				<div class="col-md-12">
+					<h:inputSecret value="#{socioBean.newSocio.clave}" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-12">Clave</label>
+				<div class="col-md-12">
+					<h:inputSecret value="#{socioBean.aleatorio}" />
+				</div>
+			</div>-l -->
+
+
+
+
+			<div class="form-group">
+				<label class="col-md-12">Estado Civil</label>
+				<div class="col-md-12">
+					<h:inputText class="form-control" value="#{socioBean.newSocio.estadoCiviilSocio}" />
+				</div>
+			</div>
+
+
+
+
+
+			<div class="form-group">
+				<div class="col-sm-12">
+
+					<h:commandButton action="#{socioBean.guardarDatosScocio()}"
+						value="Guardar" class="btn btn-success"
+						onclick="alert('Socio Guardado');" />
+					<br /> <br />
+					<h:commandButton action="#{socioBean.redirigeVerSocio()}"
+						value="Ver Socios" class="btn btn-twitter" />
+					<br /> <br />
+					<h:commandButton value="Cerrar Sesion" title="Cerrar Sesion"
+						
+						actionListener="#{loginAdmiBean.cerrarSession()}"
+						action="principal.xhtml" class="btn btn-youtube">
+					</h:commandButton>
+				</div>
+			</div>
+
+
+
+		</h:form>
+
+
+
+	</ui:define>
+
+	
+	
+
+</ui:composition>
+
+</html>

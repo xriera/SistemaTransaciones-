@@ -6,30 +6,104 @@
 
 <ui:composition
 	template="Template/production/template.xhtml">
-	<ui:define name="title">
-		<h:outputText value="#{msg.tituloPagina}" />
-	</ui:define>
 	<ui:define name="contenido">
-		<h:dataTable value="#{cuentasBean.cuentas}" var="cuentas"
-			class="table">
-		<h:column>
-			<f:facet name="header">ID Cuenta</f:facet>
-			#{cuentas.id}
-		</h:column>
-			<h:column>
-				<f:facet name="header">DNI</f:facet>
-		 	#{cuentas.cliente.cedula}
-		 </h:column>
-			<h:column>
-				<f:facet name="header">Nombre</f:facet>
-		 	#{cuentas.cliente.nombres}
-		</h:column>
-			<h:column>
-				<f:facet name="header">saldo</f:facet>
-			#{cuentas.saldo}
-		</h:column>
-		</h:dataTable>
 
+
+		<h1>Ver Cuentas de Socios</h1>
+
+
+		<h:form>
+			<h:dataTable value="#{cuentaBean.listaCuenta}" var="cuenta"
+				class="table">
+
+				<h:column>
+					<f:facet name="header">Id Cuenta</f:facet>
+                        #{cuenta.idCuenta}
+                </h:column>
+
+
+				<h:column>
+					<f:facet name="header">Tipo Cuenta</f:facet>
+                        #{cuenta.tipoCuenta}
+                </h:column>
+
+				<br />
+				<br />
+
+				<h:column>
+					<f:facet name="header">Fecha Registro</f:facet>
+                        #{cuenta.fechaRegistroCuenta}
+                </h:column>
+
+				<br />
+				<br />
+
+
+
+				<h:column>
+					<f:facet name="header">Saldo</f:facet>
+                        #{cuenta.saldo}
+                </h:column>
+
+				<br />
+				<br />
+
+				<h:column>
+					<f:facet name="header">Cedula</f:facet>
+                        #{cuenta.socio.cedulaSocio}
+                </h:column>
+
+				<h:column>
+					<f:facet name="header">Nombre</f:facet>
+                        #{cuenta.socio.nombresSocio}
+                </h:column>
+
+
+				<h:column>
+					<f:facet name="header">Apellido</f:facet>
+                        #{cuenta.socio.apelidosSocio}
+                </h:column>
+
+				<br />
+				<br />
+
+
+
+				<h:column>
+					<f:facet name="header"></f:facet>
+					<!-- <h:commandButton action="#{socioBean.editarSocio(socio.cedulaSocio)}"  value="Editar"/> -->
+
+					<h:commandButton
+						action="#{cuentaBean.redirigeCrearMovimiento(cuenta.idCuenta)}"
+						value="Depositar" class="btn btn-dropbox" />
+
+					<h:commandButton
+						action="#{cuentaBean.redirigeCrearRetiro(cuenta.idCuenta)}"
+						value="Retirar" class="btn btn-googleplus" />
+
+                                       
+     
+                                        <h:commandButton action="#{cuentaBean.redirigeCrearCredito(cuenta.idCuenta)}"
+                                                         value="Gestionar Credito" class="btn btn-success" />
+
+    
+                        
+                                        
+                                        
+
+				</h:column>
+
+
+
+			</h:dataTable>
+			<br />
+			<br />
+			<h:commandButton value="Cerrar Sesion" title="Cerrar Sesion"
+				icon="ui-icon-power"
+				actionListener="#{loginAdmiBean.cerrarSession()}"
+				action="principal.xhtml" class="btn btn-youtube">
+			</h:commandButton>
+		</h:form>
 
 	</ui:define>
 

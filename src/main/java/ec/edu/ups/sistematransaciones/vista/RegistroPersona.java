@@ -5,9 +5,14 @@
  */
 package ec.edu.ups.sistematransaciones.vista;
 
+import ec.edu.ups.sistematransaciones.modelo.Rol;
+import ec.edu.ups.sistematransaciones.modelo.UsuarioAdministrativo;
+import ec.edu.ups.sistematransaciones.negocio.RolON;
+import ec.edu.ups.sistematransaciones.negocio.UsuarioAdminON;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author vinicio
  */
+@WebServlet("/persona")
 public class RegistroPersona {
     
     

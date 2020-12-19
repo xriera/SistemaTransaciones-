@@ -114,7 +114,13 @@
 			<div class="form-group">
 				<label class="col-md-12">Estado Civil</label>
 				<div class="col-md-12">
-					<h:inputText class="form-control" value="#{socioBean.newSocio.estadoCiviilSocio}" />
+				<!--	<h:inputText class="form-control" value="#{socioBean.newSocio.estadoCiviilSocio}" />-->
+			<h:selectOneMenu class="form-control" value="#{socioBean.newSocio.estadoCiviilSocio}"> 
+            <f:selectItem itemValue = "Soltero" itemLabel = "Soltero" /> 
+            <f:selectItem itemValue = "Casado" itemLabel = "Casado" /> 
+    
+         </h:selectOneMenu>
+					
 				</div>
 			</div>
 

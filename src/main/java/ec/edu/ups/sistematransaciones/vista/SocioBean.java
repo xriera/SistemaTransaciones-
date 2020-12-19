@@ -83,10 +83,12 @@ public class SocioBean {
 			on.guardarSocio(newSocio);
 			
 			String Asunto = " Cuenta de Usuario";
-			String CuerpoMail = "Hola " + newSocio.getNombresSocio() + " Su clave de Inicio de Sesion es " +newSocio.getClave();
+			String CuerpoMail = "Banca en linea. Estimado Sr(a) " + newSocio.getNombresSocio() 
+			                        + " bienvenido ,su clave de inicio de sesion es: " +newSocio.getClave()
+			                        +" Gracias por su confianza";
 			
-			on.enviarCorreo(newSocio.getCorreo(), Asunto, CuerpoMail);
 			//EmailClient.sendMail(newSocio.getCorreo(), Asunto, CuerpoMail);
+			on.enviarCorreo(newSocio.getCorreo(), Asunto, CuerpoMail);
 			
 			System.out.println("Socio Guardado...");
 			
@@ -176,7 +178,7 @@ public class SocioBean {
 	public String redirigeCrearCuenta(String cedula) {
 
 		System.out.println("Redirigir:" + cedula);
-		return "Cuenta?faces-redirect=true&cedulaSocio=" + cedula;
+		return "registro-cuenta?faces-redirect=true&cedulaSocio=" + cedula;
 	}
 
 	public String redirigeCrearSocio() {

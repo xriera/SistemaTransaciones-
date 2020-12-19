@@ -70,21 +70,19 @@
 
 
 				<h:column>
-					<f:facet name="header"></f:facet>
+					<f:facet name="header">Acciones</f:facet>
 					<!-- <h:commandButton action="#{socioBean.editarSocio(socio.cedulaSocio)}"  value="Editar"/> -->
 
 					<h:commandButton
 						action="#{cuentaBean.redirigeCrearMovimiento(cuenta.idCuenta)}"
-						value="Depositar" class="btn btn-dropbox" />
+						value="Depositar" class="btn btn-primary btn-xs" />
 
 					<h:commandButton
 						action="#{cuentaBean.redirigeCrearRetiro(cuenta.idCuenta)}"
-						value="Retirar" class="btn btn-googleplus" />
-
-                                       
-     
-                                        <h:commandButton action="#{cuentaBean.redirigeCrearCredito(cuenta.idCuenta)}"
-                                                         value="Gestionar Credito" class="btn btn-success" />
+						value="Retirar" class="btn btn-info btn-xs" />
+                    
+                    <h:commandButton action="#{cuentaBean.redirigeCrearCredito(cuenta.idCuenta)}"
+                                     value="Gestionar Credito" class="btn btn-success" />
 
     
                         
@@ -99,7 +97,7 @@
 			<br />
 			<br />
 			<h:commandButton value="Cerrar Sesion" title="Cerrar Sesion"
-				icon="ui-icon-power"
+				
 				actionListener="#{loginAdmiBean.cerrarSession()}"
 				action="principal.xhtml" class="btn btn-youtube">
 			</h:commandButton>

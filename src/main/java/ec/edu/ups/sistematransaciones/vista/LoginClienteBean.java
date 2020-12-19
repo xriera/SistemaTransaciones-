@@ -27,7 +27,7 @@ import javax.inject.Inject;
  */
 @ManagedBean
 @SessionScoped
-public class LoginClienteBean implements Serializable{
+public class LoginClienteBean implements Serializable {
 
     private static final long serialVersionUID = 4537479482646908992L;
 

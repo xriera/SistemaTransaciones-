@@ -9,9 +9,9 @@ import ec.edu.ups.sistematransaciones.modelo.UsuarioAdministrativo;
 import ec.edu.ups.sistematransaciones.negocio.UsuarioAdminON;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
@@ -20,7 +20,7 @@ import javax.inject.Inject;
  * @author vinicio
  */
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class LoginAdminBean implements Serializable {
 
     @Inject

@@ -1,112 +1,31 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="es"
+      xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
 
-<ui:composition template="Template/production/template.xhtml">
-	
-	<ui:define name="title" />
-	<h1>Cuentas</h1>
+    <h:head></h:head>
+    <h:body>
+        <ui:composition template="Template/production/templateindex.xhtml">
+            <ui:define name="contenido">
 
 
-
-	<ui:define name="content">
-
-		<h:head>
-			<f:metadata>
-				<f:viewParam name="cedulaSocio" value="#{socioBean.cedula}"></f:viewParam>
-
-			</f:metadata>
-		</h:head>
-
-
-
-		<h:body>
-			<h1>
-				<b>Crear Cuenta</b>
-			</h1>
-
-			<br />
-			<br />
+                <ul class="list-unstyled">
+                    <li class="media"><img src="Template/production/inversion.PNG" class="mr-3"
+                                           alt="..." />
+                    </li>
+                    <li class="media my-4"><img src="Template/production/giros.PNG"
+                                                class="mr-3" alt="..." />
+                    </li>
+                    <li class="media"><img src="Template/production/consumo.PNG"
+                                           class="mr-3" alt="..." />
+                    </li>
+                </ul>
 
 
-		</h:body>
+            </ui:define>
+        </ui:composition>
 
-
-		<h:form>
-
-
-			<b> Numero de Cuenta: </b>
-			<h:inputText value="#{cuentaBean.aleatorio}"
-				onkeypress="if(event.which &lt; 48 || event.which &gt; 57 ) if(event.which != 8) return false;" />
-			<br />
-			<br /> 
-        #{cuentaBean.newCuenta.setIdCuenta(cuentaBean.aleatorio)}
-           
-             <b>Tipo de Cuenta: </b>
-			<h:inputText value="Ahorros" readonly="true" />
-			<br />
-			<br /> 
-          #{cuentaBean.newCuenta.setTipoCuenta("Ahorros")}"
-           
-           
-             <b> Fecha de Registro: </b>
-			<input
-				value="#{cuentaBean.newCuenta.setFechaRegistroCuenta(cuentaBean.fecha)} #{cuentaBean.newCuenta.fechaRegistroCuenta}"
-				readonly="true"></input>
-			<br />
-			<br />
-
-
-			<b> Saldo: </b>
-			<h:inputText value="20" readonly="true" />
-			<br />
-			<br /> 
-           #{cuentaBean.newCuenta.setSaldo(20)}
-           
-           
-             <b>Socio </b>
-			<h:inputText value="#{socioBean.newSocio.cedulaSocio}"
-				readonly="true" />
-			<br />
-			<br /> 
-
-            #{cuentaBean.newCuenta.setSocio(socioBean.newSocio)}
-
-            <b>Nombre:</b>
-			<h:inputText value="#{socioBean.newSocio.nombresSocio}"
-				readonly="true" />
-			<br />
-			<br />
-			<b> Apellido:</b>
-			<h:inputText value="#{socioBean.newSocio.apelidosSocio}"
-				readonly="true" />
-			<br />
-			<br />
-
-			<br />
-			<br />
-
-
-
-
-			<h:commandButton action="#{cuentaBean.guardarDatosCuenta()}"
-				value="Guardar Cuenta" onclick="alert('Cuenta Guardada');"
-				class="btn btn-success" />
-
-
-
-
-		</h:form>
-
-
-
-
-
-	</ui:define>
-	
-
-</ui:composition>
-
+    </h:body>
 </html>

@@ -19,29 +19,29 @@ import javax.inject.Inject;
  */
 @Stateless
 public class GestionUsuariosON {
-    @Inject
-    private SocioDao daoCliente;
-    
-    public boolean registrarUsuario(SocioEN socioEN) throws Exception{
-    
-        try {
-        SocioEN aux = daoCliente.read(socioEN.getCedulaSocio());
-       
-        if(aux!=null){
-            daoCliente.update(socioEN);
-        }else{
-            daoCliente.insert(socioEN);
-        }
-        
-        return true;
-        }catch(Exception e){
-            throw new Exception("Error al registar"+e.getMessage());
-        }          
-    }
-    
-	public List<SocioEN> getClientes(){
-		
-		return daoCliente.getClientes();
-	}
+//    @Inject
+//    private SocioDao daoCliente;
+//    
+//    public boolean registrarUsuario(SocioEN socioEN) throws Exception{
+//    
+//        try {
+//        SocioEN aux = daoCliente.read(socioEN.getCedulaSocio());
+//       
+//        if(aux!=null){
+//            daoCliente.update(socioEN);
+//        }else{
+//            daoCliente.insert(socioEN);
+//        }
+//        
+//        return true;
+//        }catch(Exception e){
+//            throw new Exception("Error al registar"+e.getMessage());
+//        }          
+//    }
+//    
+//	public List<SocioEN> getClientes(){
+//		
+//		return daoCliente.getClientes();
+//	}
 	
 }

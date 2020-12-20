@@ -15,9 +15,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
@@ -26,7 +26,7 @@ import javax.inject.Inject;
  * @author vinicio
  */
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class LoginClienteBean implements Serializable {
 
     private static final long serialVersionUID = 4537479482646908992L;
@@ -128,7 +128,7 @@ public class LoginClienteBean implements Serializable {
                 // de Sesion Exitoso"));
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", pp);
                 String Asunto = " Inicio de Sesion Exitoso";
-                String CuerpoMail = "Hola " + pp.getNombresSocio() + " Su inicio de sesion fu exitoso" + " " + fecha;
+                String CuerpoMail = "Hola " + pp.getNombresSocio() + " Su inicio de sesion fue exitoso" + " " + fecha;
 
                 login.setDescripcion(Asunto);
                 login.setFecha(fecha);
@@ -139,7 +139,7 @@ public class LoginClienteBean implements Serializable {
                 enviarCorreo(p.getCorreo(), Asunto, CuerpoMail);
                 //EmailClient.sendMail(p.getCorreo(), Asunto, CuerpoMail);
                 //return "ultimo-movimiento?faces-redirect=true";
-                return "inicio?faces-redirect=true";
+                return "inicio-cliente?faces-redirect=true";
             } else {
                 String Asuntofail = " Inicio de Sesion Fallido";
                 String CuerpoMailfail = "Querido Usuario su intento de Sesion a sido Fallido en la fecha:" + fecha

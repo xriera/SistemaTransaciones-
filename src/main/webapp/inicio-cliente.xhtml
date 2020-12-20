@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html lang="es"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <ui:composition template="Template/production/template-cliente.xhtml">
+        <ui:define name="contenido">
+            <h:form>
+
+                <h2 style="font-weight: bold;">Resumen de la Cuenta</h2>
+
+                <h:dataTable id="tblcapitulos"
+                             value="#{movimientoBean.listarMovimiento(loginBean.listalogin.get(0).socio.cuentaen.idCuenta)}"
+                             var="move" class="table">
+                    <h:column>
+                        <f:facet name="header">Número Cuenta</f:facet>
+                        <h:outputText value="#{move.cuenta.idCuenta}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Nombre</f:facet>
+                        <h:outputText value="#{move.cuenta.socio.nombresSocio}" />
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">Apellido</f:facet>
+                        <h:outputText value="#{move.cuenta.socio.apelidosSocio}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Fecha Ultima Transaccion</f:facet>
+                        <h:outputText value="#{move.fechaMovimiento}" />
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">Tipo Transaccion</f:facet>
+                        <h:outputText value="#{move.tipoMovimiento}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Saldo</f:facet>
+                        <h:outputText value="#{move.cuenta.saldo}" />
+                    </h:column>
+
+                </h:dataTable>
+
+                <br />
+                <br />
+
+                <h2 style="font-weight: bold;">Créditos</h2>
+
+                <h:dataTable id="tblcreditos"
+                             value="#{creditoBean.resumenCredito(loginBean.listalogin.get(0).socio.cuentaen.idCuenta)}" var="resumen" class="table">
+
+                    <h:column>
+                        <f:facet name="header">Número Credito</f:facet>
+                        <h:outputText value="#{resumen.idCredito}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Tipo</f:facet>
+                        <h:outputText value="#{resumen.tipoCredito}" />
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">Valor Credito</f:facet>
+                        <h:outputText value="#{resumen.valorCredito}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Saldo</f:facet>
+                        <h:outputText value="#{resumen.cuentaen.saldo}" />
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">Fecha Vencimiento Cuota</f:facet>
+                        <h:outputText value="#{resumen.detalles.get(0).fecha}" />
+                    </h:column>
+
+                </h:dataTable>
+
+                <a href="ultimo-movimiento.xhtml" class="btn btn-info">Ver más</a>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

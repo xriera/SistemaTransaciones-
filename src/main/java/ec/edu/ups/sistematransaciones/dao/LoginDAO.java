@@ -35,7 +35,7 @@ public class LoginDAO {
   	 * metodo que permite listar los historicos de inicio de sesion en la base de datos por medio de su id
   	 */
 	public List<LoginHistoricos> getAcceso(String id) {
-		String jpql = "SELECT p FROM Login p "
+		String jpql = "SELECT p FROM LoginHistoricos p "
 				+ " WHERE id_socio LIKE :id";
 		Query q = em.createQuery(jpql, LoginHistoricos.class);
 		q.setParameter("id",id + "%");

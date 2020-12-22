@@ -7,9 +7,9 @@ package ec.edu.ups.sistematransaciones.vista;
 
 import ec.edu.ups.sistematransaciones.dao.CuentaDAO;
 import ec.edu.ups.sistematransaciones.dao.DetalleCreditoDAO;
-import ec.edu.ups.sistematransaciones.modelo.CreditoEN;
+import ec.edu.ups.sistematransaciones.modelo.Poliza;
 import ec.edu.ups.sistematransaciones.modelo.CuentaEN;
-import ec.edu.ups.sistematransaciones.modelo.DetalleCreditoEN;
+import ec.edu.ups.sistematransaciones.modelo.PolizaParametrosEN;
 import ec.edu.ups.sistematransaciones.negocio.GestionBancariaON;
 import java.util.Date;
 import java.util.List;
@@ -27,7 +27,7 @@ import org.primefaces.model.UploadedFile;
  */
 @ManagedBean
 @ViewScoped
-public class CreditoBean {
+public class PolozaBean {
 
     @Inject
     private GestionBancariaON on;
@@ -39,9 +39,9 @@ public class CreditoBean {
     private CuentaDAO cuentadao;
 
     private String idCuenta;
-    private CreditoEN newCredito;
+    private Poliza newCredito;
 
-    private DetalleCreditoEN detalleCredito;
+    private PolizaParametrosEN detalleCredito;
 
     private CuentaEN cuenta;
 
@@ -61,11 +61,11 @@ public class CreditoBean {
         this.monto = monto;
     }
 
-    public DetalleCreditoEN getDetalleCredito() {
+    public PolizaParametrosEN getDetalleCredito() {
         return detalleCredito;
     }
 
-    public void setDetalleCredito(DetalleCreditoEN detalleCredito) {
+    public void setDetalleCredito(PolizaParametrosEN detalleCredito) {
         this.detalleCredito = detalleCredito;
     }
 
@@ -119,19 +119,19 @@ public class CreditoBean {
         this.fecha = fecha;
     }
 
-    public CreditoEN getNewCredito() {
+    public Poliza getNewCredito() {
         return newCredito;
     }
 
-    public void setNewCredito(CreditoEN newCredito) {
+    public void setNewCredito(Poliza newCredito) {
         this.newCredito = newCredito;
     }
 
-    public List<CreditoEN> getResumenCredito() {
+    public List<Poliza> getResumenCredito() {
         return resumenCredito;
     }
 
-    public void setResumenCredito(List<CreditoEN> resumenCredito) {
+    public void setResumenCredito(List<Poliza> resumenCredito) {
         this.resumenCredito = resumenCredito;
     }
 
@@ -143,23 +143,23 @@ public class CreditoBean {
         this.cuenta = cuenta;
     }
 
-    public List<CreditoEN> getTablaAmortizacion() {
+    public List<Poliza> getTablaAmortizacion() {
         return tablaAmortizacion;
     }
 
-    public void setTablaAmortizacion(List<CreditoEN> tablaAmortizacion) {
+    public void setTablaAmortizacion(List<Poliza> tablaAmortizacion) {
         this.tablaAmortizacion = tablaAmortizacion;
     }
 
-    private List<CreditoEN> tablaAmortizacion;
+    private List<Poliza> tablaAmortizacion;
 
-    private List<CreditoEN> resumenCredito;
+    private List<Poliza> resumenCredito;
 
     @PostConstruct
     public void ini() {
 
-        newCredito = new CreditoEN();
-        detalleCredito = new DetalleCreditoEN();
+        newCredito = new Poliza();
+        detalleCredito = new PolizaParametrosEN();
 
     }
 
@@ -202,19 +202,19 @@ public class CreditoBean {
 
     }
 
-    public List<CreditoEN> resumenCredito(String idCuenta) {
+    public List<Poliza> resumenCredito(String idCuenta) {
 
         return on.resumenCredito(idCuenta);
 
     }
 
-    public List<DetalleCreditoEN> tablaAmortizacion(String idCuenta) throws Exception {
+    public List<PolizaParametrosEN> tablaAmortizacion(String idCuenta) throws Exception {
 
         return on.Amortizacion(idCuenta);
 
     }
 
-    public List<CreditoEN> fultimoVencimiento(String idCuenta) throws Exception {
+    public List<Poliza> fultimoVencimiento(String idCuenta) throws Exception {
         return on.fultimoVencimiento(idCuenta);
     }
 
@@ -225,7 +225,7 @@ public class CreditoBean {
         System.out.println("idCuotaaaaaaaaaaaaaaaaa " + idCuota);
         System.out.println("Monto a pagar " + monto);
 
-        DetalleCreditoEN detallecuota = new DetalleCreditoEN();
+        PolizaParametrosEN detallecuota = new PolizaParametrosEN();
 
         detallecuota = dcreditodao.buscarDetalle(idCuota);
 

@@ -5,8 +5,8 @@
  */
 package ec.edu.ups.sistematransaciones.dao;
 
-import ec.edu.ups.sistematransaciones.modelo.CreditoEN;
-import ec.edu.ups.sistematransaciones.modelo.DetalleCreditoEN;
+import ec.edu.ups.sistematransaciones.modelo.Poliza;
+import ec.edu.ups.sistematransaciones.modelo.PolizaParametrosEN;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -24,51 +24,51 @@ public class CreditosDAO {
     @PersistenceContext
     private EntityManager em;
 
-    public void inserCredito(CreditoEN credito) throws Exception {
+    public void inserCredito(Poliza credito) throws Exception {
         em.persist(credito);
     }
 
-    public CreditoEN readCredito(String idCredito) throws Exception {
-        return em.find(CreditoEN.class, idCredito);
+    public Poliza readCredito(String idCredito) throws Exception {
+        return em.find(Poliza.class, idCredito);
     }
 
-    public void updateCredito(CreditoEN credito) throws Exception {
+    public void updateCredito(Poliza credito) throws Exception {
         em.merge(credito);
     }
 
     public void deleteCredito(String idCredito) throws Exception {
-        CreditoEN c = readCredito(idCredito);
+        Poliza c = readCredito(idCredito);
         em.remove(c);
     }
 
-    public List<CreditoEN> getCreditos(String filtro) throws Exception {
+    public List<Poliza> getCreditos(String filtro) throws Exception {
         String jpql = "SELECT p FROM CreditoEN p WHERE idCredito LIKE :filtro";
 
-        Query q = em.createQuery(jpql, CreditoEN.class);
+        Query q = em.createQuery(jpql, Poliza.class);
         q.setParameter("filtro", filtro + "%");
         return q.getResultList();
     }
 
-    public List<CreditoEN> resumenCredito(String idCuenta) {
+    public List<Poliza> resumenCredito(String idCuenta) {
         System.out.println(idCuenta);
         String jpql = "SELECT d FROM CreditoEN d  " + "WHERE 	d.cuentaen like '" + idCuenta
                 + "'  ORDER BY d.cuentaen DESC" + "";
-        Query q = em.createQuery(jpql, CreditoEN.class);
+        Query q = em.createQuery(jpql, Poliza.class);
 
         return q.getResultList();
     }
 
-    public List<DetalleCreditoEN> tablaAmortizacion(String idCuenta) throws Exception {
+    public List<PolizaParametrosEN> tablaAmortizacion(String idCuenta) throws Exception {
 
-        List<DetalleCreditoEN> detalles = new ArrayList<DetalleCreditoEN>();
+        List<PolizaParametrosEN> detalles = new ArrayList<PolizaParametrosEN>();
 
         String jpql = "select d FROM CreditoEN d WHERE d.cuentaen like '" + idCuenta + "'";
-        Query q = em.createQuery(jpql, CreditoEN.class);
-        List<CreditoEN> resultados = q.getResultList();
+        Query q = em.createQuery(jpql, Poliza.class);
+        List<Poliza> resultados = q.getResultList();
 
-        for (CreditoEN credito : resultados) {
+        for (Poliza credito : resultados) {
 
-            for (DetalleCreditoEN detalle : credito.getDetalles()) {
+            for (PolizaParametrosEN detalle : credito.getDetalles()) {
 
                 detalles.add(detalle);
             }
@@ -80,10 +80,10 @@ public class CreditosDAO {
 
     }
 
-    public List<CreditoEN> fultimoVencimiento(String idCuenta) {
+    public List<Poliza> fultimoVencimiento(String idCuenta) {
 
         String jpql = "select max (d) from CreditoEN d WHERE d.cuentaen like '" + idCuenta + "'";
-        Query q = em.createQuery(jpql, CreditoEN.class);
+        Query q = em.createQuery(jpql, Poliza.class);
 
         return q.getResultList();
     }
@@ -94,10 +94,10 @@ public class CreditosDAO {
      * @return
      * @throws Exception
      */
-    public List<CreditoEN> listarCredito(String filtro) throws Exception {
+    public List<Poliza> listarCredito(String filtro) throws Exception {
         String jpql = "SELECT p FROM CreditoEN p WHERE idCuenta LIKE :filtro";
 
-        Query q = em.createQuery(jpql, CreditoEN.class);
+        Query q = em.createQuery(jpql, Poliza.class);
         q.setParameter("filtro", filtro + "%");
         return q.getResultList();
     }

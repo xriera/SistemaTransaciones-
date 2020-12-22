@@ -5,7 +5,7 @@
  */
 package ec.edu.ups.sistematransaciones.dao;
 
-import ec.edu.ups.sistematransaciones.modelo.DetalleCreditoEN;
+import ec.edu.ups.sistematransaciones.modelo.PolizaParametrosEN;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -18,7 +18,7 @@ public class DetalleCreditoDAO {
     @PersistenceContext
     private EntityManager em;
 
-    public void guardarDetalle(DetalleCreditoEN detalle) {
+    public void guardarDetalle(PolizaParametrosEN detalle) {
 
         if (buscarDetalle(detalle.getIdDetalleCredito()) != null) {
 
@@ -29,19 +29,19 @@ public class DetalleCreditoDAO {
 
     }
 
-    public List<DetalleCreditoEN> DetalleCredito(String filtro) throws Exception {
+    public List<PolizaParametrosEN> DetalleCredito(String filtro) throws Exception {
         //SELECT * FROM banco.creditoen c,banco.detallecreditoen d where c.idCuenta=669544807323 and c.idCredito=d.idCredito;
-        //String jpql = "SELECT p FROM DetalleCreditoEN p, CreditoEN d WHERE d.idCredito=p.idCredito and d.idCuenta LIKE :filtro";
+        //String jpql = "SELECT p FROM PolizaParametrosEN p, CreditoEN d WHERE d.idCredito=p.idCredito and d.idCuenta LIKE :filtro";
         String jpql = "SELECT e FROM DetalleCreditoEN e JOIN e.CreditoEN p ON  e.idCredito=p.idCredito and p.idCuenta LIKE :filtro";
 
         // String jpql = "SELECT p FROM CreditoEN p WHERE idCuenta LIKE :filtro";
-        Query q = em.createQuery(jpql, DetalleCreditoEN.class);
+        Query q = em.createQuery(jpql, PolizaParametrosEN.class);
         q.setParameter("filtro", filtro + "%");
         return q.getResultList();
     }
 
-    public DetalleCreditoEN buscarDetalle(int codigoD) {
-        return em.find(DetalleCreditoEN.class, codigoD);
+    public PolizaParametrosEN buscarDetalle(int codigoD) {
+        return em.find(PolizaParametrosEN.class, codigoD);
 
     }
 

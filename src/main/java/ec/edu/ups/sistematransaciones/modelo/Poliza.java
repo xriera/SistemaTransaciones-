@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * @author xavier
  */
 @Entity
-public class CreditoEN implements Serializable {
+public class Poliza implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -85,13 +85,13 @@ public class CreditoEN implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "creditoEN", fetch = FetchType.EAGER)
     @JsonIgnore
     @Fetch(value = FetchMode.SUBSELECT)
-    private List<DetalleCreditoEN> detalles;
+    private List<PolizaParametrosEN> detalles;
 
-    public List<DetalleCreditoEN> getDetalles() {
+    public List<PolizaParametrosEN> getDetalles() {
         return detalles;
     }
 
-    public void setDetalles(List<DetalleCreditoEN> detalles) {
+    public void setDetalles(List<PolizaParametrosEN> detalles) {
         this.detalles = detalles;
     }
 

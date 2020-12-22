@@ -25,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * @author xavier
  */
 @Entity
-public class DetalleCreditoEN implements Serializable {
+public class PolizaParametrosEN implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -45,13 +45,13 @@ public class DetalleCreditoEN implements Serializable {
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "idCredito")
-    private CreditoEN creditoEN;
+    private Poliza creditoEN;
 
-    public CreditoEN getCreditoEN() {
+    public Poliza getCreditoEN() {
         return creditoEN;
     }
 
-    public void setCreditoEN(CreditoEN creditoEN) {
+    public void setCreditoEN(Poliza creditoEN) {
         this.creditoEN = creditoEN;
     }
 

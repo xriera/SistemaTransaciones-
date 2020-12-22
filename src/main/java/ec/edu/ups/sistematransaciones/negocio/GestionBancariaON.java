@@ -11,9 +11,9 @@ import ec.edu.ups.sistematransaciones.dao.DetalleCreditoDAO;
 import ec.edu.ups.sistematransaciones.dao.MovimientoDAO;
 import ec.edu.ups.sistematransaciones.dao.SocioDao;
 import ec.edu.ups.sistematransaciones.dao.TransaccionDAO;
-import ec.edu.ups.sistematransaciones.modelo.CreditoEN;
+import ec.edu.ups.sistematransaciones.modelo.Poliza;
 import ec.edu.ups.sistematransaciones.modelo.CuentaEN;
-import ec.edu.ups.sistematransaciones.modelo.DetalleCreditoEN;
+import ec.edu.ups.sistematransaciones.modelo.PolizaParametrosEN;
 import ec.edu.ups.sistematransaciones.modelo.MovimientoEN;
 import ec.edu.ups.sistematransaciones.modelo.SocioEN;
 import ec.edu.ups.sistematransaciones.modelo.TransaccionEN;
@@ -362,7 +362,7 @@ public class GestionBancariaON {
 
     }
 
-    public void generarCredito(CreditoEN credito, UploadedFile fileCedula, UploadedFile fileSRVBasicos, UploadedFile fileRolPagos) throws Exception {
+    public void generarCredito(Poliza credito, UploadedFile fileCedula, UploadedFile fileSRVBasicos, UploadedFile fileRolPagos) throws Exception {
 
         String plazoPago = null;
 
@@ -451,9 +451,9 @@ public class GestionBancariaON {
 ////////////////////////////////////////////////////////////////
                 System.out.println();
 
-                List<DetalleCreditoEN> lista = new ArrayList<>();
+                List<PolizaParametrosEN> lista = new ArrayList<>();
 
-                DetalleCreditoEN detalles = new DetalleCreditoEN();
+                PolizaParametrosEN detalles = new PolizaParametrosEN();
 
                 detalles.setIdPago(i);
                 detalles.setCuota(terminoAmortizativo);
@@ -483,17 +483,17 @@ public class GestionBancariaON {
     /**
      * metodo apra devolver el resumen de los creditos
      */
-    public List<CreditoEN> resumenCredito(String idCuenta) {
+    public List<Poliza> resumenCredito(String idCuenta) {
 
         return creditoDAO.resumenCredito(idCuenta);
     }
 
-    public List<DetalleCreditoEN> Amortizacion(String idCuenta) throws Exception {
+    public List<PolizaParametrosEN> Amortizacion(String idCuenta) throws Exception {
 
         return creditoDAO.tablaAmortizacion(idCuenta);
     }
 
-    public List<CreditoEN> fultimoVencimiento(String idCuenta) throws Exception {
+    public List<Poliza> fultimoVencimiento(String idCuenta) throws Exception {
 
         return creditoDAO.fultimoVencimiento(idCuenta);
     }
@@ -519,7 +519,7 @@ public class GestionBancariaON {
         return cuentaDAO.CuentaSocio(cedula);
     }
 
-    public List<CreditoEN> listarCredito(String cedula) throws Exception {
+    public List<Poliza> listarCredito(String cedula) throws Exception {
         return creditoDAO.listarCredito(cedula);
     }
 
@@ -529,7 +529,7 @@ public class GestionBancariaON {
 
     }
 
-    public List<DetalleCreditoEN> DetalleCredito(String idcredito) throws Exception {
+    public List<PolizaParametrosEN> DetalleCredito(String idcredito) throws Exception {
         //List<CreditoEN> listaCredito =creditoDAO.listarCredito(Cedula);
 
         return detalleDAO.DetalleCredito(idcredito);

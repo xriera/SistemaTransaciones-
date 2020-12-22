@@ -1,24 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ec.edu.ups.sistematransaciones.dao;
 
 import ec.edu.ups.sistematransaciones.modelo.UsuarioAdministrativo;
 import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-/**
- *
- * @author vinicio
- */
 @Stateless
-public class UsuarioAdmiDAO {
+public class UsuarioAdmiDao {
 
     @PersistenceContext
     private EntityManager em;
@@ -106,5 +98,4 @@ public class UsuarioAdmiDAO {
         return p;
 
     }
-
 }

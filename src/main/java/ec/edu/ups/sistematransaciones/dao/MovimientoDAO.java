@@ -26,8 +26,8 @@ public class MovimientoDAO {
     /*
 	 * metodo que permite crear un movimiento de la cuenta en la base de datos 
      */
-    public void insertMovimiento(MovimientoEN movimientoEN) throws Exception {
-        em.persist(movimientoEN);
+    public void insertMovimiento(MovimientoEN movimiento) throws Exception {
+        em.persist(movimiento);
     }
 
     /*
@@ -40,8 +40,8 @@ public class MovimientoDAO {
     /*
   	 * metodo que permite actualizar un movimiento de la cuenta en la base de datos 
      */
-    public void updateMovimiento(MovimientoEN movimientoEN) throws Exception {
-        em.merge(movimientoEN);
+    public void updateMovimiento(MovimientoEN movimiento) throws Exception {
+        em.merge(movimiento);
     }
 
     /*

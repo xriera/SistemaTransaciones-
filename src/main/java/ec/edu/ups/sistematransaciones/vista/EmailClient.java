@@ -73,5 +73,15 @@ public class EmailClient implements Runnable{
 		}
 	}
 
-
+//	public static void main(String[] args) throws MessagingException {
+//		try {
+//			String destino="xavi-javi11@hotmail.com";
+//			String Asunto=" Inicio de Sesion Exitoso";
+//			String CuerpoMail="Hola mundo ";
+//			EmailClient.sendMail(destino,Asunto,CuerpoMail);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 }

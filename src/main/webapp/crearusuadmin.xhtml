@@ -1,132 +1,89 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
 
-    <h:head>
+<h:head>
 
-    </h:head>
-    <h:body>
+</h:head>
+<h:body>
 
-        <ui:composition template="Template/production/template.xhtml">
-
-
-            <ui:define name="contenido">
-
-                <h:form id="formulario">
-
-                    <p:growl id="growl" showDetail="true" sticky="true" />
-                    <!-- 
-    <p:outputLabel value="Select Event:" />
-    <h1>Welcom at System</h1>-->
-                    <div class="form-group">
-                        <label for="inputAddress">Nombre</label>
-                        <h:inputText class="form-control form-control" id="nombre"
-                                     value="#{registroUsuarioBean.uadmi.nombre}" required="true" />
-                        <p:message for="nombre" />
-                    </div>
-                    <div class="form-group">
-                        <label for="inputAddress">Apellido</label>
-                        <h:inputText class="form-control" id="apellido"
-                                     value="#{registroUsuarioBean.uadmi.apellido}" required="true" />
-                        <p:message for="apellido" />
-                    </div>
-                    <div class="form-group">
-                        <label for="inputAddress">Usuario</label>
-                        <h:inputText class="form-control" id="usuario"
-                                     value="#{registroUsuarioBean.uadmi.usuario}" required="true" />
-                        <p:message for="usuario" />
-                    </div>
-                    <div class="form-group">
-                        <label for="inputAddress">Clave</label>
-                        <p:inputText type="password" class="form-control" id="clave"
-                                     value="#{registroUsuarioBean.uadmi.contrasena}" required="true" />
-                        <p:message for="clave" />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="inputAddress">Rol</label>
-                        <h:selectOneMenu id="roles" value="#{registroUsuarioBean.id}"
-                                         required="true">
-                            <f:selectItems value="#{registroUsuarioBean.rols}" var="listarol"
-                                           itemLabel="#{listarol.nombre}" itemValue="#{listarol.idrol}" />
-                        </h:selectOneMenu>
-                        <p:message for="roles" />
-                    </div>
+	<ui:composition template="Template/production/template-admin.xhtml">
 
 
-                    <!--
-                    <div class="alert alert-primary" role="alert">
-A simple primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-</div>
-                     
-            <h:outputLabel for="nombre" value="Nombre:" />
-            <h:inputText id="nombre" value="#{registroUsuarioBean.uadmi.nombre}" /> 
-                    <br />
-                    <br />
-                    <h:outputLabel for="apellido" value="Apellido:" />
-                    <h:inputText value="#{registroUsuarioBean.uadmi.apellido}" />
-                    <br />
-                    <br />
-                    <h:outputLabel for="Usuario" value="Usuario:" />
-                    <h:inputText value="#{registroUsuarioBean.uadmi.usuario}" />
-                    <br />
-                    <br />
-                    <h:outputLabel for="clave" value="Clave:" />
-                    <h:inputText value="#{registroUsuarioBean.uadmi.contrasena}" />
-                    <br />
-                    <br />
+		<ui:define name="contenido">
 
-                    <h:outputLabel for="roles" value="Rol:" />
+			<h:form id="formulario">
 
-                    <h:selectOneMenu id="roles" value="#{registroUsuarioBean.id}">
-                            <f:selectItems value="#{registroUsuarioBean.rols}" var="listarol"
-                                    itemLabel="#{listarol.nombre}" itemValue="#{listarol.idrol}" />
-                    </h:selectOneMenu>
-                    <br />
-                    <br />
+				<p:growl id="growl" showDetail="true" sticky="true" />
+                                
+				<div class="form-group">
+					<label for="inputAddress">Nombre</label>
+					<h:inputText class="form-control form-control" id="nombre"
+						value="#{registroUsuarioBean.uadmi.nombre}" required="true" />
+					<p:message for="nombre" />
+				</div>
+				<div class="form-group">
+					<label for="inputAddress">Apellido</label>
+					<h:inputText class="form-control" id="apellido"
+						value="#{registroUsuarioBean.uadmi.apellido}" required="true" />
+					<p:message for="apellido" />
+				</div>
+				<div class="form-group">
+					<label for="inputAddress">Usuario</label>
+					<h:inputText class="form-control" id="usuario"
+						value="#{registroUsuarioBean.uadmi.usuario}" required="true" />
+					<p:message for="usuario" />
+				</div>
+				<div class="form-group">
+					<label for="inputAddress">Clave</label>
+					<p:inputText type="password" class="form-control" id="clave"
+						value="#{registroUsuarioBean.uadmi.contrasena}" required="true" />
+					<p:message for="clave" />
+				</div>
 
-                    -->
+				<div class="form-group">
+					<label for="inputAddress">Rol</label>
+					<h:selectOneMenu id="roles" value="#{registroUsuarioBean.id}"
+						required="true">
+						<f:selectItems value="#{registroUsuarioBean.rols}" var="listarol"
+							itemLabel="#{listarol.nombre}" itemValue="#{listarol.idrol}" />
+					</h:selectOneMenu>
+					<p:message for="roles" />
+				</div>
 
+				<div>
+					<div>
+						<h:commandButton class="btn btn-primary"
+							action="#{registroUsuarioBean.guardarDatos()}" value="Guardar"
+							/>
+							
+						
+					</div>
 
-<!--
-
-                    <div>
-                        <div>
-                            <h:commandButton class="btn btn-primary"
-                                             action="#{registroUsuarioBean.guardarDatos()}" value="Guardar"
-                                             oncomplete="limpiarForm()" /> 
--->
-
-                        </div>
-
-                    </div>
+				</div>
 
 
 
-                    <script type="text/javascript">
-                        function limpiarForm() {
-                            document.getElementById("formulario").reset();
-                        }
-                    </script>
+				<script type="text/javascript">
+				function limpiarForm(){  
+					document.getElementById("formulario").reset();
+				}
+				</script>
 
-                </h:form>
+			</h:form>
 
-                <br />
-                <br />
+			<br />
+			<br />
 
+		</ui:define>
 
-            </ui:define>
+	</ui:composition>
 
-
-        </ui:composition>
-
-
-
-    </h:body>
+</h:body>
 
 </html>

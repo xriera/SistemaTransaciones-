@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+
+
+
+
+<ui:composition template="Template/production/template-cliente.xhtml">
+	<ui:define name="contenido">
+		<h:form>
+
+
+			<h2 style="font-weight: bold;">Estado de Cuenta</h2>
+
+			<div class="row">
+				<div class="col-md-12">
+
+
+
+					<div class="col-md-3">
+
+						<h:selectOneMenu styleClass="form-control custom-select"
+							value="#{movimientoBean.tipomovimiento}">
+
+							<f:selectItem itemValue="Retiro" itemLabel="Retiro" />
+							<f:selectItem itemValue="Deposito" itemLabel="Deposito" />
+						</h:selectOneMenu>
+
+
+					</div>
+
+
+					<div class="col-md-3">
+
+						<label>Desde: </label>
+						<h:inputText value="#{movimientoBean.fechadesde}"
+							class="form-control">
+							<f:convertDateTime pattern="yyyy-MM-dd" />
+							<label>1999-12-31</label>
+						</h:inputText>
+
+					</div>
+					<div class="col-md-3">
+
+						<label>Hasta: </label>
+						<h:inputText value="#{movimientoBean.fechahasta}"
+							class="form-control">
+							<f:convertDateTime pattern="yyyy-MM-dd" />
+							<label>1999-12-31</label>
+						</h:inputText>
+
+
+					</div>
+
+
+
+				
+
+					<div class="col-md-3">
+						<h:commandButton class="btn btn-primary" value="Buscar"
+							action="#{movimientoBean.loadFechas(loginBean.listalogin.get(0).socio.cuentaen.idCuenta)}">
+							   <f:ajax render="tblcapitulos1" execute="@form"></f:ajax>
+						</h:commandButton>
+
+					</div>
+				</div>
+			</div>
+
+
+<h:panelGroup id="tblcapitulos1">
+
+			<h:dataTable 
+				value="#{movimientoBean.listaMovimiento}" var="move" class="table">
+				<h:column>
+					<f:facet name="header">Número Cuenta</f:facet>
+					<h:outputText value="#{move.cuenta.idCuenta}" />
+
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Nombre</f:facet>
+					<h:outputText value="#{move.cuenta.socio.nombresSocio}" />
+
+				</h:column>
+				<h:column>
+					<f:facet name="header">Apellido</f:facet>
+					<h:outputText value="#{move.cuenta.socio.apelidosSocio}" />
+
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Fecha de Transacción</f:facet>
+					<h:outputText value="#{move.fechaMovimiento}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Tipo de movimiento</f:facet>
+					<h:outputText value="#{move.tipoMovimiento}" />
+				</h:column>
+
+
+				<h:column>
+					<f:facet name="header">Cantidad</f:facet>
+					<h:outputText value="#{move.cantidad}" />
+				</h:column>
+
+
+
+
+
+			</h:dataTable>
+			
+			</h:panelGroup>
+
+			<br />
+			<br />
+			<h:commandButton value="Cerrar Sesion" title="Cerrar Sesion"
+				actionListener="#{loginBean.cerrarSession()}"
+				action="principal.xhtml" class="btn btn-youtube">
+			</h:commandButton>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+
+</html>

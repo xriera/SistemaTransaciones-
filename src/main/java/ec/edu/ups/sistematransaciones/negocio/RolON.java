@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ec.edu.ups.sistematransaciones.negocio;
 
-import ec.edu.ups.sistematransaciones.dao.RolDAO;
+import ec.edu.ups.sistematransaciones.dao.RolDao;
 import ec.edu.ups.sistematransaciones.modelo.Rol;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -19,7 +14,7 @@ import javax.inject.Inject;
 public class RolON {
 
     @Inject
-    private RolDAO dao;
+    private RolDao dao;
 
     /*
   	 * metodo que permite crear un rol  llamando al metodo crearRol de su clase dao
@@ -49,5 +44,4 @@ public class RolON {
     public void EliminarRol(Rol rol) {
         dao.delete(rol);
     }
-
 }

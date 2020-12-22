@@ -1,60 +1,109 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html lang="es"
+<!DOCTYPE html>
+<html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"> 
+      xmlns:p="http://primefaces.org/ui">
+  <h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <h:head>
-        
-    </h:head>
-    
-    <ui:composition
-        template="Template/production/login.xhtml">
-        <ui:define name="contenido">
+    <title>Banca clientes</title>
+
+    <!-- Bootstrap -->
+    <link href="Template/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Font Awesome -->
+    <link href="Template/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+    <!-- NProgress -->
+    <link href="Template/vendors/nprogress/nprogress.css" rel="stylesheet"/>
+    <!-- Animate.css -->
+    <link href="Template/vendors/animate.css/animate.min.css" rel="stylesheet"/>
+
+    <!-- Custom Theme Style -->
+    <link href="Template/build/css/custom.min.css" rel="stylesheet"/>
+  </h:head>
+
+  <h:body class="login">
+    <div>
+      <a class="hiddenanchor" id="signup"></a>
+      <a class="hiddenanchor" id="signin"></a>
+
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
             <h:form>
-                <h1>Banca clientes </h1>
-                <div>
-                    <p:inputText type="text" class="form-control" placeholder="Correo electrónico" required="true" 
-                                 value="#{loginClienteBean.p.correo}"/>
-                </div>
-                
-                <div>
-                    <p:inputText type="password" class="form-control" placeholder="Contraseña" required="true" 
-                                 value="#{loginClienteBean.p.clave}"/>
-                </div>
+              <h1>Banca clientes</h1>
+              <div class="wrap-input100" title="Correo">
+                            <p:inputText class="input100" type="text" id="correo"
+                                         value="#{loginBean.p.correo}" required="true"
+                                         placeholder="Correo" />
+                            <span class="focus-input100" data-placeholder="&#xf207;"></span>
+               </div>
+              <div class="wrap-input100" title="Clave">
+                            <p:inputText class="input100" type="password" id="clave"
+                                         value="#{loginBean.p.clave}" required="true" placeholder="Clave" />
+                            <span class="focus-input100" data-placeholder="&#xf191;"></span>
+              </div>
+              <div class="container-login100-form-btn">
+                            <p:commandButton class="login100-form-btn" value="Iniciar Sesion"
+                                             action="#{loginBean.Login()}" ></p:commandButton>
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                <div class="clearfix"></div>
+                <br />
 
                 <div>
-                    <!--
-                    <a class="btn btn-default submit" action="#{loginClienteBean.Login()}"
-                       >Iniciar sesión</a>
-                    -->
-                    
-                    <p:commandButton class="login100-form-btn" value="Iniciar Sesion"
-                                             action="#{loginClienteBean.Login()}" ></p:commandButton>
-                    
+                  <h1><i class="fa fa-paw"></i> Banco UPS</h1>
+                  <p>©2020 All Rights Reserved. Banco UPS! Privacy and Terms</p>
                 </div>
+              </div>
+            </h:form>
+          </section>
+        </div>
+
+        <div id="register" class="animate form registration_form">
+          <section class="login_content">
+            <form>
+              <h1>Create Account</h1>
+              <div>
+                <input type="text" class="form-control" placeholder="Username" required="" />
+              </div>
+              <div>
+                <input type="email" class="form-control" placeholder="Email" required="" />
+              </div>
+              <div>
+                <input type="password" class="form-control" placeholder="Password" required="" />
+              </div>
+              <div>
+                <a class="btn btn-default submit" href="index.html">Submit</a>
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                <p class="change_link">Already a member ?
+                  <a href="#signin" class="to_register"> Log in </a>
+                </p>
 
                 <div class="clearfix"></div>
+                <br />
 
-                <div class="separator">
-
-                    <!--
-                    <p class="change_link">New to site?
-                        <a href="#signup" class="to_register"> Create Account </a>
-                    </p>
-                    -->
-
-                    <div class="clearfix"></div>
-                    <br />
-
-                    <div>
-                        <h1><i class="fa fa-paw"></i> Banco UPS</h1>
-                        <p>©2020 All Rights Reserved. Banco UPS! Privacy and Terms</p>
-                    </div>
+                <div>
+                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
+                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
                 </div>
-            </h:form>
-        </ui:define>
-    </ui:composition> 
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+    </div>
+  </h:body>
 </html>

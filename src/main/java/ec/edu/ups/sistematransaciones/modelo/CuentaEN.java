@@ -7,40 +7,48 @@ package ec.edu.ups.sistematransaciones.modelo;
 
 import java.io.Serializable;
 import java.util.Date;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  *
- * @author xavier
+ * @author vinicio
  */
 @Entity
-public class CuentaEN implements Serializable{
-    
+public class CuentaEN implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    
+
     @Id
-    @Column (name="idCuenta")
+    @Column(name = "idCuenta")
     private String idCuenta;
-  
-    @Column (name="tipoCuenta")
+
+    @Column(name = "tipoCuenta")
     private String tipoCuenta;
-    
-    @Column (name="fechaRegistroCuenta")
+
+    @Column(name = "fechaRegistroCuenta")
     private Date fechaRegistroCuenta;
-    
-     
-     @OneToOne 
-     @JoinColumn(name="cedulaSocio")
+
+    @OneToOne
+    @JsonIgnore
+    @JoinColumn(name = "cedulaSocio")
+    //@JoinColumn(name="idSocio")
+    //  @Column (name="CedulaFK")
     private SocioEN socioen;
-     
-     @Column(name="saldo")
-     private double saldo;
+
+    @Column(name = "saldo")
+    private double saldo;
 
     public double getSaldo() {
         return saldo;

@@ -6,15 +6,27 @@
 package ec.edu.ups.sistematransaciones.modelo;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+/**
+ *
+ * @author vinicio
+ */
 @Entity
 public class SocioEN implements Serializable {
 
@@ -47,10 +59,10 @@ public class SocioEN implements Serializable {
 
     @Column(name = "celularSocio")
     private String cedularSocio;
-    
+
     @Column(name = "correoSocio")
-	private String correo;
-	
+    private String correo;
+
     @Column(name = "claveSocio")
     private String clave;
 
@@ -58,19 +70,12 @@ public class SocioEN implements Serializable {
     private String estadoCiviilSocio;
 
     @OneToOne(mappedBy = "socioen")
+    @JsonIgnore
     private CuentaEN cuentaen;
 
-   
-    @OneToMany(mappedBy = "socio",fetch = FetchType.EAGER)
-	private List<LoginHistoricos> loginh;
-    
-//    public int getIdSocio() {
-//        return idSocio;
-//    }
-//
-//    public void setIdSocio(int idSocio) {
-//        this.idSocio = idSocio;
-//    }
+    @OneToMany(mappedBy = "socio", fetch = FetchType.EAGER)
+    @JsonIgnore
+    private List<LoginHistoricos> loginh;
 
     public CuentaEN getCuentaen() {
         return cuentaen;
@@ -79,35 +84,32 @@ public class SocioEN implements Serializable {
     public void setCuentaen(CuentaEN cuentaen) {
         this.cuentaen = cuentaen;
     }
-    
-    
-    
-    
+
     public List<LoginHistoricos> getLoginh() {
-		return loginh;
-	}
+        return loginh;
+    }
 
-	public void setLoginh(List<LoginHistoricos> loginh) {
-		this.loginh = loginh;
-	}
+    public void setLoginh(List<LoginHistoricos> loginh) {
+        this.loginh = loginh;
+    }
 
-	public String getCorreo() {
-		return correo;
-	}
+    public String getCorreo() {
+        return correo;
+    }
 
-	public void setCorreo(String correo) {
-		this.correo = correo;
-	}
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
 
-	public String getClave() {
-		return clave;
-	}
+    public String getClave() {
+        return clave;
+    }
 
-	public void setClave(String clave) {
-		this.clave = clave;
-	}
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
 
-	public String getCedulaSocio() {
+    public String getCedulaSocio() {
         return cedulaSocio;
     }
 
@@ -186,7 +188,5 @@ public class SocioEN implements Serializable {
     public void setEstadoCiviilSocio(String estadoCiviilSocio) {
         this.estadoCiviilSocio = estadoCiviilSocio;
     }
-
-   
 
 }

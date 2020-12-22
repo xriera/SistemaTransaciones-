@@ -1,0 +1,80 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+<!--  
+<f:event listener="#{loginBean.verificarSession()}" type="preRenderView"/>
+ -->
+
+
+</h:head>
+<h:body>
+	<!-- 
+		<p:commandButton value="Cerrar Sesion" title="Cerrar Sesion"
+			icon="ui-icon-power" actionListener="#{loginBean.cerrarSession()}"
+			action="index.xhtml">
+		</p:commandButton>
+ -->
+
+
+
+
+	<ui:composition template="Template/production/template-cliente.xhtml">
+		<ui:define name="contenido">
+			<h1>Lista Inicio de Sesion</h1>
+
+
+			<h:form>
+
+				<h:dataTable value="#{loginBean.listalogin}" var="login"
+					class="table">
+
+
+					<h:column>
+						<f:facet name="header">Estado</f:facet>
+                        #{login.descripcion}
+                </h:column>
+
+					<br />
+					<br />
+
+					<h:column>
+						<f:facet name="header">Fecha</f:facet>
+                        #{login.fecha}
+                </h:column>
+
+					<br />
+					<br />
+
+					<h:column>
+						<f:facet name="header">Usuario</f:facet>
+                        #{login.socio.nombresSocio}
+                </h:column>
+
+
+
+
+				</h:dataTable>
+				<br />
+				<br />
+
+
+				<br />
+				<br />
+                                <h:commandButton value="Cerrar Sesion" title="Cerrar Sesion"  actionListener="#{loginBean.cerrarSession()}"
+					action="principal.xhtml" class="btn btn-youtube">
+				</h:commandButton>
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>

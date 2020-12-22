@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ec.edu.ups.sistematransaciones.vista;
 
 import ec.edu.ups.sistematransaciones.modelo.Rol;
@@ -11,138 +6,137 @@ import ec.edu.ups.sistematransaciones.negocio.RolON;
 import ec.edu.ups.sistematransaciones.negocio.UsuarioAdminON;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
-/**
- *
- * @author vinicio
- */
 @ManagedBean
 @ViewScoped
 public class RegistroUsuarioBean {
-    
+
     @Inject
-	private RolON ron;
+    private RolON ron;
 
-	@Inject
-	private UsuarioAdminON onadmi;
+    @Inject
+    private UsuarioAdminON onadmi;
 
-	private UsuarioAdministrativo uadmi;
+    private UsuarioAdministrativo uadmi;
 
-	private Rol rol;
+    private Rol rol;
 
-	private List<Rol> rols;
+    private List<Rol> rols;
 
-	private int id;
-	
-	private static int iduser;
+    private int id;
 
-	private List<UsuarioAdministrativo> listaUAdmi;
+    private static int iduser;
 
-	public List<UsuarioAdministrativo> getListaUAdmi() {
-		return listaUAdmi;
-	}
+    private List<UsuarioAdministrativo> listaUAdmi;
 
-	public void setListaUAdmi(List<UsuarioAdministrativo> listaUAdmi) {
-		this.listaUAdmi = listaUAdmi;
-	}
+    public List<UsuarioAdministrativo> getListaUAdmi() {
+        return listaUAdmi;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public void setListaUAdmi(List<UsuarioAdministrativo> listaUAdmi) {
+        this.listaUAdmi = listaUAdmi;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public UsuarioAdministrativo getUadmi() {
-		return uadmi;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setUadmi(UsuarioAdministrativo uadmi) {
-		this.uadmi = uadmi;
-	}
+    public UsuarioAdministrativo getUadmi() {
+        return uadmi;
+    }
 
-	public Rol getRol() {
-		return rol;
-	}
+    public void setUadmi(UsuarioAdministrativo uadmi) {
+        this.uadmi = uadmi;
+    }
 
-	public void setRol(Rol rol) {
-		this.rol = rol;
-	}
+    public Rol getRol() {
+        return rol;
+    }
 
-	public List<Rol> getRols() {
-		return rols;
-	}
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
 
-	public void setRols(List<Rol> rols) {
-		this.rols = rols;
-	}
+    public List<Rol> getRols() {
+        return rols;
+    }
 
-	private String message;
+    public void setRols(List<Rol> rols) {
+        this.rols = rols;
+    }
 
-	public String getMessage() {
-		return message;
-	}
+    private String message;
 
-	public void setMessage(String message) {
-		this.message = message;
-	}
+    public String getMessage() {
+        return message;
+    }
 
-	@PostConstruct
-	public void init() {
-		rols = ron.listaRol();
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
-		uadmi = new UsuarioAdministrativo();
-		recuperarUAdmi();
-	}
+    @PostConstruct
+    public void init() {
+        rols = ron.listaRol();
 
-	public String guardarDatos() {
-		try {
-			rol = new Rol();
+        uadmi = new UsuarioAdministrativo();
+        recuperarUAdmi();
+    }
 
-			uadmi.setRol(ron.buscar(id));
-			onadmi.crearUsuarioAdmi(uadmi);
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return "listar";
-	}
+    public String guardarDatos() {
+        try {
+            rol = new Rol();
 
-	public void recuperarUAdmi() {
-		try {
-			listaUAdmi = onadmi.listarUAdmi();
-			
-			List<UsuarioAdministrativo>listaua = onadmi.listarUAdmi();
-			for (UsuarioAdministrativo ua : listaua) {
-				System.out.println("Nombre:"+ua.getNombre() );
-				System.out.println("Apellido:"+ua.getApellido() );
-				System.out.println("Usuario:"+ua.getUsuario());
-				System.out.println("Clave:"+ua.getContrasena() );
-				System.out.println("Rol:"+ua.getRol().getNombre() );
-				
-			}
+            uadmi.setRol(ron.buscar(id));
+            onadmi.crearUsuarioAdmi(uadmi);
 
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println("Error al Listar" + e.getMessage());
-		}
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return "listar";
+    }
 
-	}
-	public String eliminarUadmi(int idu) throws Exception {
+    public void recuperarUAdmi() {
+        try {
+            listaUAdmi = onadmi.listarUAdmi();
 
-		try {
-			onadmi.eliminarUAdmi(idu);
-			System.out.println("Administrador Eliminado..." +idu);
+            List<UsuarioAdministrativo> listaua = onadmi.listarUAdmi();
+            for (UsuarioAdministrativo ua : listaua) {
+                System.out.println("Nombre:" + ua.getNombre());
+                System.out.println("Apellido:" + ua.getApellido());
+                System.out.println("Usuario:" + ua.getUsuario());
+                System.out.println("Clave:" + ua.getContrasena());
+                System.out.println("Rol:" + ua.getRol().getNombre());
 
-		} catch (Exception ex) {
-			throw new Exception("Error al eliminar" + ex);
+            }
 
-		}
-		return null;
-	}
-    
+        } catch (Exception e) {
+            // TODO: handle exception
+            System.out.println("Error al Listar" + e.getMessage());
+        }
+
+    }
+
+    public String eliminarUadmi(int idu) throws Exception {
+
+        try {
+            onadmi.eliminarUAdmi(idu);
+            System.out.println("Administrador Eliminado..." + idu);
+
+        } catch (Exception ex) {
+            throw new Exception("Error al eliminar" + ex);
+
+        }
+        return null;
+    }
+
 }

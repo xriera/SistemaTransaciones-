@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ec.edu.ups.sistematransaciones.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,50 +13,45 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
-/**
- *
- * @author xavier
- */
 @Entity
 public class Rol implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_rol")
-	private int idrol;
-	
-	@Column(name = "nombre_rol")
-	private String nombre;
-	
-	@OneToMany(mappedBy = "rol",fetch = FetchType.EAGER,cascade = {CascadeType.ALL})
-	private List<UsuarioAdministrativo> usuario;
 
-	public int getIdrol() {
-		return idrol;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_rol")
+    private int idrol;
 
-	public void setIdrol(int idrol) {
-		this.idrol = idrol;
-	}
+    @Column(name = "nombre_rol")
+    private String nombre;
 
-	public String getNombre() {
-		return nombre;
-	}
+    @OneToMany(mappedBy = "rol", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    @JsonIgnore
+    private List<UsuarioAdministrativo> usuario;
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public int getIdrol() {
+        return idrol;
+    }
 
-	public List<UsuarioAdministrativo> getUsuario() {
-		return usuario;
-	}
+    public void setIdrol(int idrol) {
+        this.idrol = idrol;
+    }
 
-	public void setUsuario(List<UsuarioAdministrativo> usuario) {
-		this.usuario = usuario;
-	}
-	
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public List<UsuarioAdministrativo> getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(List<UsuarioAdministrativo> usuario) {
+        this.usuario = usuario;
+    }
 
 }

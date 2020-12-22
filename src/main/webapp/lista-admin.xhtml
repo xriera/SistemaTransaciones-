@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+</h:head>
+<h:body>
+
+
+	<ui:composition template="Template/production/template-admin.xhtml">
+		<ui:define name="contenido">
+			<h1>Administradores</h1>
+
+
+			<h:form>
+
+				<h:dataTable value="#{registroUsuarioBean.listaUAdmi}" var="admi"
+					class="table">
+
+
+					<h:column>
+						<f:facet name="header">Nombre</f:facet>
+                        #{admi.nombre}
+                </h:column>
+
+					<br />
+					<br />
+
+					<h:column>
+						<f:facet name="header">Apellido</f:facet>
+                        #{admi.apellido}
+                </h:column>
+
+					<br />
+					<br />
+
+					<h:column>
+						<f:facet name="header">Usuario</f:facet>
+                        #{admi.usuario}
+                </h:column>
+
+					<br />
+					<br />
+
+
+					<br />
+					<br />
+
+					<h:column>
+						<f:facet name="header">Clave</f:facet>
+                        #{admi.contrasena}
+                </h:column>
+
+					<br />
+					<br />
+
+
+
+
+					<br />
+					<br />
+
+					<h:column>
+						<f:facet name="header">Rol</f:facet>
+                        #{admi.rol.nombre}
+                </h:column>
+
+					<br />
+					<br />
+
+
+					<br />
+					<br />
+
+
+					<br />
+					<br />
+<!--  -->
+					<h:column>
+						<f:facet name="header"></f:facet>
+						<h:commandButton
+							action="#{registroUsuarioBean.eliminarUadmi(admi.idusuario)}"
+							value="Eliminar" onclick="alert('Eliminado...');"
+							class="btn btn-danger" >
+							</h:commandButton>
+					</h:column>
+
+
+
+				</h:dataTable>
+
+				<h:commandButton value="Cerrar Sesion" title="Cerrar Sesion"
+					
+					actionListener="#{loginAdmiBean.cerrarSession()}"
+					action="index.xhtml" class="btn btn-youtube">
+				</h:commandButton>
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

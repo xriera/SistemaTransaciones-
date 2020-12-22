@@ -1,11 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ec.edu.ups.sistematransaciones.modelo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,29 +11,26 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
-/**
- *
- * @author xavier & vinicio
- */
+//import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class UsuarioAdministrativo implements Serializable {
-	
-    private static final long serialVersionUID = 1L;
-    
+
     @Id
-    @GeneratedValue(strategy =GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
     private int idusuario;
-    
+
     private String nombre;
     private String apellido;
     private String usuario;
     private String contrasena;
-    
+
+//	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
     @JoinColumn(name = "id_rol")
     private Rol rol;
 
@@ -86,6 +81,5 @@ public class UsuarioAdministrativo implements Serializable {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
-
 
 }

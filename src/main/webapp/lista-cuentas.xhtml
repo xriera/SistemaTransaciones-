@@ -4,106 +4,97 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"> 
 
-<ui:composition
-	template="Template/production/template.xhtml">
-	<ui:define name="contenido">
+    <ui:composition
+        template="Template/production/template-admin.xhtml">
+        <ui:define name="contenido">
 
 
-		<h1>Ver Cuentas de Socios</h1>
+            <h1>Detalle de las cuentas de cliente</h1>
 
 
-		<h:form>
-			<h:dataTable value="#{cuentaBean.listaCuenta}" var="cuenta"
-				class="table">
+            <h:form>
+                <h:dataTable value="#{cuentaBean.listaCuenta}" var="cuenta"
+                             class="table">
 
-				<h:column>
-					<f:facet name="header">Id Cuenta</f:facet>
-                        #{cuenta.idCuenta}
-                </h:column>
-
-
-				<h:column>
-					<f:facet name="header">Tipo Cuenta</f:facet>
-                        #{cuenta.tipoCuenta}
-                </h:column>
-
-				<br />
-				<br />
-
-				<h:column>
-					<f:facet name="header">Fecha Registro</f:facet>
-                        #{cuenta.fechaRegistroCuenta}
-                </h:column>
-
-				<br />
-				<br />
+                    <h:column>
+                        <f:facet name="header">Id Cuenta</f:facet>
+                            #{cuenta.idCuenta}
+                    </h:column>
 
 
+                    <h:column>
+                        <f:facet name="header">Tipo Cuenta</f:facet>
+                            #{cuenta.tipoCuenta}
+                    </h:column>
 
-				<h:column>
-					<f:facet name="header">Saldo</f:facet>
-                        #{cuenta.saldo}
-                </h:column>
+                    <br />
+                    <br />
 
-				<br />
-				<br />
+                    <h:column>
+                        <f:facet name="header">Fecha Registro</f:facet>
+                            #{cuenta.fechaRegistroCuenta}
+                    </h:column>
 
-				<h:column>
-					<f:facet name="header">Cedula</f:facet>
-                        #{cuenta.socio.cedulaSocio}
-                </h:column>
-
-				<h:column>
-					<f:facet name="header">Nombre</f:facet>
-                        #{cuenta.socio.nombresSocio}
-                </h:column>
-
-
-				<h:column>
-					<f:facet name="header">Apellido</f:facet>
-                        #{cuenta.socio.apelidosSocio}
-                </h:column>
-
-				<br />
-				<br />
+                    <br />
+                    <br />
 
 
 
-				<h:column>
-					<f:facet name="header">Acciones</f:facet>
-					<!-- <h:commandButton action="#{socioBean.editarSocio(socio.cedulaSocio)}"  value="Editar"/> -->
+                    <h:column>
+                        <f:facet name="header">Saldo</f:facet>
+                            #{cuenta.saldo}
+                    </h:column>
 
-					<h:commandButton
-						action="#{cuentaBean.redirigeCrearMovimiento(cuenta.idCuenta)}"
-						value="Depositar" class="btn btn-primary btn-xs" />
+                    <br />
+                    <br />
 
-					<h:commandButton
-						action="#{cuentaBean.redirigeCrearRetiro(cuenta.idCuenta)}"
-						value="Retirar" class="btn btn-info btn-xs" />
-                    
-                    <h:commandButton action="#{cuentaBean.redirigeCrearCredito(cuenta.idCuenta)}"
-                                     value="Gestionar Credito" class="btn btn-success" />
+                    <h:column>
+                        <f:facet name="header">Cedula</f:facet>
+                            #{cuenta.socio.cedulaSocio}
+                    </h:column>
 
-    
-                        
-                                        
-                                        
-
-				</h:column>
+                    <h:column>
+                        <f:facet name="header">Nombre</f:facet>
+                            #{cuenta.socio.nombresSocio}
+                    </h:column>
 
 
+                    <h:column>
+                        <f:facet name="header">Apellido</f:facet>
+                            #{cuenta.socio.apelidosSocio}
+                    </h:column>
 
-			</h:dataTable>
-			<br />
-			<br />
-			<h:commandButton value="Cerrar Sesion" title="Cerrar Sesion"
-				
-				actionListener="#{loginAdmiBean.cerrarSession()}"
-				action="principal.xhtml" class="btn btn-youtube">
-			</h:commandButton>
-		</h:form>
+                    <br />
+                    <br />
 
-	</ui:define>
 
-</ui:composition> 
+
+                    <h:column>
+                        <f:facet name="header"></f:facet>
+                        <!-- <h:commandButton action="#{socioBean.editarSocio(socio.cedulaSocio)}"  value="Editar"/> -->
+
+                        <h:commandButton
+                            action="#{cuentaBean.redirigeCrearMovimiento(cuenta.idCuenta)}"
+                            value="Depositar" class="btn btn-primary btn-xs" />
+
+                        <h:commandButton
+                            action="#{cuentaBean.redirigeCrearRetiro(cuenta.idCuenta)}"
+                            value="Retirar" class="btn btn-info btn-xs" />
+                    </h:column>
+
+
+
+                </h:dataTable>
+                <br />
+                <br />
+                <h:commandButton value="Cerrar Sesion" title="Cerrar Sesion"
+
+                                 actionListener="#{loginAdmiBean.cerrarSession()}"
+                                 action="index.xhtml" class="btn btn-youtube">
+                </h:commandButton>
+            </h:form>
+
+        </ui:define>
+
+    </ui:composition> 
 </html>

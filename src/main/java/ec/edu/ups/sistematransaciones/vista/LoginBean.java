@@ -1,34 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ec.edu.ups.sistematransaciones.vista;
 
 import ec.edu.ups.sistematransaciones.modelo.CuentaEN;
 import ec.edu.ups.sistematransaciones.modelo.LoginHistoricos;
 import ec.edu.ups.sistematransaciones.modelo.SocioEN;
 import ec.edu.ups.sistematransaciones.negocio.GestionBancariaON;
-import ec.edu.ups.sistematransaciones.negocio.GestionLoginON;
+import ec.edu.ups.sistematransaciones.negocio.LoginHON;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
-/**
- *
- * @author vinicio
- */
 @ManagedBean
-@ViewScoped
-public class LoginClienteBean implements Serializable {
+@SessionScoped
+public class LoginBean implements Serializable {
 
+    /**
+     *
+     */
     private static final long serialVersionUID = 4537479482646908992L;
 
     // @Inject
@@ -37,7 +32,7 @@ public class LoginClienteBean implements Serializable {
     private GestionBancariaON on;
 
     @Inject
-    private GestionLoginON onlogin;
+    private LoginHON onlogin;
 
     // private EmailClient emial;
 //private Persona p;
@@ -48,18 +43,19 @@ public class LoginClienteBean implements Serializable {
 
     private List<LoginHistoricos> listalogin;
     private List<CuentaEN> listaCuenta;
+    private List<CuentaEN> listaCuenta2;
 
     private static String idper;
 //private Persona pp = null;
     private SocioEN pp = null;
-//
-//	public Persona getP() {
-//		return p;
-//	}
-//
-//	public void setP(Persona p) {
-//		this.p = p;
-//	}
+
+    public List<CuentaEN> getListaCuenta2() {
+        return listaCuenta2;
+    }
+
+    public void setListaCuenta2(List<CuentaEN> listaCuenta2) {
+        this.listaCuenta2 = listaCuenta2;
+    }
 
     public List<LoginHistoricos> getListalogin() {
         return listalogin;
@@ -89,6 +85,7 @@ public class LoginClienteBean implements Serializable {
     public void init() {
         p = new SocioEN();
         login = new LoginHistoricos();
+        
         // try {
         listaLogins();
         // } catch (Exception e) {
@@ -97,6 +94,7 @@ public class LoginClienteBean implements Serializable {
         // }
         try {
             cargarCuentas();
+            //cargarCuentas2();
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -128,7 +126,7 @@ public class LoginClienteBean implements Serializable {
                 // de Sesion Exitoso"));
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", pp);
                 String Asunto = " Inicio de Sesion Exitoso";
-                String CuerpoMail = "Hola " + pp.getNombresSocio() + " Su inicio de sesion fue exitoso" + " " + fecha;
+                String CuerpoMail = "Hola " + pp.getNombresSocio() + " Su inicio de sesion fu exitoso" + " " + fecha;
 
                 login.setDescripcion(Asunto);
                 login.setFecha(fecha);
@@ -139,7 +137,7 @@ public class LoginClienteBean implements Serializable {
                 enviarCorreo(p.getCorreo(), Asunto, CuerpoMail);
                 //EmailClient.sendMail(p.getCorreo(), Asunto, CuerpoMail);
                 //return "ultimo-movimiento?faces-redirect=true";
-                return "inicio-cliente?faces-redirect=true";
+                return "lista-cuenta-cliente?faces-redirect=true";
             } else {
                 String Asuntofail = " Inicio de Sesion Fallido";
                 String CuerpoMailfail = "Querido Usuario su intento de Sesion a sido Fallido en la fecha:" + fecha
@@ -172,7 +170,9 @@ public class LoginClienteBean implements Serializable {
             System.out.println("Lista del Usuario: " + idper);
 
             listalogin = onlogin.getHistoricos(idper);
-
+            listalogin.size();
+            
+            System.out.println("lilista de logins "+listalogin.get(0).getSocio().getCuentaen().getIdCuenta());
         } catch (Exception e) {
             System.out.println("Error al Listar" + e.getMessage());
         }
@@ -226,6 +226,17 @@ public class LoginClienteBean implements Serializable {
 
     public void cargarCuentas() throws Exception {
         listaCuenta = on.listarCuentas(idper);
+    }
+    
+        public void cargarCuentas2() throws Exception {
+         if(listalogin.size() > 0){
+            
+            CuentaEN cuenta = on.buscarCuenta(listalogin.get(1).getSocio().getCuentaen().getIdCuenta());
+            listaCuenta2.add(cuenta);
+             System.out.println("lista 2 corriente"+cuenta.getIdCuenta());
+         }
+       // listaCuenta = on.listarCuentas(idper);
+       
     }
 
     public void enviarCorreo(String destino, String Asunto, String CuerpoMail) {

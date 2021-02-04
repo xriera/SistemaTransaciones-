@@ -22,6 +22,9 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.CascadeType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 /**
  *
@@ -77,6 +80,21 @@ public class SocioEN implements Serializable {
     @JsonIgnore
     private List<LoginHistoricos> loginh;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "socio", fetch = FetchType.EAGER)
+    @JsonIgnore
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<SolicitudPoliza> solicitudPolizas;
+
+    public List<SolicitudPoliza> getSolicitudPolizas() {
+        return solicitudPolizas;
+    }
+
+    public void setSolicitudPolizas(List<SolicitudPoliza> solicitudPolizas) {
+        this.solicitudPolizas = solicitudPolizas;
+    }
+    
+    
+    
     public CuentaEN getCuentaen() {
         return cuentaen;
     }

@@ -9,13 +9,17 @@ import ec.edu.ups.sistematransaciones.dao.CreditosDAO;
 import ec.edu.ups.sistematransaciones.dao.CuentaDAO;
 import ec.edu.ups.sistematransaciones.dao.DetalleCreditoDAO;
 import ec.edu.ups.sistematransaciones.dao.MovimientoDAO;
+import ec.edu.ups.sistematransaciones.dao.PolizaDAO;
 import ec.edu.ups.sistematransaciones.dao.SocioDao;
+import ec.edu.ups.sistematransaciones.dao.SolicitudPolizaDAO;
 import ec.edu.ups.sistematransaciones.dao.TransaccionDAO;
 import ec.edu.ups.sistematransaciones.modelo.Poliza;
 import ec.edu.ups.sistematransaciones.modelo.CuentaEN;
 import ec.edu.ups.sistematransaciones.modelo.PolizaParametrosEN;
 import ec.edu.ups.sistematransaciones.modelo.MovimientoEN;
+import ec.edu.ups.sistematransaciones.modelo.PolizaEN;
 import ec.edu.ups.sistematransaciones.modelo.SocioEN;
+import ec.edu.ups.sistematransaciones.modelo.SolicitudPoliza;
 import ec.edu.ups.sistematransaciones.modelo.TransaccionEN;
 import ec.edu.ups.sistematransaciones.vista.EmailClient;
 import java.text.NumberFormat;
@@ -24,6 +28,8 @@ import java.util.Calendar;
 
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.swing.JOptionPane;
@@ -54,6 +60,12 @@ public class GestionBancariaON {
 
     @Inject
     private DetalleCreditoDAO detalleDAO;
+    
+    @Inject
+    private PolizaDAO daoPoliza;
+    
+    @Inject
+    private SolicitudPolizaDAO daoSolicitudPoliza;
 
     /* Socio */
 
@@ -534,5 +546,28 @@ public class GestionBancariaON {
 
         return detalleDAO.DetalleCredito(idcredito);
     }
+    
+        /*
+  	 * metodo que permite crear un usuario administrativo 
+     */
+    public void generarPoliza(PolizaEN poliza) {
+        try {
+            daoPoliza.insertPoliza(poliza);
+        } catch (Exception ex) {
+            Logger.getLogger(GestionBancariaON.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void insertarSolicitudPoliza(SolicitudPoliza solicitudPoliza) {
+        try {
+            daoSolicitudPoliza.insertSolicitudPoliza(solicitudPoliza);
+        } catch (Exception ex) {
+            Logger.getLogger(GestionBancariaON.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public List<SolicitudPoliza> listaSolicitudPolizas() throws Exception {
+        //List<CreditoEN> listaCredito =creditoDAO.listarCredito(Cedula);
 
+        return daoSolicitudPoliza.getSolicitudPoliza();
+    }
 }

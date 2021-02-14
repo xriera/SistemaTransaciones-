@@ -30,22 +30,20 @@
 
 
             <h:body>
-                <h1>polisa Dinero</h1>
-
-
-
-
+                <h1>Simular poliza</h1>
             </h:body>
-
 
             <h:form class="form-horizontal form-material">
                 <div class="form-group">
-                    <label class="col-md-12"> Cedula del Socio :</label>
+                    <label class="col-md-12"> Cedula del Socio:</label>
                     <div class="col-md-12">
                         <h:inputText value="#{cuentaBean.newCuenta.socio.cedulaSocio} "
                                      readonly="true" />
                     </div>
                 </div>
+
+                <br />
+                <br />
 
                 <div class="form-group">
                     <label class="col-md-12"> Nombre:</label>
@@ -56,6 +54,8 @@
                     </div>
                 </div>
 
+                <br />
+                <br />
 
                 <div class="form-group">
                     <label class="col-md-12"> Apellido:</label>
@@ -65,6 +65,8 @@
                     </div>
                 </div>
 
+                <br />
+                <br />
 
                 <div class="form-group">
                     <label class="col-md-12"> ID Cuenta :</label>
@@ -73,8 +75,9 @@
                                      readonly="true" />
                     </div>
                 </div>
- 
 
+                <br />
+                <br />
                 
                 <div class="form-group">
                     <label class="col-md-12"> Monto:</label>
@@ -83,6 +86,10 @@
                                      value="#{polizaBean.monto}" />
                     </div>
                 </div>
+
+                <br />
+                <br />
+                
                 <div class="form-group">
                     <label class="col-md-12"> Plazo:</label>
                     <div class="col-md-12">
@@ -91,28 +98,36 @@
                     </div>
                 </div>
 
-                <h:commandButton
-                    action="#{polizaBean.generarPoliza() }"
-				value="calcular" class="btn btn-secondary" />
+                <br />
+                <br />
                 
-
+                <div class="form-group">
+                    <label class="col-md-12"> Interes a cobrar:</label>
+                    <div class="col-md-12">
+                        <h:inputText id="interes"
+                                     value="#{polizaBean.calculoInteres}"
+                                     readonly="true"/>
+                    </div>
+                </div>
 
                 <br />
                 <br />
-        
-             <h:commandButton
-                 action="#{polizaBean.redirigirApoliza(socio.cedulaSocio)}"
-				value="solicitar poliza" class="btn btn-secondary" />
+                
+                <h:commandButton
+                    action="#{polizaBean.calcularPoliza() }"
+                    value="Calcular" class="btn btn-secondary" />
+
+                <br />
+                <br />
+
+                <h:commandButton
+                    action="#{polizaBean.redirigirApoliza(socio.cedulaSocio)}"
+                    value="Solicitar poliza" class="btn btn-secondary" />
 
             </h:form>
 
-
-
         </ui:define>
 
-
     </ui:composition>
-
-
 
 </html>

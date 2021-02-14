@@ -33,7 +33,7 @@ public class PolizaEN implements Serializable {
     //@Column(name = "idCredito")
     private int idPoliza;
     
-    private double manoto;
+    private double monto;
     private int plazo;
     private double interezGanado;
     private Date fechaPoliza;
@@ -59,12 +59,12 @@ public class PolizaEN implements Serializable {
         this.idPoliza = idPoliza;
     }
 
-    public double getManoto() {
-        return manoto;
+    public double getMonto() {
+        return monto;
     }
 
-    public void setManoto(double manoto) {
-        this.manoto = manoto;
+    public void setMonto(double monto) {
+        this.monto = monto;
     }
 
     public int getPlazo() {

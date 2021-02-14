@@ -29,6 +29,9 @@ public class DetalleCreditoDAO {
 
     }
 
+     /*
+	 * metodo que permite listar el detalle de los creditos de la poliza
+     */
     public List<PolizaParametrosEN> DetalleCredito(String filtro) throws Exception {
         //SELECT * FROM banco.creditoen c,banco.detallecreditoen d where c.idCuenta=669544807323 and c.idCredito=d.idCredito;
         //String jpql = "SELECT p FROM PolizaParametrosEN p, CreditoEN d WHERE d.idCredito=p.idCredito and d.idCuenta LIKE :filtro";

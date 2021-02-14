@@ -26,9 +26,10 @@ import javax.inject.Inject;
 @ManagedBean
 @ViewScoped
 public class PolizaBean {
+
     @Inject
     private GestionBancariaON on;
-    
+
     private String idCuenta;
     private String idSocio;
     private PolizaEN newPoliza;
@@ -38,23 +39,35 @@ public class PolizaBean {
     private List<CuentaEN> listaCuenta;
     private double monto;
     private int plazo;
-    private double interes=0;
+    private double interes = 0;
     private double tasaInteres;
 
     public String getCedula() {
         return cedula;
     }
 
+    /**
+     * metodo que permite enviar como parametro la cedula
+     * @param cedula
+     * @throws Exception 
+     */
     public void setCedula(String cedula) throws Exception {
-        System.out.println("cedula parametro"+cedula);
+        System.out.println("cedula parametro" + cedula);
         this.cedula = cedula;
-       if(cedula!=null){
-         newSocio = on.buscarSocio(cedula);
-       }
+        if (cedula != null) {
+            newSocio = on.buscarSocio(cedula);
+        }
     }
-    public String redirigirApoliza(String cedula){
-        System.out.print("redirigirA poliza "+cedula+" fin");
-        return "crear-poliza?faces-redirect=true"+cedula;
+
+    /**
+     * 
+     * @param cedula
+     * @return 
+     * metodo que permite redirigir para crear una poliza
+     */
+    public String redirigirApoliza(String cedula) {
+        System.out.print("redirigirA poliza " + cedula + " fin");
+        return "crear-poliza?faces-redirect=true" + cedula;
     }
 
     public SocioEN getNewSocio() {
@@ -64,7 +77,7 @@ public class PolizaBean {
     public void setNewSocio(SocioEN newSocio) {
         this.newSocio = newSocio;
     }
-    
+
     public String getIdSocio() {
         return idSocio;
     }
@@ -73,7 +86,6 @@ public class PolizaBean {
         this.idSocio = idSocio;
     }
 
-    
     public double getMonto() {
         return monto;
     }
@@ -89,9 +101,7 @@ public class PolizaBean {
     public void setPlazo(int plazo) {
         this.plazo = plazo;
     }
-    
-    
-    
+
     public String getIdCuenta() {
         return idCuenta;
     }
@@ -111,16 +121,15 @@ public class PolizaBean {
     public void setNewCuenta(CuentaEN newCuenta) {
         this.newCuenta = newCuenta;
     }
-    
-    
+
     @PostConstruct
-    public void init(){
+    public void init() {
         //generarPoliza();
         newPoliza = new PolizaEN();
-        
+
         try {
             newCuenta = new CuentaEN();
-            newSocio = new  SocioEN();
+            newSocio = new SocioEN();
             cargarCuentas();
 
         } catch (Exception ex) {
@@ -132,80 +141,81 @@ public class PolizaBean {
         return listaCuenta;
     }
 
+    /**
+     *
+     * @param listaCuenta 
+     * Devuelve una lista de cuentas
+     */
     public void setListaCuenta(List<CuentaEN> listaCuenta) {
         this.listaCuenta = listaCuenta;
     }
-    
-    
-    
-    public String generarPoliza() throws Exception{
-       // PolizaEN p= new PolizaEN();
- 
-        if (plazo==1) {
-           interes = monto*5.50*plazo/1200;
+
+    public String generarPoliza() throws Exception {
+        // PolizaEN p= new PolizaEN();
+
+        if (plazo == 1) {
+            interes = monto * 5.50 * plazo / 1200;
         }
-        if (plazo==2) {
-           interes = monto*5.75*plazo/1200;
+        if (plazo == 2) {
+            interes = monto * 5.75 * plazo / 1200;
         }
-        if (plazo==3) {
-           interes = monto*6.25*plazo/1200;
+        if (plazo == 3) {
+            interes = monto * 6.25 * plazo / 1200;
         }
-        if (plazo==4) {
-           interes = monto*7*plazo/1200;
+        if (plazo == 4) {
+            interes = monto * 7 * plazo / 1200;
         }
-        if (plazo==5) {
-           interes = monto*7.50*plazo/1200;
+        if (plazo == 5) {
+            interes = monto * 7.50 * plazo / 1200;
         }
-        if (plazo>=6) {
-           interes = monto*8.50*plazo/1200;
+        if (plazo >= 6) {
+            interes = monto * 8.50 * plazo / 1200;
         }
         System.out.println("---------------------------------------------------------------");
-        System.out.println("interes"+interes);
+        System.out.println("interes" + interes);
         newPoliza.setManoto(monto);
         newPoliza.setPlazo(plazo);
         newPoliza.setInterezGanado(interes);
         newPoliza.setFechaPoliza(new Date());
-         String recuperaCedula=SocioBean.cedula;
-         System.out.println("ec.edu.ups.sistematransaciones.vista.PolizaBean.ingresarSolicitud()"+recuperaCedula);
+        String recuperaCedula = SocioBean.cedula;
+        System.out.println("ec.edu.ups.sistematransaciones.vista.PolizaBean.ingresarSolicitud()" + recuperaCedula);
         on.generarPoliza(newPoliza);
 
-        
         ingresarSolicitud(newPoliza);
-        
+
         System.out.println("cuenta33- ");
-        System.out.println("monto1"+monto);
-        System.out.println("plazo"+plazo);
-        System.out.println("interes"+interes);
-        
+        System.out.println("monto1" + monto);
+        System.out.println("plazo" + plazo);
+        System.out.println("interes" + interes);
+
         return null;
     }
-    
-    public String ingresarSolicitud(PolizaEN poliza){
-        
+
+    public String ingresarSolicitud(PolizaEN poliza) {
+
         try {
-            System.out.println("idCuentass "+getIdCuenta());
+            System.out.println("idCuentass " + getIdCuenta());
             CuentaEN cuenta = on.buscarCuenta(idCuenta);
             SolicitudPoliza solicitud = new SolicitudPoliza();
-            
+
             solicitud.setEstado(0);
             solicitud.setCuenta(cuenta);
             solicitud.setPoliza(poliza);
             on.insertarSolicitudPoliza(solicitud);
-            
-            
-            System.out.println("socio1"+idCuenta);
+
+            System.out.println("socio1" + idCuenta);
             System.out.println("Insetado solicitud Poliza");
-            
-            
+
         } catch (Exception ex) {
             Logger.getLogger(PolizaBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
-        public void setIdCuenta(String idCuenta) {
+
+    public void setIdCuenta(String idCuenta) {
         System.out.println("ID Cuenta: " + idCuenta);
         this.idCuenta = idCuenta;
-        
+
 //        if (idCuenta != null) {
 //            try {
 //                newCuenta = on.buscarCuenta(idCuenta);
@@ -214,13 +224,10 @@ public class PolizaBean {
 //                System.out.println("Error setIDCuenta[BEAN]" + ex);
 //            }
 //        }
-
     }
-        
-        public void cargarCuentas() throws Exception {
+
+    public void cargarCuentas() throws Exception {
         listaCuenta = on.listarCuentas();
     }
-        
-        
-        
+
 }

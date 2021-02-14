@@ -13,7 +13,7 @@
 
         <ui:define name="title" />
         <h1>
-            <b>Crear Deposito</b>
+            <b>polisa</b>
         </h1>
 
         <ui:define name="contenido">
@@ -30,7 +30,7 @@
 
 
             <h:body>
-                <h1>Retirar Dinero</h1>
+                <h1>polisa Dinero</h1>
 
 
 
@@ -39,8 +39,6 @@
 
 
             <h:form class="form-horizontal form-material">
-
-
                 <div class="form-group">
                     <label class="col-md-12"> Cedula del Socio :</label>
                     <div class="col-md-12">
@@ -94,40 +92,16 @@
                 </div>
 
                 <h:commandButton
-                    action="#{polizaBean.generarPoliza()}"
+                    action="#{polizaBean.generarPoliza() }"
 				value="calcular" class="btn btn-secondary" />
                 
-                
-                        <!-- Cedula del Socio :<h:inputText value="#{cuentaBean.newCuenta.socio.cedulaSocio}" readonly="true" /> <br/> -->
-                        <!--Nombre  :<h:inputText value="#{cuentaBean.newCuenta.socio.nombresSocio}" readonly="true" /> <br/> -->
-                        <!-- Apelldo  :<h:inputText value="#{cuentaBean.newCuenta.socio.apelidosSocio}" readonly="true" /> <br/> -->
-
-                        <!-- ID Cuenta :<h:inputText  id="cuenta"  value="#{cuentaBean.newCuenta.idCuenta}" /> <br/> -->
-                <!-- #{movimientoBean.newMovimiento.setCuenta(cuentaBean.newCuenta)}-->
-
-
-                        <!-- Fecha de Movimiento <input  value="#{movimientoBean.newMovimiento.setFechaMovimiento(movimientoBean.fecha)} #{movimientoBean.newMovimiento.fechaMovimiento}" readonly="true"  ></input> <br/>  -->
-
-
-                <!-- Tipo de Movimiento :<h:inputText   value="Retiro" /> <br/> -->
-                <!-- #{movimientoBean.newMovimiento.setTipoMovimiento("Retiro")}-->
-
-                        <!--  Cantidad :<h:inputText  id="cantidad" value="#{movimientoBean.newMovimiento.cantidad}"/> <br/>-->
-
-
 
 
                 <br />
                 <br />
-
-
-
-
-  
-          <!--  #{movimientoBean.retiar(cuentaBean.newCuenta.idCuenta, movimientoBean.newMovimiento.cantidad)} -->
         
              <h:commandButton
-                 action="#{polizaBean.redirigirApoliza(polizaBean.cedula)}"
+                 action="#{polizaBean.redirigirApoliza(socio.cedulaSocio)}"
 				value="solicitar poliza" class="btn btn-secondary" />
 
             </h:form>

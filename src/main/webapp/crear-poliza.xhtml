@@ -21,7 +21,7 @@
 
             <h:head>
                 <f:metadata>
-                    <f:viewParam name="cedulaSocio" value="#{socioBean.cedula}">
+                    <f:viewParam name="socio" value="#{socioBean.listaSocio}">
                     </f:viewParam>
 
                 </f:metadata>
@@ -36,11 +36,16 @@
 
             <h:form class="form-horizontal form-material">
 
-
+                <h:dataTable value="#{socioBean.listaSocio}" var="socio" class="table">
+                    <h:column >
+                        <f:facet name="header">cedula </f:facet>
+                        #{socio.cedulaSocio}
+                    </h:column>
+                </h:dataTable>
                 <div class="form-group">
                     <label class="col-md-12"> Cedula del Socio :</label>
                     <div class="col-md-12">
-                        <h:inputText value="#{socioBean.newSocio.cedulaSocio}"
+                        <h:inputText value="#{cuentaBean.newCuenta.socio.cedulaSocio}"
                                      readonly="true" />
                     </div>
                 </div>

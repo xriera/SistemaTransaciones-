@@ -33,7 +33,7 @@ public class SocioBean {
 
     private SocioEN newSocio;
     private List<SocioEN> listaSocio;
-    private String cedula;
+    public static String cedula;
 
     public SocioEN getNewSocio() {
         return newSocio;

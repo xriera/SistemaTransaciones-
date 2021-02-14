@@ -20,6 +20,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.List;
+import javax.persistence.OneToMany;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 /**
  *
@@ -49,6 +53,19 @@ public class CuentaEN implements Serializable {
 
     @Column(name = "saldo")
     private double saldo;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cuenta", fetch = FetchType.EAGER)
+    @JsonIgnore
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<SolicitudPoliza> solicitudPolizas;
+
+    public List<SolicitudPoliza> getSolicitudPolizas() {
+        return solicitudPolizas;
+    }
+
+    public void setSolicitudPolizas(List<SolicitudPoliza> solicitudPolizas) {
+        this.solicitudPolizas = solicitudPolizas;
+    }
 
     public double getSaldo() {
         return saldo;

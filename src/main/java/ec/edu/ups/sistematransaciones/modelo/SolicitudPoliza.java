@@ -29,8 +29,8 @@ public class SolicitudPoliza implements Serializable{
     
     @ManyToOne
      @JsonIgnore
-     @JoinColumn(name = "cedulaSocio")
-    private SocioEN socio ;
+     @JoinColumn(name = "idCuenta")
+    private CuentaEN cuenta ;
     
     @ManyToOne
     @JsonIgnore
@@ -53,13 +53,15 @@ public class SolicitudPoliza implements Serializable{
         this.estado = estado;
     }
 
-    public SocioEN getSocio() {
-        return socio;
+    public CuentaEN getCuenta() {
+        return cuenta;
     }
 
-    public void setSocio(SocioEN socio) {
-        this.socio = socio;
+    public void setCuenta(CuentaEN cuenta) {
+        this.cuenta = cuenta;
     }
+
+
 
     public PolizaEN getPoliza() {
         return poliza;

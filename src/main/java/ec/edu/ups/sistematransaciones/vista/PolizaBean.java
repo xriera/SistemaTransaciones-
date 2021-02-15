@@ -42,7 +42,6 @@ public class PolizaBean {
     private double interes = 0;
     private double tasaInteres;
     private double calculoInteres;
-    
 
     public String getCedula() {
         return cedula;
@@ -50,8 +49,9 @@ public class PolizaBean {
 
     /**
      * metodo que permite enviar como parametro la cedula
+     *
      * @param cedula
-     * @throws Exception 
+     * @throws Exception
      */
     public void setCedula(String cedula) throws Exception {
         System.out.println("cedula parametro" + cedula);
@@ -62,15 +62,14 @@ public class PolizaBean {
     }
 
     /**
-     * 
+     *
      * @param cedula
-     * @return 
-     * metodo que permite redirigir para crear una poliza
+     * @return metodo que permite redirigir para crear una poliza
      */
     public String redirigirApoliza(String cedula) {
         System.out.print("redirigirA poliza " + cedula + " fin");
         String idCuenta = CuentaBean.idCuentaPoliza;
-        System.out.print("RecuperarCuenca " + idCuenta );
+        System.out.print("RecuperarCuenca " + idCuenta);
         return "crear-poliza?faces-redirect=true" + cedula;
     }
 
@@ -82,8 +81,6 @@ public class PolizaBean {
         this.calculoInteres = calculoInteres;
     }
 
-    
-    
     public SocioEN getNewSocio() {
         return newSocio;
     }
@@ -157,8 +154,7 @@ public class PolizaBean {
 
     /**
      *
-     * @param listaCuenta 
-     * Devuelve una lista de cuentas
+     * @param listaCuenta Devuelve una lista de cuentas
      */
     public void setListaCuenta(List<CuentaEN> listaCuenta) {
         this.listaCuenta = listaCuenta;
@@ -171,7 +167,7 @@ public class PolizaBean {
             interes = monto * 5.50 * plazo / 1200;
             calculoInteres = interes;
         }
-        
+
         if (plazo == 2) {
             interes = monto * 5.75 * plazo / 1200;
             calculoInteres = interes;
@@ -194,15 +190,15 @@ public class PolizaBean {
         }
         System.out.println("---------------------------------------------------------------");
         System.out.println("interes" + interes);
-        newPoliza.setMonto(monto);
-        newPoliza.setPlazo(plazo);
-        newPoliza.setInterezGanado(interes);
-        newPoliza.setFechaPoliza(new Date());
-        String recuperaCedula = SocioBean.cedula;
-        System.out.println("" + recuperaCedula);
-        on.generarPoliza(newPoliza);
-
-        ingresarSolicitud(newPoliza);
+//        newPoliza.setMonto(monto);
+//        newPoliza.setPlazo(plazo);
+//        newPoliza.setInterezGanado(interes);
+//        newPoliza.setFechaPoliza(new Date());
+//        String recuperaCedula = SocioBean.cedula;
+//        System.out.println("" + recuperaCedula);
+//        on.generarPoliza(newPoliza);
+//
+//        ingresarSolicitud(newPoliza);
 
         System.out.println("cuenta33- ");
         System.out.println("monto1: " + monto);
@@ -212,9 +208,24 @@ public class PolizaBean {
         return null;
     }
 
+    public String guardaPoliza() {
+
+        newPoliza.setMonto(monto);
+        newPoliza.setPlazo(plazo);
+        newPoliza.setInterezGanado(interes);
+        newPoliza.setFechaPoliza(new Date());
+        String recuperaCedula = SocioBean.cedula;
+        System.out.println("" + recuperaCedula);
+        on.generarPoliza(newPoliza);
+
+        ingresarSolicitud(newPoliza);
+        
+        return null;
+    }
+
     public String ingresarSolicitud(PolizaEN poliza) {
         String idCuentaPoliza = CuentaBean.idCuentaPoliza;
-        System.out.print("RecuperarCuenca " + idCuentaPoliza );
+        System.out.print("RecuperarCuenca " + idCuentaPoliza);
 
         try {
 

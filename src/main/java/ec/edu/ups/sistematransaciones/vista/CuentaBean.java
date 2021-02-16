@@ -174,7 +174,11 @@ public class CuentaBean {
         return "Poliza?faces-redirect=true&idCuenta=" + idCuenta;
         
     }
-    
+    /**
+     * 
+     * @param idCuenta de cuenta q vamos a mandar por la url
+     * @return pagina a donde se redirecciona
+     */
         public String redirigeCrearPolizaCliente(String idCuenta) {
         idCuentaPoliza = idCuenta;
         System.out.println("Redirigir:" + idCuenta);

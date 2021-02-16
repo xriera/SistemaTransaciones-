@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+
+    <ui:composition template="Template/production/template-cliente.xhtml">
+
+        <ui:define name="title" />
+        <h1>
+            <b>Polisa</b>
+        </h1>
+
+        <ui:define name="contenido">
+
+
+            <h:head>
+                <f:metadata>
+                    <f:viewParam name="idCuenta" value="#{cuentaBean.idCuenta}">
+                    </f:viewParam>
+
+                </f:metadata>
+            </h:head>
+
+
+
+            <h:body>
+                <h1>Simular poliza</h1>
+            </h:body>
+
+            <h:form class="form-horizontal form-material">
+                <div class="form-group">
+                    <label class="col-md-12"> Cedula del Socio:</label>
+                    <div class="col-md-12">
+                        <h:inputText value="#{cuentaBean.newCuenta.socio.cedulaSocio} "
+                                     readonly="true" />
+                    </div>
+                </div>
+
+                <br />
+                <br />
+
+                <div class="form-group">
+                    <label class="col-md-12"> Nombre:</label>
+                    <div class="col-md-12">
+                        <h:inputText value="#{cuentaBean.newCuenta.socio.nombresSocio}"
+                                     readonly="true" />
+                        <br />
+                    </div>
+                </div>
+
+                <br />
+                <br />
+
+                <div class="form-group">
+                    <label class="col-md-12"> Apellido:</label>
+                    <div class="col-md-12">
+                        <h:inputText value="#{cuentaBean.newCuenta.socio.apelidosSocio}"
+                                     readonly="true" />
+                    </div>
+                </div>
+
+                <br />
+                <br />
+
+                <div class="form-group">
+                    <label class="col-md-12"> ID Cuenta :</label>
+                    <div class="col-md-12">
+                        <h:inputText id="cuenta" value="#{cuentaBean.newCuenta.idCuenta}"
+                                     readonly="true" />
+                    </div>
+                </div>
+
+                <br />
+                <br />
+                
+                <div class="form-group">
+                    <label class="col-md-12"> Monto:</label>
+                    <div class="col-md-12">
+                        <h:inputText id="monto"
+                                     value="#{polizaBean.monto}" />
+                    </div>
+                </div>
+
+                <br />
+                <br />
+                
+                <div class="form-group">
+                    <label class="col-md-12"> Plazo:</label>
+                    <div class="col-md-12">
+                        <h:inputText id="plazo"
+                                     value="#{polizaBean.plazo}" />
+                    </div>
+                </div>
+
+                <br />
+                <br />
+                
+                <div class="form-group">
+                    <label class="col-md-12"> Interes a cobrar:</label>
+                    <div class="col-md-12">
+                        <h:inputText id="interes"
+                                     value="#{polizaBean.calculoInteres}"
+                                     readonly="true"/>
+                    </div>
+                </div>
+
+                <br />
+                <br />
+                
+                <h:commandButton
+                    action="#{polizaBean.calcularPoliza() }"
+                    value="Calcular" class="btn btn-secondary" />
+
+                <br />
+                <br />
+
+                <h:commandButton
+                    action="#{polizaBean.guardaPoliza()}"
+                    value="Solicitar poliza" class="btn btn-secondary" />
+
+            </h:form>
+
+        </ui:define>
+
+    </ui:composition>
+
+</html>

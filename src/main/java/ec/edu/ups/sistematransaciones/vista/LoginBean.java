@@ -40,7 +40,7 @@ public class LoginBean implements Serializable {
     private LoginHistoricos login;
 
     private int numeroCuota;
-
+    private String idCuenta;
     private List<LoginHistoricos> listalogin;
     private List<CuentaEN> listaCuenta;
     private List<CuentaEN> listaCuenta2;
@@ -48,6 +48,15 @@ public class LoginBean implements Serializable {
     private static String idper;
 //private Persona pp = null;
     private SocioEN pp = null;
+    private SocioEN socio;
+
+    public SocioEN getSocio() {
+        return socio;
+    }
+
+    public void setSocio(SocioEN socio) {
+        this.socio = socio;
+    }
 
     public List<CuentaEN> getListaCuenta2() {
         return listaCuenta2;
@@ -62,6 +71,7 @@ public class LoginBean implements Serializable {
     }
 
     public SocioEN getP() {
+   
         return p;
     }
 
@@ -85,7 +95,7 @@ public class LoginBean implements Serializable {
     public void init() {
         p = new SocioEN();
         login = new LoginHistoricos();
-        
+        socio = new SocioEN();
         // try {
         listaLogins();
         // } catch (Exception e) {
@@ -121,6 +131,8 @@ public class LoginBean implements Serializable {
         try {
 
             pp = on.buscarPersona(p.getCorreo(), p.getClave());
+            System.out.println("recuperarSocio"+pp.getCedulaSocio());
+            socio = on.buscarSocio(pp.getCedulaSocio());
             if (pp != null) {
                 // FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Inicio
                 // de Sesion Exitoso"));
@@ -164,7 +176,11 @@ public class LoginBean implements Serializable {
         return null;
 
     }
+    public String redirigeSolicitud(String idCuenta) {
 
+        System.out.println("RedirigirCuenta:" + idCuenta);
+        return "Poliza-cliente?faces-redirect=true&idCuenta=" + idCuenta;
+    }
     public void listaLogins() {
         try {
             System.out.println("Lista del Usuario: " + idper);

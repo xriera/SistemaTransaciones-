@@ -128,7 +128,7 @@ public class CuentaBean {
         } catch (Exception ex) {
             System.out.println("Error al Eliminar Cuenta [Bean]" + ex);
         }
-        return null;
+        return null;   
     }
 
     public String conpruebaCuentaExistente(String idCuenta) {
@@ -173,6 +173,12 @@ public class CuentaBean {
                 
         return "Poliza?faces-redirect=true&idCuenta=" + idCuenta;
         
+    }
+    
+        public String redirigeCrearPolizaCliente(String idCuenta) {
+        idCuentaPoliza = idCuenta;
+        System.out.println("Redirigir:" + idCuenta);
+        return "Poliza-cliente?faces-redirect=true&idCuenta=" + idCuenta;
     }
     
     public String redirigeCrearCredito(String idCuenta) {

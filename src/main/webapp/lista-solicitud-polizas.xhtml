@@ -9,40 +9,46 @@
         <ui:define name="contenido">
 
 
-            <h1>Lista de polizas</h1>
+            <h1>Solicitudes de polizas</h1>
 
 
             <h:form>
-                <h:dataTable value="#{cuentaBean.listaCuenta}" var="cuenta"
+                <h:dataTable value="#{solicitudPolizaBean.listasolicitud}" var="poliza"
                              class="table">
 
                     <h:column>
-                        <f:facet name="header">Id Poliza</f:facet>
-                            #{cuenta.idCuenta}
+                        <f:facet name="header">Id Cuenta</f:facet>
+                            #{poliza.cuenta.idCuenta}
                     </h:column>
 
 
                     <h:column>
-                        <f:facet name="header">Fecha Poliza</f:facet>
-                            #{cuenta.tipoCuenta}
-                    </h:column>
-
-                    <br />
-                    <br />
-
-                    <h:column>
-                        <f:facet name="header">Interes Ganado</f:facet>
-                            #{cuenta.fechaRegistroCuenta}
+                        <f:facet name="header">Nombre</f:facet>
+                            #{poliza.cuenta.socio.nombresSocio}
                     </h:column>
 
                     <br />
                     <br />
 
+                    <h:column>
+                        <f:facet name="header">Apellido</f:facet>
+                            #{poliza.cuenta.socio.apelidosSocio}
+                    </h:column>
 
+                    <br />
+                    <br />
 
                     <h:column>
-                        <f:facet name="header">Monto</f:facet>
-                            #{cuenta.saldo}
+                        <f:facet name="header">Saldo de cuenta</f:facet>
+                            #{poliza.cuenta.saldo}
+                    </h:column>
+
+                    <br />
+                    <br />
+
+                    <h:column>
+                        <f:facet name="header">Monto de poliza</f:facet>
+                            #{poliza.poliza.monto}
                     </h:column>
 
                     <br />
@@ -50,18 +56,18 @@
 
                     <h:column>
                         <f:facet name="header">Plazo</f:facet>
-                            #{cuenta.socio.cedulaSocio}
+                            #{poliza.poliza.plazo}
                     </h:column>
 
                     <h:column>
-                        <f:facet name="header">Nombre</f:facet>
-                            #{cuenta.socio.nombresSocio}
+                        <f:facet name="header">Fecha ingreso</f:facet>
+                            #{poliza.poliza.fechaPoliza}
                     </h:column>
 
 
                     <h:column>
-                        <f:facet name="header">Apellido</f:facet>
-                            #{cuenta.socio.apelidosSocio}
+                        <f:facet name="header">Fecha de vencimiento</f:facet>
+                            #{poliza.poliza.fechaPoliza}
                     </h:column>
 
                     <br />
@@ -75,16 +81,12 @@
 
                         <h:commandButton
                             action="#{cuentaBean.redirigeCrearMovimiento(cuenta.idCuenta)}"
-                            value="Depositar" class="btn btn-primary btn-xs" />
+                            value="Aprobar" class="btn btn-primary btn-xs" />
 
                         <h:commandButton
                             action="#{cuentaBean.redirigeCrearRetiro(cuenta.idCuenta)}"
-                            value="Retirar" class="btn btn-info btn-xs" />
-                        
-                        <h:commandButton
-                            action="#{cuentaBean.redirigeCrearPoliza(cuenta.idCuenta)}"
-                            value="Poliza" class="btn btn-info btn-xs" />
-                        
+                            value="Rechazar" class="btn btn-info btn-xs" />
+
                     </h:column>
 
 
@@ -96,6 +98,10 @@
 
                                  actionListener="#{loginAdmiBean.cerrarSession()}"
                                  action="index.xhtml" class="btn btn-youtube">
+                </h:commandButton>
+
+                <h:commandButton value="Lista de polizas" title="Cerrar Sesion"
+                                 action="lista-poliza.xhtml" class="btn btn-youtube">
                 </h:commandButton>
             </h:form>
 

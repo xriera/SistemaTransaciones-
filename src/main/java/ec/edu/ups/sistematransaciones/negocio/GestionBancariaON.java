@@ -32,6 +32,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.persistence.Query;
 import javax.swing.JOptionPane;
 import org.apache.commons.io.IOUtils;
 import org.primefaces.model.UploadedFile;
@@ -60,10 +61,10 @@ public class GestionBancariaON {
 
     @Inject
     private DetalleCreditoDAO detalleDAO;
-    
+
     @Inject
     private PolizaDAO daoPoliza;
-    
+
     @Inject
     private SolicitudPolizaDAO daoSolicitudPoliza;
 
@@ -546,8 +547,8 @@ public class GestionBancariaON {
 
         return detalleDAO.DetalleCredito(idcredito);
     }
-    
-        /*
+
+    /*
   	 * metodo que permite crear un usuario administrativo 
      */
     public void generarPoliza(PolizaEN poliza) {
@@ -557,7 +558,7 @@ public class GestionBancariaON {
             Logger.getLogger(GestionBancariaON.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void insertarSolicitudPoliza(SolicitudPoliza solicitudPoliza) {
         try {
             daoSolicitudPoliza.insertSolicitudPoliza(solicitudPoliza);
@@ -565,9 +566,18 @@ public class GestionBancariaON {
             Logger.getLogger(GestionBancariaON.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     public List<SolicitudPoliza> listaSolicitudPolizas() throws Exception {
         //List<CreditoEN> listaCredito =creditoDAO.listarCredito(Cedula);
-
         return daoSolicitudPoliza.getSolicitudPoliza();
     }
+
+    public List<SolicitudPoliza> listaSolicitudPoliza(String idCuenta) throws Exception {
+        return daoSolicitudPoliza.listaSolicitudPoliza(idCuenta);
+    }
+
+    public void actualizarSolicitudPoliza(SolicitudPoliza sp) throws Exception{
+        daoSolicitudPoliza.actualizarSolicitudPoliza(sp);
+    }
+
 }

@@ -10,14 +10,22 @@ import ec.edu.ups.sistematransaciones.modelo.PolizaEN;
 import ec.edu.ups.sistematransaciones.modelo.SocioEN;
 import ec.edu.ups.sistematransaciones.modelo.SolicitudPoliza;
 import ec.edu.ups.sistematransaciones.negocio.GestionBancariaON;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import org.apache.commons.io.IOUtils;
+import org.primefaces.model.UploadedFile;
 
 /**
  *
@@ -43,7 +51,8 @@ public class PolizaBean {
     private double tasaInteres;
     private double calculoInteres;
     private List<PolizaEN> listaPoliza;
-    
+    private UploadedFile fileCedula;
+    private UploadedFile fileSRVBasicos;
 
     public String getCedula() {
         return cedula;
@@ -142,6 +151,22 @@ public class PolizaBean {
     public void setListaPoliza(List<PolizaEN> listaPoliza) {
         this.listaPoliza = listaPoliza;
     }
+
+    public UploadedFile getFileCedula() {
+        return fileCedula;
+    }
+
+    public void setFileCedula(UploadedFile fileCedula) {
+        this.fileCedula = fileCedula;
+    }
+
+    public UploadedFile getFileSRVBasicos() {
+        return fileSRVBasicos;
+    }
+
+    public void setFileSRVBasicos(UploadedFile fileSRVBasicos) {
+        this.fileSRVBasicos = fileSRVBasicos;
+    }
     
     
 
@@ -219,18 +244,53 @@ public class PolizaBean {
 
         return null;
     }
-
+      public void upload() {
+		if (fileCedula != null) {
+			FacesMessage message = new FacesMessage("Succesful", fileCedula.getFileName() + " is uploaded.");
+			FacesContext.getCurrentInstance().addMessage(null, message);
+		}
+	}
+       
+        public void uploadSRVBasicos() {
+		if (fileCedula != null) {
+			FacesMessage message = new FacesMessage("Succesful", fileSRVBasicos.getFileName() + " is uploaded.");
+			FacesContext.getCurrentInstance().addMessage(null, message);
+		}
+	}
+        
     public String guardaPoliza() {
-
+         upload();
+        uploadSRVBasicos();
+         try {
         newPoliza.setMonto(monto);
         newPoliza.setPlazo(plazo);
         newPoliza.setInterezGanado(interes);
         newPoliza.setFechaPoliza(new Date());
+        
         String recuperaCedula = SocioBean.cedula;
-        System.out.println("" + recuperaCedula);
-        on.generarPoliza(newPoliza);
+        
+        Calendar fecha = new GregorianCalendar();
+        int mes = fecha.get(Calendar.MONTH);
+        
+        fecha.add(Calendar.MONDAY, plazo);
+        Date date=fecha.getTime();
+         SimpleDateFormat sdf = new SimpleDateFormat("dd/MMMMM/yyyy hh:mm:ss");
+        sdf.format(date);
+        System.out.print("fechapoliza "+date);
+        System.out.print("formato "+sdf);
+        newPoliza.setFechaVencimiento(date);
+            newPoliza.setCedulaDigital(IOUtils.toByteArray(fileCedula.getInputstream()));
+             newPoliza.setPlanillaSRVBasicos(IOUtils.toByteArray(fileSRVBasicos.getInputstream()));
+             
+                     on.generarPoliza(newPoliza);
 
         ingresarSolicitud(newPoliza);
+        } catch (IOException ex) {
+            Logger.getLogger(PolizaBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+
+
         
         return null;
     }
@@ -244,7 +304,7 @@ public class PolizaBean {
             CuentaEN cuenta = on.buscarCuenta(idCuentaPoliza);
             SolicitudPoliza solicitud = new SolicitudPoliza();
 
-            solicitud.setEstado(0);
+            solicitud.setEstado("Pendiente");
             solicitud.setCuenta(cuenta);
             solicitud.setPoliza(poliza);
             on.insertarSolicitudPoliza(solicitud);

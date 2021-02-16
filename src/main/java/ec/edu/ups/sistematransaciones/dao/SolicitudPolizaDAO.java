@@ -84,10 +84,28 @@ public class SolicitudPolizaDAO {
 
     public List<SolicitudPoliza> getCuenta(String filtro) throws Exception {
         String jpql = "SELECT p FROM SolicitudPoliza p WHERE cedulaSocio LIKE :filtro";
-
+        
         Query q = em.createQuery(jpql, SolicitudPoliza.class);
         q.setParameter("filtro", filtro);
         return q.getResultList();
     }
 
+    
+        public void actualizarEstadoAprobado(String idCuenta) throws Exception {
+
+        String jpql = "UPDATE SolicitudPoliza p SET p.estado ='Aprobado' WHERE idCuenta='" + idCuenta + "'";
+
+        Query query = em.createQuery(jpql);
+        query.executeUpdate();
+         System.out.println("actualizar [on])");
+    }
+         
+        public void actualizarEstadoRechazado(String idCuenta) throws Exception {
+
+        String jpql = "UPDATE SolicitudPoliza p SET p.estado ='Rechazado' WHERE idCuenta='" + idCuenta + "'";
+
+        Query query = em.createQuery(jpql);
+        query.executeUpdate();
+         System.out.println("actualizar [on])");
+    }
 }

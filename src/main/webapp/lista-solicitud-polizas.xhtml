@@ -13,7 +13,7 @@
 
 
             <h:form>
-                <h:dataTable value="#{solicitudPolizaBean.listasolicitud}" var="poliza"
+                <h:dataTable value="#{solicitudPolizaBean.listSolicitudTodas}" var="poliza"
                              class="table">
 
                     <h:column>
@@ -67,9 +67,13 @@
 
                     <h:column>
                         <f:facet name="header">Fecha de vencimiento</f:facet>
-                            #{poliza.poliza.fechaPoliza}
+                            #{poliza.poliza.fechaVencimiento}
                     </h:column>
 
+                    <h:column>
+                        <f:facet name="header">Estado</f:facet>
+                            #{poliza.estado}
+                    </h:column>
                     <br />
                     <br />
 
@@ -80,11 +84,11 @@
                         <!-- <h:commandButton action="#{socioBean.editarSocio(socio.cedulaSocio)}"  value="Editar"/> -->
 
                         <h:commandButton
-                            action="#{cuentaBean.redirigeCrearMovimiento(cuenta.idCuenta)}"
+                            action="#{solicitudPolizaBean.actullizarEstado(poliza.cuenta.idCuenta)}"
                             value="Aprobar" class="btn btn-primary btn-xs" />
 
                         <h:commandButton
-                            action="#{cuentaBean.redirigeCrearRetiro(cuenta.idCuenta)}"
+                            action="#{solicitudPolizaBean.actullizarEstadoRechazado(poliza.cuenta.idCuenta)}"
                             value="Rechazar" class="btn btn-info btn-xs" />
 
                     </h:column>

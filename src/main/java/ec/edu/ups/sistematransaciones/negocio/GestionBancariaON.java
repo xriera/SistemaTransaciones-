@@ -588,5 +588,10 @@ public class GestionBancariaON {
 
         return daoSolicitudPoliza.listaSolicitudPoliza(idCuenta);
     }
-
+    public void actualizarEstadoAprobado(String idCuenta) throws Exception {
+        daoSolicitudPoliza.actualizarEstadoAprobado(idCuenta);      
+    }
+      public void actualizarEstadoRechazada(String idCuenta) throws Exception {
+        daoSolicitudPoliza.actualizarEstadoRechazado(idCuenta);      
+    }
 }

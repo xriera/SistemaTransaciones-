@@ -9,7 +9,7 @@
         <ui:define name="contenido">
 
 
-            <h1>Solicitudes de polizas</h1>
+            <h1>Lista de polizas</h1>
 
             <h:head>
                 <f:metadata>
@@ -73,13 +73,16 @@
                     <br />
 
                     <h:column>
-                        <f:facet name="header">Fecha</f:facet>
+                        <f:facet name="header">Fecha ingreso</f:facet>
                             #{solicitud.poliza.fechaPoliza}
                     </h:column>
 
                     <br />
                     <br />
-
+                    <h:column>
+                        <f:facet name="header">Fecha Vencimiento</f:facet>
+                            #{solicitud.poliza.fechaVencimiento}
+                    </h:column>
 
 
                 </h:dataTable>

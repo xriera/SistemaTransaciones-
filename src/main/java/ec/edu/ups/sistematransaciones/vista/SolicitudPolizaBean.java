@@ -30,7 +30,7 @@ public class SolicitudPolizaBean {
     public static String idCuenta;
     private String idSolicitud;
     public List<SolicitudPoliza> listasolicitud;
-
+    public List<SolicitudPoliza> listSolicitudTodas;
     public static String getIdCuenta() {
         return idCuenta;
     }
@@ -38,6 +38,14 @@ public class SolicitudPolizaBean {
     public static void setIdCuenta(String idCuenta) {
          String idCuenta1 = CuentaBean.idCuentaPoliza;
         SolicitudPolizaBean.idCuenta = idCuenta1;
+    }
+
+    public List<SolicitudPoliza> getListSolicitudTodas() {
+        return listSolicitudTodas;
+    }
+
+    public void setListSolicitudTodas(List<SolicitudPoliza> listSolicitudTodas) {
+        this.listSolicitudTodas = listSolicitudTodas;
     }
 
 
@@ -56,16 +64,16 @@ public class SolicitudPolizaBean {
     @PostConstruct
     public void init() {
         try {
-            //listarSolicitud();
+            listarSolicitud();
             listarPolizas(idCuenta);
         } catch (Exception ex) {
             Logger.getLogger(SolicitudPolizaBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-//    public void listarSolicitud() throws Exception {
-//        listasolicitud = on.listaSolicitudPoliza(idCuenta);
-//    }
+    public void listarSolicitud() throws Exception {
+        listSolicitudTodas= on.listaSolicitudPolizas();
+    }
     public String listarPolizas(String idCuenta) throws Exception{
         System.out.println("cuentaPoliza"+idCuenta);
         listasolicitud= on.listaSolicitudPoliza(idCuenta);
@@ -75,7 +83,27 @@ public class SolicitudPolizaBean {
         }
         return "";
     } 
-
-    
+    public String actullizarEstado(String idCuenta){
+        try {
+            on.actualizarEstadoAprobado(idCuenta);
+            System.out.println("aprobado [bean])");
+        } catch (Exception ex) {
+            Logger.getLogger(SolicitudPolizaBean.class.getName()).log(Level.SEVERE, null, ex);
+             System.out.println("error aprobado [bean])");
+        }
+        return "lista-solicitud-polizas.xhtml";
+        
+    }
+        public String actullizarEstadoRechazado(String idCuenta){
+        try {
+            on.actualizarEstadoRechazada(idCuenta);
+            System.out.println("Rechazado [bean])");
+        } catch (Exception ex) {
+            Logger.getLogger(SolicitudPolizaBean.class.getName()).log(Level.SEVERE, null, ex);
+             System.out.println("error rechazado[bean])");
+        }
+        return "lista-solicitud-polizas.xhtml";
+        
+    }
 
 }

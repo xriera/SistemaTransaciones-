@@ -25,7 +25,7 @@ public class SolicitudPoliza implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int  idSolicitud;
-    private int estado;
+    private String estado;
     
     @ManyToOne
      @JsonIgnore
@@ -45,11 +45,11 @@ public class SolicitudPoliza implements Serializable{
         this.idSolicitud = idSolicitud;
     }
 
-    public int getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(int estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.enterprise.inject.Typed;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,9 +17,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.primefaces.model.UploadedFile;
 
 /**
  *
@@ -37,11 +40,21 @@ public class PolizaEN implements Serializable {
     private int plazo;
     private double interezGanado;
     private Date fechaPoliza;
-    
+    private Date fechaVencimiento;
+    @Lob
+    @Column(name="cedula") 
+    @Typed
+    private byte[] cedulaDigital;
+     
+    @Lob
+    @Column(name="planillaSRVBasicos") 
+    @Typed
+    private byte[] planillaSRVBasicos;
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "poliza", fetch = FetchType.EAGER)
     @JsonIgnore
     @Fetch(value = FetchMode.SUBSELECT)
     private List<SolicitudPoliza> solicitudPolizas;
+
 
     public List<SolicitudPoliza> getSolicitudPolizas() {
         return solicitudPolizas;
@@ -90,6 +103,32 @@ public class PolizaEN implements Serializable {
     public void setFechaPoliza(Date fechaPoliza) {
         this.fechaPoliza = fechaPoliza;
     }
+
+    public byte[] getCedulaDigital() {
+        return cedulaDigital;
+    }
+
+    public void setCedulaDigital(byte[] cedulaDigital) {
+        this.cedulaDigital = cedulaDigital;
+    }
+
+    public byte[] getPlanillaSRVBasicos() {
+        return planillaSRVBasicos;
+    }
+
+    public void setPlanillaSRVBasicos(byte[] planillaSRVBasicos) {
+        this.planillaSRVBasicos = planillaSRVBasicos;
+    }
+
+    public Date getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+
+    public void setFechaVencimiento(Date fechaVencimiento) {
+        this.fechaVencimiento = fechaVencimiento;
+    }
+
+
 
 
     

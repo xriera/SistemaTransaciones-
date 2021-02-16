@@ -61,8 +61,6 @@ public class SolicitudPoliza implements Serializable{
         this.cuenta = cuenta;
     }
 
-
-
     public PolizaEN getPoliza() {
         return poliza;
     }

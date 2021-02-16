@@ -110,4 +110,14 @@ public class CuentaDAO {
 
     }
 
+    public CuentaEN CuentaxCedula(String cedulaSocio) {
+       CuentaEN cuenta=null;
+       String jpql = "SELECT p FROM CuentaEN p WHERE cedulaSocio LIKE :cedulaSocio";
+     Query query = em.createQuery(jpql,CuentaEN.class);
+     query.setParameter("cedulaSocio", cedulaSocio);
+    return cuenta=(CuentaEN) query.getResultList();
+     
+     
+    }
+
 }

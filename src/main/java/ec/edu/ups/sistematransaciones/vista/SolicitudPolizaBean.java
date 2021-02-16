@@ -27,10 +27,23 @@ public class SolicitudPolizaBean {
 
     @Inject
     private GestionBancariaON on;
-
+    public static String idCuenta;
     private String idSolicitud;
-    private List<SolicitudPoliza> listasolicitud;
+    public List<SolicitudPoliza> listasolicitud;
 
+    public static String getIdCuenta() {
+        return idCuenta;
+    }
+
+    public static void setIdCuenta(String idCuenta) {
+         String idCuenta1 = CuentaBean.idCuentaPoliza;
+        SolicitudPolizaBean.idCuenta = idCuenta1;
+    }
+
+
+
+ 
+    
     public List<SolicitudPoliza> getListasolicitud() {
         return listasolicitud;
     }
@@ -39,17 +52,30 @@ public class SolicitudPolizaBean {
         this.listasolicitud = listasolicitud;
     }
 
+
     @PostConstruct
     public void init() {
         try {
-            listarSolicitud();
+            //listarSolicitud();
+            listarPolizas(idCuenta);
         } catch (Exception ex) {
             Logger.getLogger(SolicitudPolizaBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void listarSolicitud() throws Exception {
-        listasolicitud = on.listaSolicitudPolizas();
-    }
+//    public void listarSolicitud() throws Exception {
+//        listasolicitud = on.listaSolicitudPoliza(idCuenta);
+//    }
+    public String listarPolizas(String idCuenta) throws Exception{
+        System.out.println("cuentaPoliza"+idCuenta);
+        listasolicitud= on.listaSolicitudPoliza(idCuenta);
+        for (SolicitudPoliza s:listasolicitud) {
+            System.out.println("s."+s.getCuenta().getIdCuenta());
+            System.out.println("sp"+s.getPoliza().getIdPoliza());
+        }
+        return "";
+    } 
+
+    
 
 }

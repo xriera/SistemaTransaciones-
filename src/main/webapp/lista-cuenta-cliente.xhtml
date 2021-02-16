@@ -18,7 +18,13 @@ and open the template in the editor.
 
 
 		<h1>Ver Cuentas de Socios</h1>
+                            <h:head>
+                <f:metadata>
+                    <f:viewParam name="idCuenta" value="#{cuentaBean.idCuenta}">
+                    </f:viewParam>
 
+                </f:metadata>
+            </h:head>
 
 		<h:form>
                     <h:dataTable value="#{loginBean.listaCuenta}" var="cuenta"
@@ -73,6 +79,9 @@ and open the template in the editor.
                                     <h:commandButton
                                         action="#{cuentaBean.redirigeCrearPolizaCliente(cuenta.idCuenta)}"
                                         value="Solicitar Poliza" class="btn btn-info btn-xs" />
+                                    <h:commandButton
+                                        action="#{cuentaBean.redirigeListarPolizas(cuenta.idCuenta)}"
+                                        value="Listar Poliza" class="btn btn-info btn-xs" />
 
                                 </h:column>
                                 <br />

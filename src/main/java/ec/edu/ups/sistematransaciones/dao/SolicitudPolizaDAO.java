@@ -49,20 +49,45 @@ public class SolicitudPolizaDAO {
         return q.getResultList();
     }
 
-    public List<SolicitudPoliza> listaSolicitudPoliza(String idCuenta) throws Exception {
-        String jpql = "SELECT p FROM SolicitudPoliza p WHERE p.idCuenta LIKE :idCuenta";
+    public List<SolicitudPoliza> getSolicitudPolizaCliente() throws Exception {
+        String jpql = "SELECT p FROM SolicitudPoliza p";
 
-        Query q = em.createQuery(jpql, PolizaEN.class);
+        Query q = em.createQuery(jpql, SolicitudPoliza.class);
+        // q.setParameter("filtro", filtro + "%");
+        return q.getResultList();
+    }
+
+   
+    public List<SolicitudPoliza> listaSolicitudPoliza(String idCuenta) throws Exception {
+        String jpql = "SELECT p FROM SolicitudPoliza p WHERE idCuenta LIKE :idCuenta";
+
+        Query q = em.createQuery(jpql, SolicitudPoliza.class);
         q.setParameter("idCuenta", idCuenta);
+        System.out.println("ejecuto listasolicitud");
         return q.getResultList();
     }
 
     public void actualizarSolicitudPoliza(SolicitudPoliza sp) {
-        String jpql = "UPDATE SolicitudPoliza p SET p.estado= :estado WHERE p.idSolicitud= :idSolicitud";
+        String jpql = "UPDATE SolicitudPoliza p SET p.estado= :estado WHERE p.idSolicitud=:idSolicitud";
         Query q = em.createQuery(jpql);
         q.setParameter("estado", sp.getEstado());
         int d = q.executeUpdate();
         System.out.println("actualizado " + d);
+    }
+//     public void getSolicitudPoliza(String idCuenta) {
+//        String jpql = "SELECT p FROM SolicitudPoliza p WHERE p.idCuenta";
+//        Query q = em.createQuery(jpql);
+//        q.setParameter("estado", sp.getEstado());
+//        int d = q.executeUpdate();
+//        System.out.println("actualizado " + d);
+//    }
+
+    public List<SolicitudPoliza> getCuenta(String filtro) throws Exception {
+        String jpql = "SELECT p FROM SolicitudPoliza p WHERE cedulaSocio LIKE :filtro";
+
+        Query q = em.createQuery(jpql, SolicitudPoliza.class);
+        q.setParameter("filtro", filtro);
+        return q.getResultList();
     }
 
 }

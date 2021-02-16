@@ -3,6 +3,7 @@ package ec.edu.ups.sistematransaciones.vista;
 import ec.edu.ups.sistematransaciones.modelo.CuentaEN;
 import ec.edu.ups.sistematransaciones.modelo.LoginHistoricos;
 import ec.edu.ups.sistematransaciones.modelo.SocioEN;
+import ec.edu.ups.sistematransaciones.modelo.SolicitudPoliza;
 import ec.edu.ups.sistematransaciones.negocio.GestionBancariaON;
 import ec.edu.ups.sistematransaciones.negocio.LoginHON;
 import java.io.Serializable;
@@ -44,12 +45,20 @@ public class LoginBean implements Serializable {
     private List<LoginHistoricos> listalogin;
     private List<CuentaEN> listaCuenta;
     private List<CuentaEN> listaCuenta2;
-
+    private List<SolicitudPoliza> listaSolicitud;
+    
     private static String idper;
 //private Persona pp = null;
     private SocioEN pp = null;
     private SocioEN socio;
 
+    public List<SolicitudPoliza> getListaSolicitud() {
+        return listaSolicitud;
+    }
+
+    public void setListaSolicitud(List<SolicitudPoliza> listaSolicitud) {
+        this.listaSolicitud = listaSolicitud;
+    } 
     public SocioEN getSocio() {
         return socio;
     }
@@ -104,6 +113,7 @@ public class LoginBean implements Serializable {
         // }
         try {
             cargarCuentas();
+           // cargarSolicitudes();
             //cargarCuentas2();
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -241,9 +251,14 @@ public class LoginBean implements Serializable {
     }
 
     public void cargarCuentas() throws Exception {
-        listaCuenta = on.listarCuentas(idper);
+            listaCuenta = on.listarCuentas(idper);
     }
-    
+    public void cargarSolicitudes() throws Exception{
+      CuentaEN cue=on.CuentaxCedula(pp.getCedulaSocio());
+        System.out.println("idper"+idper);
+      listaSolicitud=  on.listaSolicitudPoliza(cue.getIdCuenta());
+      
+    }
         public void cargarCuentas2() throws Exception {
          if(listalogin.size() > 0){
             

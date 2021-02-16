@@ -129,6 +129,10 @@ public class GestionBancariaON {
         return cuentaDAO.getCuenta(filtro);
     }
 
+    public CuentaEN CuentaxCedula(String cedula) throws Exception {
+        return cuentaDAO.CuentaxCedula(cedula);
+    }
+
     /*
 	 * metodo que permite validar la cedula del socio
      */
@@ -576,8 +580,13 @@ public class GestionBancariaON {
         return daoSolicitudPoliza.listaSolicitudPoliza(idCuenta);
     }
 
-    public void actualizarSolicitudPoliza(SolicitudPoliza sp) throws Exception{
+    public void actualizarSolicitudPoliza(SolicitudPoliza sp) throws Exception {
         daoSolicitudPoliza.actualizarSolicitudPoliza(sp);
+    }
+
+    public List<SolicitudPoliza> SolicitudPoliza(String idCuenta) throws Exception {
+
+        return daoSolicitudPoliza.listaSolicitudPoliza(idCuenta);
     }
 
 }

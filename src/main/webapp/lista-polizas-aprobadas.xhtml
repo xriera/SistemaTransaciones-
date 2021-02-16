@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+    <ui:composition
+        template="Template/production/template-cliente.xhtml">
+        <ui:define name="contenido">
+
+
+            <h1>Solicitudes de polizas</h1>
+
+            <h:head>
+                <f:metadata>
+                    <f:viewParam name="idCuenta" value="#{cuentaBean.idCuenta}">
+                    </f:viewParam>
+
+                </f:metadata>
+            </h:head>
+            
+            <h:form>
+                <h:commandButton value="Lista" title="Ver poliza"
+                                 action="#{solicitudPolizaBean.listarPolizas(cuentaBean.newCuenta.idCuenta)}" class="btn btn-youtube">
+                </h:commandButton>
+                <div class="form-group">
+                    <label class="col-md-12"> ID Cuenta :</label>
+                    <div class="col-md-12">
+                        <h:inputText id="cuenta" value="#{cuentaBean.newCuenta.idCuenta}"
+                                     readonly="true" />
+                    </div>
+                </div>
+                
+                <h:dataTable value="#{solicitudPolizaBean.listasolicitud}" var="solicitud"
+                             class="table">
+
+                    <h:column>
+                        <f:facet name="header">Id Cuenta</f:facet>
+                            #{solicitud.cuenta.idCuenta}
+                    </h:column>
+
+
+                    <h:column>
+                        <f:facet name="header"># Poliza</f:facet>
+                            #{solicitud.poliza.idPoliza}
+                    </h:column>
+
+                    <br />
+                    <br />
+
+                    <h:column>
+                        <f:facet name="header">Plazo</f:facet>
+                            #{solicitud.poliza.plazo}
+                    </h:column>
+
+                    <br />
+                    <br />
+
+                    <h:column>
+                        <f:facet name="header">Valor poliza</f:facet>
+                            #{solicitud.poliza.monto}
+                    </h:column>
+
+                    <br />
+                    <br />
+
+                    <h:column>
+                        <f:facet name="header">Interes ganado</f:facet>
+                            #{solicitud.poliza.interezGanado}
+                    </h:column>
+
+                    <br />
+                    <br />
+
+                    <h:column>
+                        <f:facet name="header">Fecha</f:facet>
+                            #{solicitud.poliza.fechaPoliza}
+                    </h:column>
+
+                    <br />
+                    <br />
+
+
+
+                </h:dataTable>
+                <br />
+                <br />
+                <h:commandButton value="Cerrar Sesion" title="Cerrar Sesion"
+
+                                 actionListener="#{loginAdmiBean.cerrarSession()}"
+                                 action="index.xhtml" class="btn btn-youtube">
+                </h:commandButton>
+
+                <h:commandButton value="Lista de polizas" title="Cerrar Sesion"
+                                 action="lista-poliza.xhtml" class="btn btn-youtube">
+                </h:commandButton>
+            </h:form>
+
+        </ui:define>
+
+    </ui:composition> 
+</html>

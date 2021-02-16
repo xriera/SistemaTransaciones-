@@ -185,6 +185,12 @@ public class CuentaBean {
         return "Poliza-cliente?faces-redirect=true&idCuenta=" + idCuenta;
     }
     
+    public String redirigeListarPolizas(String idCuenta) {
+        idCuentaPoliza = idCuenta;
+        System.out.println("Redirigir:" + idCuenta);
+        return "lista-polizas-aprobadas?faces-redirect=true&idCuenta=" + idCuenta;
+    }
+        
     public String redirigeCrearCredito(String idCuenta) {
 
         System.out.println("Redirigir:" + idCuenta);

@@ -75,5 +75,8 @@ public class PolizaDAO {
         q.setParameter("filtro", filtro + "%");
         return q.getResultList();
     }
+    
+    
+    
 
 }

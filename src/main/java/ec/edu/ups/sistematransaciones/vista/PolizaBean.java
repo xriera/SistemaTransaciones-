@@ -42,6 +42,8 @@ public class PolizaBean {
     private double interes = 0;
     private double tasaInteres;
     private double calculoInteres;
+    private List<PolizaEN> listaPoliza;
+    
 
     public String getCedula() {
         return cedula;
@@ -132,6 +134,16 @@ public class PolizaBean {
     public void setNewCuenta(CuentaEN newCuenta) {
         this.newCuenta = newCuenta;
     }
+
+    public List<PolizaEN> getListaPoliza() {
+        return listaPoliza;
+    }
+
+    public void setListaPoliza(List<PolizaEN> listaPoliza) {
+        this.listaPoliza = listaPoliza;
+    }
+    
+    
 
     @PostConstruct
     public void init() {

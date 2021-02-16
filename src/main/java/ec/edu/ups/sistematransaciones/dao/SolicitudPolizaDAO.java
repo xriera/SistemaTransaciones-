@@ -5,6 +5,7 @@
  */
 package ec.edu.ups.sistematransaciones.dao;
 
+import ec.edu.ups.sistematransaciones.modelo.PolizaEN;
 import ec.edu.ups.sistematransaciones.modelo.SocioEN;
 import ec.edu.ups.sistematransaciones.modelo.SolicitudPoliza;
 import java.util.List;
@@ -19,10 +20,11 @@ import javax.persistence.Query;
  */
 @Stateless
 public class SolicitudPolizaDAO {
-  @PersistenceContext
+
+    @PersistenceContext
     private EntityManager em;
-  
-       /*
+
+    /*
 	 * metodo que permite crear una poliza
      */
     public void insertSolicitudPoliza(SolicitudPoliza solicitud) throws Exception {
@@ -35,16 +37,32 @@ public class SolicitudPolizaDAO {
     public SolicitudPoliza readSolicitudPoliza(int idSolicitud) throws Exception {
         return em.find(SolicitudPoliza.class, idSolicitud);
     }
-    
-        /*
+
+    /*
 	 * metodo que permite ratornar listar los socio por medio de su cedula
      */
     public List<SolicitudPoliza> getSolicitudPoliza() throws Exception {
         String jpql = "SELECT p FROM SolicitudPoliza p";
 
         Query q = em.createQuery(jpql, SolicitudPoliza.class);
-       // q.setParameter("filtro", filtro + "%");
+        // q.setParameter("filtro", filtro + "%");
         return q.getResultList();
     }
-    
+
+    public List<SolicitudPoliza> listaSolicitudPoliza(String idCuenta) throws Exception {
+        String jpql = "SELECT p FROM SolicitudPoliza p WHERE p.idCuenta LIKE :idCuenta";
+
+        Query q = em.createQuery(jpql, PolizaEN.class);
+        q.setParameter("idCuenta", idCuenta);
+        return q.getResultList();
+    }
+
+    public void actualizarSolicitudPoliza(SolicitudPoliza sp) {
+        String jpql = "UPDATE SolicitudPoliza p SET p.estado= :estado WHERE p.idSolicitud= :idSolicitud";
+        Query q = em.createQuery(jpql);
+        q.setParameter("estado", sp.getEstado());
+        int d = q.executeUpdate();
+        System.out.println("actualizado " + d);
+    }
+
 }

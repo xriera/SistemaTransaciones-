@@ -524,8 +524,8 @@ public class GestionBancariaON {
     //vinicio
     public void actualizarSocio(String correo, String clave) throws Exception {
         socioDao.ActualizarSocio(correo, clave);
-        String Asunto = " Cambio de Contrasena";
-        String CuerpoMail = "Su Cambio de Contrasena fue exitoso" + " " + clave;
+        String Asunto = "Actualizanción de contraseña";
+        String CuerpoMail = "El cambio de contraseña fue exitoso, su nueva contraseña es: " + " " + clave;
 
         enviarCorreo(correo, Asunto, CuerpoMail);
         //EmailClient.sendMail(correo, Asunto, CuerpoMail);

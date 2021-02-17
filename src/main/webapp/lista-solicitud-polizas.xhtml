@@ -17,8 +17,8 @@
                              class="table">
 
                     <h:column>
-                        <f:facet name="header">Id Cuenta</f:facet>
-                            #{poliza.cuenta.idCuenta}
+                        <f:facet name="header">Id Poliza</f:facet>
+                            #{poliza.poliza.idPoliza}
                     </h:column>
 
 
@@ -34,18 +34,10 @@
                         <f:facet name="header">Apellido</f:facet>
                             #{poliza.cuenta.socio.apelidosSocio}
                     </h:column>
-
-                    <br />
-                    <br />
-
                     <h:column>
-                        <f:facet name="header">Saldo de cuenta</f:facet>
+                        <f:facet name="header">saldo</f:facet>
                             #{poliza.cuenta.saldo}
                     </h:column>
-
-                    <br />
-                    <br />
-
                     <h:column>
                         <f:facet name="header">Monto de poliza</f:facet>
                             #{poliza.poliza.monto}
@@ -53,9 +45,20 @@
 
                     <br />
                     <br />
+                   <h:column>
+                        <f:facet name="header">Interes ganado</f:facet>
+                            #{poliza.poliza.interezGanado}
+                    </h:column>
 
                     <h:column>
-                        <f:facet name="header">Plazo</f:facet>
+                        <f:facet name="header">Total</f:facet>
+                            #{poliza.poliza.totalPoliza}
+                    </h:column>
+
+                    <br />
+                    <br />
+                    <h:column>
+                        <f:facet name="header">Plazo(Meses)</f:facet>
                             #{poliza.poliza.plazo}
                     </h:column>
 
@@ -84,7 +87,7 @@
                         <!-- <h:commandButton action="#{socioBean.editarSocio(socio.cedulaSocio)}"  value="Editar"/> -->
 
                         <h:commandButton
-                            action="#{solicitudPolizaBean.actullizarEstado(poliza.cuenta.idCuenta)}"
+                            action="#{solicitudPolizaBean.actullizarEstado(poliza.cuenta.idCuenta, poliza.poliza.idPoliza, poliza.poliza.monto)}"
                             value="Aprobar" class="btn btn-primary btn-xs" />
 
                         <h:commandButton

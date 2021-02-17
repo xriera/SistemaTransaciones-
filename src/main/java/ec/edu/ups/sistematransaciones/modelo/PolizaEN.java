@@ -41,6 +41,8 @@ public class PolizaEN implements Serializable {
     private double interezGanado;
     private Date fechaPoliza;
     private Date fechaVencimiento;
+    private double totalPoliza;
+    
     @Lob
     @Column(name="cedula") 
     @Typed
@@ -126,6 +128,14 @@ public class PolizaEN implements Serializable {
 
     public void setFechaVencimiento(Date fechaVencimiento) {
         this.fechaVencimiento = fechaVencimiento;
+    }
+
+    public double getTotalPoliza() {
+        return totalPoliza;
+    }
+
+    public void setTotalPoliza(double totalPoliza) {
+        this.totalPoliza = totalPoliza;
     }
 
 

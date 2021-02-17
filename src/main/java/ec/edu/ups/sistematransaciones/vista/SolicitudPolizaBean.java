@@ -83,9 +83,12 @@ public class SolicitudPolizaBean {
         }
         return "";
     } 
-    public String actullizarEstado(String idCuenta){
+    public String actullizarEstado(String idCuenta, String idPoliza, double monto){
         try {
-            on.actualizarEstadoAprobado(idCuenta);
+            on.retenerDineroPoliza(idCuenta, monto);
+            System.out.println("retencion "+idCuenta+"monto"+monto);
+            
+            on.actualizarEstadoAprobado(idPoliza);
             System.out.println("aprobado [bean])");
         } catch (Exception ex) {
             Logger.getLogger(SolicitudPolizaBean.class.getName()).log(Level.SEVERE, null, ex);

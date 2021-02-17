@@ -76,7 +76,17 @@ public class PolizaDAO {
         return q.getResultList();
     }
     
-    
-    
+
+        /*
+  	 * metodo que permite hacer el retiro de saldo de la cuenta de un cliente  en la base de datos
+     */
+    public void retenerDineroPoliza(String idCuenta, double cantidad) throws Exception {
+
+        String jpql = "UPDATE CuentaEN p SET p.saldo = p.saldo-" + cantidad + " WHERE idcuenta='" + idCuenta + "'";
+
+        Query query = em.createQuery(jpql);
+        query.executeUpdate();
+
+    }
 
 }

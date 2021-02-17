@@ -100,9 +100,9 @@ public class SolicitudPolizaDAO {
          System.out.println("actualizar [on])");
     }
          
-        public void actualizarEstadoRechazado(String idCuenta) throws Exception {
+        public void actualizarEstadoRechazado(String idPoliza) throws Exception {
 
-        String jpql = "UPDATE SolicitudPoliza p SET p.estado ='Rechazado' WHERE idCuenta='" + idCuenta + "'";
+        String jpql = "UPDATE SolicitudPoliza p SET p.estado ='Rechazado' WHERE idPoliza='" + idPoliza + "'";
 
         Query query = em.createQuery(jpql);
         query.executeUpdate();

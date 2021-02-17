@@ -5,8 +5,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:p="http://primefaces.org/ui"  >
 
 
     <ui:composition template="Template/production/template-admin.xhtml">
@@ -33,7 +32,8 @@
                 <h1>Simular poliza</h1>
             </h:body>
 
-            <h:form class="form-horizontal form-material">
+            <h:form class="form-horizontal form-material"  enctype="multipart/form-data">
+                <p:growl  showDetail="ture"/>
                 <div class="form-group">
                     <label class="col-md-12"> Cedula del Socio:</label>
                     <div class="col-md-12">
@@ -119,7 +119,27 @@
 
                 <br />
                 <br />
-
+                <br />
+                <br />
+                <div class="form-group">
+                    <label class="col-md-12"><strong>Cedula:</strong></label>
+                    <div class="col-md-12">
+                        <p:fileUpload  class="btn btn-linkedin" value="#{polizaBean.fileCedula}" mode="simple"/>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="form-group">
+                    <label class="col-md-12"><strong>Ingrese el Respaldo de la Planilla Servicios Basicos:</strong></label>
+                    <div class="col-md-12">
+                        <p:fileUpload  class="btn btn-linkedin" value="#{polizaBean.fileSRVBasicos}" mode="simple"/>
+                    </div>
+                </div> 
+                <br />
+                <br />
+                
+                
+                
                 <h:commandButton
                     action="#{polizaBean.guardaPoliza()}"
                     value="Solicitar poliza" class="btn btn-secondary" />

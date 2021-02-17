@@ -97,9 +97,9 @@ public class SolicitudPolizaBean {
         return "lista-solicitud-polizas.xhtml";
         
     }
-        public String actullizarEstadoRechazado(String idCuenta){
+        public String actullizarEstadoRechazado(String idPoliza){
         try {
-            on.actualizarEstadoRechazada(idCuenta);
+            on.actualizarEstadoRechazada(idPoliza);
             System.out.println("Rechazado [bean])");
         } catch (Exception ex) {
             Logger.getLogger(SolicitudPolizaBean.class.getName()).log(Level.SEVERE, null, ex);

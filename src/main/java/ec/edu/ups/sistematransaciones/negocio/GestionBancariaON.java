@@ -591,11 +591,14 @@ public class GestionBancariaON {
     public void actualizarEstadoAprobado(String idCuenta) throws Exception {
         daoSolicitudPoliza.actualizarEstadoAprobado(idCuenta);      
     }
-      public void actualizarEstadoRechazada(String idCuenta) throws Exception {
-        daoSolicitudPoliza.actualizarEstadoRechazado(idCuenta);      
+      public void actualizarEstadoRechazada(String idPoliza) throws Exception {
+        daoSolicitudPoliza.actualizarEstadoRechazado(idPoliza);      
     }
       
       public void retenerDineroPoliza(String idCuenta, double cantidad) throws Exception {
           daoPoliza.retenerDineroPoliza(idCuenta, cantidad);
+      }
+      public void devolverDineroPoliza(String idCuenta, double cantidad) throws Exception {
+          daoPoliza.devolverDineroPoliza(idCuenta, cantidad);
       }
 }

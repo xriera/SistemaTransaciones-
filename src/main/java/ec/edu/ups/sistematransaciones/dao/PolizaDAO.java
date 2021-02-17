@@ -88,5 +88,12 @@ public class PolizaDAO {
         query.executeUpdate();
 
     }
+    public void devolverDineroPoliza(String idCuenta, double cantidad) throws Exception {
 
+        String jpql = "UPDATE CuentaEN p SET p.saldo = p.saldo+" + cantidad + " WHERE idcuenta='" + idCuenta + "'";
+
+        Query query = em.createQuery(jpql);
+        query.executeUpdate();
+
+    }
 }

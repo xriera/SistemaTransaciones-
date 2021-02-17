@@ -49,14 +49,6 @@
                     <br />
 
                     <h:column>
-                        <f:facet name="header">Plazo</f:facet>
-                            #{solicitud.poliza.plazo}
-                    </h:column>
-
-                    <br />
-                    <br />
-
-                    <h:column>
                         <f:facet name="header">Valor poliza</f:facet>
                             #{solicitud.poliza.monto}
                     </h:column>
@@ -71,19 +63,38 @@
 
                     <br />
                     <br />
+                    
+                    <h:column>
+                        <f:facet name="header">Total </f:facet>
+                            #{solicitud.poliza.totalPoliza}
+                    </h:column>
 
+                    
+                    <br />
+                    <br />
+                     <h:column>
+                        <f:facet name="header">Plazo(Meses)</f:facet>
+                            #{solicitud.poliza.plazo}
+                    </h:column>
+
+                    <br />
+                    <br />
+                    
+                    
                     <h:column>
                         <f:facet name="header">Fecha ingreso</f:facet>
                             #{solicitud.poliza.fechaPoliza}
                     </h:column>
-
                     <br />
                     <br />
                     <h:column>
                         <f:facet name="header">Fecha Vencimiento</f:facet>
                             #{solicitud.poliza.fechaVencimiento}
                     </h:column>
-
+                    <h:column>
+                        <f:facet name="header">Estado</f:facet>
+                            #{solicitud.estado}
+                    </h:column>
 
                 </h:dataTable>
                 <br />

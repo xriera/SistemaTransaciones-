@@ -91,9 +91,9 @@ public class SolicitudPolizaDAO {
     }
 
     
-        public void actualizarEstadoAprobado(String idCuenta) throws Exception {
+        public void actualizarEstadoAprobado(String idPoliza) throws Exception {
 
-        String jpql = "UPDATE SolicitudPoliza p SET p.estado ='Aprobado' WHERE idCuenta='" + idCuenta + "'";
+        String jpql = "UPDATE SolicitudPoliza p SET p.estado ='Aprobado' WHERE idPoliza='" + idPoliza + "'";
 
         Query query = em.createQuery(jpql);
         query.executeUpdate();

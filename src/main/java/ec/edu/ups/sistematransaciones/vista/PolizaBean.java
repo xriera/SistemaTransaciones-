@@ -258,7 +258,7 @@ public class PolizaBean {
 		}
 	}
         
-    public String guardaPoliza() {
+    public String guardaPoliza() throws Exception {
          upload();
         uploadSRVBasicos();
          try {
@@ -281,7 +281,10 @@ public class PolizaBean {
         newPoliza.setFechaVencimiento(date);
             newPoliza.setCedulaDigital(IOUtils.toByteArray(fileCedula.getInputstream()));
              newPoliza.setPlanillaSRVBasicos(IOUtils.toByteArray(fileSRVBasicos.getInputstream()));
-             
+         
+        newPoliza.setTotalPoliza(monto+interes);
+        
+          
                      on.generarPoliza(newPoliza);
 
         ingresarSolicitud(newPoliza);
@@ -309,7 +312,7 @@ public class PolizaBean {
             solicitud.setPoliza(poliza);
             on.insertarSolicitudPoliza(solicitud);
 
-            System.out.println("socio1" + idCuenta);
+            
             System.out.println("Insetado solicitud Poliza");
 
         } catch (Exception ex) {

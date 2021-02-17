@@ -1,5 +1,6 @@
 package ec.edu.ups.sistematransaciones.service;
 
+import ec.edu.ups.sistematransaciones.modelo.CuentaEN;
 import ec.edu.ups.sistematransaciones.modelo.SocioEN;
 import javax.inject.Inject;
 import javax.ws.rs.POST;
@@ -10,6 +11,7 @@ import javax.ws.rs.core.MediaType;
 
 import ec.edu.ups.sistematransaciones.modelo.UsuarioAdministrativo;
 import ec.edu.ups.sistematransaciones.negocio.GestionBancariaON;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -89,22 +91,16 @@ public class ClienteServiceREST {
 //        }
 //        return resp;
 //    }
+    
     @GET
+    @Path("transferencia")
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("traferencia")
-    public Respuesta tranferencia(@QueryParam("idCuentaOrigen") String idCuentaOrigen, @QueryParam("idCuentaDestino") String idCuentaDestino, @QueryParam("cantidad") double cantidad) {
-        Respuesta resp = new Respuesta();
-        try {
-            on.transaccion(idCuentaOrigen, idCuentaDestino, cantidad);
-
-            resp.setCodigo(1);
-            resp.setMensaje("Tranferencia satisfactoria");
-        } catch (Exception e) {
-            e.printStackTrace();
-            resp.setCodigo(-1);
-            resp.setMensaje("Error en la transferencia");
-        }
-        return resp;
+    public Response transferirREST(@QueryParam("idCuentaOrigen") String idCuentaOrigen,
+            @QueryParam("idCuentaDestino") String idCuentaDestino, @QueryParam("cantidad") double cantidad) throws Exception {
+        on.transaccion(idCuentaOrigen, idCuentaDestino, cantidad);
+        System.out.println("transfiriendo...");
+        //return "transferencia exitosa";
+        return Response.ok("transferenciaExitosa").header("Access-Control-Allow-Origin", "*").build();
     }
 
     @GET
@@ -130,9 +126,21 @@ public class ClienteServiceREST {
             throws Exception {
         on.actualizarSocio(email, clave);
 
-        System.out.println("Kajajistan..." + email + clave);
+        System.out.println("correo y contraseña..." + email + clave);
 
-        return Response.ok("transfiriendo").header("Access-Control-Allow-Origin", "*").build();
+        return Response.ok("actualizando contraseña").header("Access-Control-Allow-Origin", "*").build();
     }
+
+    @GET
+    @Path("CuentaSocio")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response CuentaSocio(@QueryParam("cedula") String cedula) throws Exception {
+
+        List<CuentaEN> listaCuenta = on.listarCuentaSocio(cedula);
+
+        return Response.ok(listaCuenta).header("Access-Control-Allow-Origin", "*").build();
+    }
+    
+    
 
 }

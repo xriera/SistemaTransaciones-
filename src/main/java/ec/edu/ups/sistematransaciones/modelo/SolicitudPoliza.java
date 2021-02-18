@@ -28,12 +28,10 @@ public class SolicitudPoliza implements Serializable{
     private String estado;
     
     @ManyToOne
-     @JsonIgnore
      @JoinColumn(name = "idCuenta")
     private CuentaEN cuenta ;
     
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "idPoliza")
     private PolizaEN poliza;
 

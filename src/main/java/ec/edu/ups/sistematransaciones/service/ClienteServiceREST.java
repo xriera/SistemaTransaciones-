@@ -2,6 +2,7 @@ package ec.edu.ups.sistematransaciones.service;
 
 import ec.edu.ups.sistematransaciones.modelo.CuentaEN;
 import ec.edu.ups.sistematransaciones.modelo.SocioEN;
+import ec.edu.ups.sistematransaciones.modelo.SolicitudPoliza;
 import javax.inject.Inject;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -139,6 +140,16 @@ public class ClienteServiceREST {
         List<CuentaEN> listaCuenta = on.listarCuentaSocio(cedula);
 
         return Response.ok(listaCuenta).header("Access-Control-Allow-Origin", "*").build();
+    }
+    
+    @GET
+    @Path("polizas")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response Polizas(@QueryParam("idCuenta") String cuenta) throws Exception {
+
+        List<SolicitudPoliza> listaSolicitudPoliza = on.listaSolicitudPoliza(cuenta);
+
+        return Response.ok(listaSolicitudPoliza).header("Access-Control-Allow-Origin", "*").build();
     }
     
     
